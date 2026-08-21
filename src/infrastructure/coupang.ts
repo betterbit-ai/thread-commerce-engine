@@ -149,6 +149,11 @@ export class CoupangClient implements CoupangPort {
     return raw.map((item) => {
       const value = rawProductSchema.parse(item);
       const productId = String(value.productId);
+      const affiliateUrl = value.productUrl
+        ? new URL(value.productUrl).hostname === 'link.coupang.com'
+          ? value.productUrl
+          : null
+        : null;
       return {
         schema_version: 1,
         product_key: `coupang:${productId}`,
@@ -157,7 +162,7 @@ export class CoupangClient implements CoupangPort {
         name: value.productName,
         category: 'productivity',
         product_url: value.productUrl ?? null,
-        affiliate_url: null,
+        affiliate_url: affiliateUrl,
         image_url: value.productImage ?? null,
         price_krw: value.productPrice ?? null,
         captured_at: this.now().toISOString(),
