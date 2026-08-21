@@ -4,6 +4,7 @@ import { storefrontData } from '../lib/offers';
 const offers = storefrontData.offers;
 const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
 const recommendedOffers = offers.filter((offer) => offer.recommended);
+const showToolSearch = recommendedOffers.length >= 3;
 ---
 
 <Base title="테크픽 | 일하는 사람의 도구">
@@ -28,25 +29,13 @@ const recommendedOffers = offers.filter((offer) => offer.recommended);
 
   <section class="shell notes">
     <div class="section-heading">
-      <p class="eyebrow">DAILY NOTES</p>
-      <h2>오늘의 기록</h2>
+      <p class="eyebrow">OUR PRINCIPLES</p>
+      <h2>테크픽의 기준</h2>
     </div>
-    <div class="note-grid">
-      <article>
-        <span>01</span>
-        <h3>일하는 날을 견디게 하는 작은 것들</h3>
-        <p>책상 위 도구와 업무 환경을 조금씩 정돈하며 찾은 기준을 기록합니다.</p>
-      </article>
-      <article>
-        <span>02</span>
-        <h3>모두에게 맞는 장비는 없습니다</h3>
-        <p>좋다는 말보다, 어떤 사람에게 맞고 맞지 않는지 먼저 살핍니다.</p>
-      </article>
-      <article>
-        <span>03</span>
-        <h3>추천은 충분히 검토한 뒤에</h3>
-        <p>제휴 제품은 확인·검토·승인을 마친 경우에만 별도 페이지로 안내합니다.</p>
-      </article>
+    <div class="principles">
+      <p>과장보다 확인된 정보</p>
+      <p>장점만큼 단점도</p>
+      <p>추천은 충분히 검토한 뒤에</p>
     </div>
   </section>
 
@@ -56,6 +45,14 @@ const recommendedOffers = offers.filter((offer) => offer.recommended);
       <span>{recommendedOffers.length}개 공개</span>
     </div>
     {
+      showToolSearch ? (
+        <label class="tool-search">
+          <span>검토한 도구 검색</span>
+          <input id="tool-search" type="search" placeholder="도구 이름으로 검색" />
+        </label>
+      ) : null
+    }
+    {
       recommendedOffers.length === 0 ? (
         <div class="empty">
           <strong>아직 공개한 추천 도구가 없습니다.</strong>
@@ -64,7 +61,10 @@ const recommendedOffers = offers.filter((offer) => offer.recommended);
       ) : (
         <div class="grid">
           {recommendedOffers.map((offer) => (
-            <article class="card">
+            <article
+              class="card"
+              data-tool-search={`${offer.product} ${offer.category}`.toLowerCase()}
+            >
               <span class="code">{offer.offer_code}번</span>
               <h3>{offer.product}</h3>
               <p>{offer.detail}</p>
@@ -75,6 +75,15 @@ const recommendedOffers = offers.filter((offer) => offer.recommended);
       )
     }
   </section>
+  <script>
+    const input = document.querySelector('#tool-search');
+    input?.addEventListener('input', () => {
+      const query = input.value.trim().toLowerCase();
+      document.querySelectorAll('[data-tool-search]').forEach((card) => {
+        card.hidden = !card.dataset.toolSearch.includes(query);
+      });
+    });
+  </script>
 </Base>
 
 <style>
@@ -113,8 +122,7 @@ const recommendedOffers = offers.filter((offer) => offer.recommended);
     border-radius: 24px;
     background: #eaf0ff;
   }
-  .principle-card span,
-  .note-grid span {
+  .principle-card span {
     color: var(--accent-dark);
     font-size: 0.78rem;
     font-weight: 900;
@@ -144,24 +152,19 @@ const recommendedOffers = offers.filter((offer) => offer.recommended);
     font-size: clamp(1.9rem, 4vw, 3rem);
     letter-spacing: -0.05em;
   }
-  .note-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+  .principles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
     margin-top: 1.5rem;
   }
-  .note-grid article {
-    padding: 1.35rem;
-    border-radius: 18px;
-    background: var(--card);
+  .principles p {
+    margin: 0;
+    padding: 0.7rem 0.95rem;
     border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
   }
-  .note-grid h3 {
-    margin: 1.5rem 0 0.5rem;
-    font-size: 1.15rem;
-    letter-spacing: -0.03em;
-  }
-  .note-grid p,
   .card p {
     color: var(--muted);
   }
@@ -209,15 +212,32 @@ const recommendedOffers = offers.filter((offer) => offer.recommended);
     border-radius: 16px;
     color: var(--muted);
   }
+  .tool-search {
+    display: block;
+    max-width: 28rem;
+    margin: 1.5rem 0;
+  }
+  .tool-search span {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 800;
+  }
+  .tool-search input {
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--ink);
+    font: inherit;
+  }
   @media (max-width: 780px) {
     .hero {
       grid-template-columns: 1fr;
       padding: 3rem 0;
     }
     .grid {
-      grid-template-columns: 1fr;
-    }
-    .note-grid {
       grid-template-columns: 1fr;
     }
   }
