@@ -10,13 +10,17 @@ on:
         description: Korean text-only post, without affiliate links or disclosure
         required: true
         type: string
+      confirm_publish:
+        description: Confirm this one text-only warmup post should publish now
+        required: true
+        type: boolean
 permissions: { contents: write }
 concurrency: { group: repository-writer, cancel-in-progress: false }
 jobs:
   publish:
     environment: production
     runs-on: ubuntu-latest
-    if: ${{ vars.PUBLISH_ENABLED == 'true' }}
+    if: ${{ inputs.confirm_publish == true }}
     steps:
       - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
