@@ -1,7 +1,7 @@
 schema_version: 1
 timezone: Asia/Seoul
 ingest:
-  products_per_query: 20
+  products_per_query: 1
   live_sample_size: 100
   queries:
     - 버티컬
