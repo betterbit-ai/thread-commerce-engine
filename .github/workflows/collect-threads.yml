@@ -25,3 +25,10 @@ jobs:
           git add data/events/threads data/analytics reports/analytics
           git diff --cached --quiet || git commit -m "data(metrics): sample Threads insights [skip ci]"
           git push
+      - if: success()
+        run: node scripts/slack-notify.mjs
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+          SLACK_SUMMARY_PATH: reports/analytics/latest.json
+          SLACK_TITLE: '📈 Techpick Threads 성과 수집 완료'

@@ -1,0 +1,14 @@
+name: Test Slack monitoring
+on:
+  workflow_dispatch:
+permissions: { contents: read }
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: node scripts/slack-notify.mjs
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+          SLACK_MESSAGE: '✅ Techpick Slack monitoring test succeeded.'
