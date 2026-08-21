@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-21T13:11:36.438Z",
+  "threshold_status": "disabled_initially",
+  "score_distribution": [],
+  "score_distribution_by_dimension": {},
+  "score_distribution_by_angle": {},
+  "score_distribution_by_category": {},
+  "approved_rejected_overlap": {
+    "approved_range": null,
+    "rejected_range": null
+  },
+  "false_positive_examples": [],
+  "false_negative_examples": [],
+  "score_correlation_with_human_labels": null,
+  "drafts": []
+}
