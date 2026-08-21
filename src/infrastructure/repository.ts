@@ -58,6 +58,19 @@ export class RepositoryStore {
       throw error;
     }
   }
+  async readJsonTree<T>(relative: string, schema: z.ZodType<T>): Promise<T[]> {
+    try {
+      const entries = await readdir(this.path(relative), { recursive: true });
+      return await Promise.all(
+        entries
+          .filter((entry) => entry.endsWith('.json'))
+          .map((entry) => this.readJson(join(relative, entry), schema)),
+      );
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') return [];
+      throw error;
+    }
+  }
   async list(relative: string): Promise<string[]> {
     try {
       return await readdir(this.path(relative));

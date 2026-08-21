@@ -23,6 +23,7 @@ import {
   runDryRun,
 } from './application/pipeline.js';
 import { log } from './shared/logger.js';
+import { kstDate } from './domain/scheduling.js';
 
 const command = process.argv[2];
 const config = await loadConfig();
@@ -206,6 +207,29 @@ async function execute(): Promise<void> {
       threads: command === 'metrics:threads',
       coupang: command === 'metrics:coupang',
     });
+    if (command === 'metrics:threads') {
+      const warmupReceipts = await deps.store.readJsonTree(
+        'data/state/warmup-publications',
+        z.object({
+          warmup_id: z.string(),
+          status: z.enum(['container_created', 'published']),
+          post_id: z.string().nullable(),
+        }),
+      );
+      const date = kstDate(now());
+      for (const receipt of warmupReceipts) {
+        if (receipt.status !== 'published' || receipt.post_id === null) continue;
+        const event = await deps.threads.getInsights(
+          receipt.post_id,
+          `warmup:${receipt.warmup_id}`,
+        );
+        await deps.store.appendJsonl(
+          `data/events/threads/${date.slice(0, 4)}/${date.slice(5, 7)}/${date}.jsonl`,
+          event,
+        );
+      }
+      await buildAnalyticsProjection(campaigns, deps.store, now);
+    }
     return;
   }
   if (command === 'calibration:report') {
