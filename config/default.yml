@@ -4,7 +4,7 @@ ingest:
   products_per_query: 20
   live_sample_size: 100
   queries:
-    - 버티컬 마우스
+    - 버티컬
     - 인체공학 키보드
     - 모니터암
     - USB-C 허브
