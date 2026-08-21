@@ -1,0 +1,74 @@
+schema_version: 1
+timezone: Asia/Seoul
+ingest:
+  products_per_query: 20
+  live_sample_size: 100
+  queries:
+    - 버티컬 마우스
+    - 인체공학 키보드
+    - 모니터암
+    - USB-C 허브
+    - 맥북 액세서리
+content:
+  posts_per_day: 4
+  candidate_products: 10
+  generation_count: 3
+  angles_per_product: 3
+  duplicate_threshold: 0.82
+  exploration_ratio: 0.2
+  category_mix:
+    mouse: 0.25
+    keyboard: 0.20
+    desk: 0.20
+    productivity: 0.15
+    apple_accessory: 0.10
+    apple_device: 0.10
+publishing:
+  mode: calibration
+  require_storefront_deployment_receipt: true
+  slots_kst: ['08:10', '12:20', '18:40', '22:10']
+  absolute_threshold:
+    enabled: false
+    value: null
+  percentile_threshold:
+    enabled: false
+    value: null
+  judge_weights:
+    hook: 1
+    persona_fit: 1
+    purchase_intent: 1
+    specificity: 1
+    authenticity: 1
+    trust: 1
+    cta_quality: 1
+    policy_safety: 1
+    redundancy: 1
+llm:
+  primary_model: ${GROQ_MODEL}
+  judge_model: ${GROQ_JUDGE_MODEL}
+  max_output_tokens: 1400
+  timeout_ms: 30000
+  max_attempts: 3
+  generation_temperature: 0.55
+  judge_temperature: 0
+external:
+  request_timeout_ms: 15000
+  max_attempts: 3
+  coupang:
+    base_url: ${COUPANG_BASE_URL:-https://api-gateway.coupang.com}
+    subid_enabled: false
+    search_hourly_budget: 10
+    report_hourly_budget: 50
+    other_hourly_budget: 100
+  threads:
+    base_url: https://graph.threads.net
+    token_warning_days: 10
+metrics:
+  threads_windows_hours: [1, 6, 24, 72, 168]
+  coupang_collection_hour_kst: 16
+disclosure:
+  text: 이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
+features:
+  threads_keyword_search: false
+  apple_event_engine: true
+  auto_optimization: false

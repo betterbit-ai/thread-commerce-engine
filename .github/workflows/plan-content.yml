@@ -1,0 +1,32 @@
+name: Plan content
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 6 * * *'
+      timezone: Asia/Seoul
+permissions: { contents: write }
+concurrency: { group: repository-writer, cancel-in-progress: false }
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.15.0 }
+      - uses: actions/setup-node@v6
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm content:plan
+        env:
+          COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
+          COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: ${{ vars.GROQ_MODEL }}
+          GROQ_JUDGE_MODEL: ${{ vars.GROQ_JUDGE_MODEL }}
+      - name: Commit auditable content plan
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/campaigns data/drafts data/runtime data/state data/storefront reports/calibration
+          git diff --cached --quiet || git commit -m "data(content): generate campaigns and calibration drafts [skip ci]"
+          git push

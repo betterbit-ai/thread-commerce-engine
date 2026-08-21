@@ -1,0 +1,32 @@
+name: Connectivity and token health
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '53 9 * * 1'
+      timezone: Asia/Seoul
+permissions: { contents: read, issues: write }
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.15.0 }
+      - uses: actions/setup-node@v6
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test:contracts
+        env:
+          COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
+          COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
+          COUPANG_SUBID_ENABLED: ${{ vars.COUPANG_SUBID_ENABLED }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: ${{ vars.GROQ_MODEL }}
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          THREADS_TOKEN_EXPIRES_AT: ${{ vars.THREADS_TOKEN_EXPIRES_AT }}
+      - name: Warn when Threads token approaches expiry
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPIRES_AT: ${{ vars.THREADS_TOKEN_EXPIRES_AT }}
+        run: |
+          node scripts/token-health.mjs

@@ -1,0 +1,12 @@
+schema_version: 1
+experiences: []
+# Human-curated example (do not uncomment without verifying every fact):
+# - product_key: exact-coupang-or-catalog-key
+#   exact_model: exact model name
+#   used: true
+#   duration: "6 months"
+#   environments: ["home desk"]
+#   observations: ["User-entered observation"]
+#   negatives: ["User-entered drawback"]
+#   caveats: ["User-entered context"]
+#   verified_at: "2026-08-21"

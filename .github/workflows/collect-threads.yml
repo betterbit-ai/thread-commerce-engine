@@ -1,0 +1,27 @@
+name: Collect Threads metrics
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '13 */3 * * *'
+      timezone: Asia/Seoul
+permissions: { contents: write }
+concurrency: { group: repository-writer, cancel-in-progress: false }
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.15.0 }
+      - uses: actions/setup-node@v6
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm metrics:threads
+        env:
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+      - run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add data/events/threads data/analytics reports/analytics
+          git diff --cached --quiet || git commit -m "data(metrics): sample Threads insights [skip ci]"
+          git push

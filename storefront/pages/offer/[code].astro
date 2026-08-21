@@ -1,0 +1,115 @@
+---
+import Base from '../../layouts/Base.astro';
+import { storefrontData } from '../../lib/offers';
+export function getStaticPaths() {
+  return storefrontData.offers.map((offer) => ({
+    params: { code: String(offer.offer_code) },
+    props: { offer },
+  }));
+}
+const { offer } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
+---
+
+<Base
+  title={`${offer.offer_code}번 · ${offer.product}`}
+  description={`${offer.product} 확인 정보`}
+  disclosure={storefrontData.disclosure}
+>
+  <article class="detail shell">
+    <a class="back" href={`${base}/`}>← 전체 장비로</a>
+    <div class="offer-code">프로필 오퍼 <strong>{offer.offer_code}번</strong></div>
+    <p class="eyebrow">{offer.category}</p><h1>{offer.product}</h1><p class="summary">
+      {offer.detail}
+    </p>
+    <div class="facts">
+      <div>
+        <span>캡처 가격</span><strong
+          >{
+            offer.price_krw === null ? '정보 없음' : `${offer.price_krw.toLocaleString('ko-KR')}원`
+          }</strong
+        >
+      </div><div>
+        <span>가격 확인 시각</span><strong
+          >{
+            offer.captured_at
+              ? new Date(offer.captured_at).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })
+              : '정보 없음'
+          }</strong
+        >
+      </div>
+    </div>
+    <p class="notice">
+      가격·옵션·재고는 변할 수 있습니다. 아래 버튼에서 현재 쿠팡 정보를 확인한 뒤 결정하세요.
+    </p>
+    <a
+      class="button cta"
+      href={offer.affiliate_url}
+      rel="nofollow sponsored noopener"
+      target="_blank">쿠팡에서 현재 정보 보기 ↗</a
+    >
+    <p class="disclosure">{storefrontData.disclosure}</p>
+  </article>
+</Base>
+<style>
+  .detail {
+    max-width: 760px;
+    padding: 4rem 0;
+  }
+  .back {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .offer-code {
+    display: inline-flex;
+    gap: 0.35rem;
+    margin: 2.5rem 0 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 9px;
+    background: #dff5e8;
+    color: var(--accent-dark);
+  }
+  h1 {
+    margin: 0.4rem 0 1rem;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    line-height: 1.03;
+    letter-spacing: -0.06em;
+  }
+  .summary {
+    font-size: 1.12rem;
+    color: var(--muted);
+  }
+  .facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin: 2rem 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--line);
+  }
+  .facts div {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: var(--card);
+  }
+  .facts span {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  .notice {
+    color: var(--muted);
+  }
+  .cta {
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 1.05rem;
+  }
+  @media (max-width: 560px) {
+    .facts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

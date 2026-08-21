@@ -1,0 +1,23 @@
+name: Analytics recommendations
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 17 * * 1'
+      timezone: Asia/Seoul
+permissions: { contents: write }
+concurrency: { group: repository-writer, cancel-in-progress: false }
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.15.0 }
+      - uses: actions/setup-node@v6
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm analytics:build && pnpm optimize
+      - run: |
+          git add data/analytics/latest.json reports/analytics/latest.json reports/analytics/recommendations.json
+          git diff --cached --quiet || git commit -m "chore(analytics): persist weekly recommendations"
+          git push

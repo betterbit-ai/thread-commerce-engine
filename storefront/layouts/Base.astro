@@ -1,0 +1,141 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  disclosure: string;
+}
+const {
+  title,
+  disclosure,
+  description = '오래 일하는 개발자를 위한 검증 가능한 장비 정보',
+} = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#101512" />
+    <link rel="icon" href={`${base}/favicon.svg`} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href={`${base}/`} aria-label="홈">
+        <span class="brand-mark">⌁</span><span>오래 일하는 개발자의 장비</span>
+      </a>
+    </header>
+    <main><slot /></main>
+    <footer>
+      <strong>광고·제휴 안내</strong>
+      <p>{disclosure}</p>
+      <p>표시 가격은 캡처 시점의 참고 정보이며, 실제 가격과 재고는 쿠팡에서 다시 확인해 주세요.</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --ink: #101512;
+    --muted: #607066;
+    --paper: #f5f4ee;
+    --card: #fffef9;
+    --line: #d8ddd7;
+    --accent: #25a667;
+    --accent-dark: #147746;
+    --warm: #f1b84b;
+    font-family:
+      Pretendard,
+      Inter,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  a {
+    color: inherit;
+  }
+  .site-header {
+    max-width: 1120px;
+    margin: auto;
+    padding: 1rem 1.15rem;
+  }
+  .brand {
+    display: inline-flex;
+    gap: 0.65rem;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    color: white;
+    background: var(--ink);
+    border-radius: 10px;
+  }
+  main {
+    min-height: 70vh;
+  }
+  footer {
+    max-width: 1120px;
+    margin: 4rem auto 0;
+    padding: 2rem 1.15rem 3rem;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    font-size: 0.86rem;
+  }
+  footer p {
+    margin: 0.45rem 0;
+  }
+  .shell {
+    width: min(1120px, calc(100% - 2.3rem));
+    margin: auto;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.73rem;
+    font-weight: 800;
+    color: var(--accent-dark);
+  }
+  .button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0.65rem 1.05rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 800;
+    background: var(--ink);
+    color: white;
+    border: 0;
+  }
+  .button:hover {
+    background: var(--accent-dark);
+  }
+  .disclosure {
+    padding: 1rem;
+    border-left: 4px solid var(--warm);
+    background: #fff8e7;
+    font-size: 0.86rem;
+  }
+</style>

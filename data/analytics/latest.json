@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "generated_at": null,
+  "campaigns": 0,
+  "totals": { "threads_views": 0, "coupang_clicks": 0, "orders": 0, "commission_krw": 0 },
+  "metrics": { "commerce_ctr": null, "purchase_cvr": null, "rpmv": null },
+  "segments": []
+}
