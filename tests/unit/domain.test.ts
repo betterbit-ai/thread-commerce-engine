@@ -220,15 +220,19 @@ describe('similarity, time, and business metrics', () => {
     expect(isDue('2026-08-20T00:00:00Z', new Date('2026-08-21T00:00:00Z'))).toBe(true);
   });
   it('calculates commerce metrics without divide-by-zero fiction', () => {
-    expect(calculateBusinessMetrics(1000, 25, 2, 8000)).toEqual({
+    expect(calculateBusinessMetrics(1000, 25, 2, 8000, 80, 15)).toEqual({
       commerce_ctr: 0.025,
       purchase_cvr: 0.08,
       rpmv: 8000,
+      engagement_rate: 0.08,
+      reply_rate: 0.015,
     });
     expect(calculateBusinessMetrics(0, 0, 0, 0)).toEqual({
       commerce_ctr: null,
       purchase_cvr: null,
       rpmv: null,
+      engagement_rate: null,
+      reply_rate: null,
     });
   });
   it('calculates human-label correlation only with enough variance', () =>

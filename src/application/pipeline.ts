@@ -1057,6 +1057,11 @@ export async function buildAnalyticsProjection(
       totals.coupang_clicks,
       totals.orders,
       totals.commission_krw,
+      [...latestThreads.values()].reduce(
+        (sum, item) => sum + (item.likes ?? 0) + (item.replies ?? 0) + (item.reposts ?? 0) + (item.quotes ?? 0) + (item.shares ?? 0),
+        0,
+      ),
+      [...latestThreads.values()].reduce((sum, item) => sum + (item.replies ?? 0), 0),
     ),
     segments: campaigns.map((campaign) => {
       const social = latestThreads.get(campaign.campaign_id);
@@ -1066,6 +1071,12 @@ export async function buildAnalyticsProjection(
         commerce?.clicks ?? null,
         commerce?.orders ?? null,
         commerce?.commission_krw ?? null,
+        (social?.likes ?? 0) +
+          (social?.replies ?? 0) +
+          (social?.reposts ?? 0) +
+          (social?.quotes ?? 0) +
+          (social?.shares ?? 0),
+        social?.replies ?? 0,
       );
       return {
         campaign_id: campaign.campaign_id,

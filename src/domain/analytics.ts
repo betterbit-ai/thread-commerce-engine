@@ -2,6 +2,8 @@ export interface BusinessMetrics {
   commerce_ctr: number | null;
   purchase_cvr: number | null;
   rpmv: number | null;
+  engagement_rate: number | null;
+  reply_rate: number | null;
 }
 
 export function calculateBusinessMetrics(
@@ -9,11 +11,15 @@ export function calculateBusinessMetrics(
   clicks: number | null,
   orders: number | null,
   commission: number | null,
+  engagement = 0,
+  replies = 0,
 ): BusinessMetrics {
   return {
     commerce_ctr: views && clicks !== null ? clicks / views : null,
     purchase_cvr: clicks && orders !== null ? orders / clicks : null,
     rpmv: views && commission !== null ? (commission / views) * 1000 : null,
+    engagement_rate: views ? engagement / views : null,
+    reply_rate: views ? replies / views : null,
   };
 }
 

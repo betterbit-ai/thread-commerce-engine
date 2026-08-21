@@ -24,6 +24,8 @@
     "pipeline:dry-run": "node --import tsx src/cli.ts pipeline:dry-run",
     "products:ingest": "node --import tsx src/cli.ts products:ingest",
     "content:plan": "node --import tsx src/cli.ts content:plan",
+    "warmup:prepare": "node --import tsx src/cli.ts warmup:prepare",
+    "warmup:publish": "node --import tsx src/cli.ts warmup:publish",
     "calibration:run": "node --import tsx src/cli.ts calibration:run",
     "calibration:report": "node --import tsx src/cli.ts calibration:report",
     "labels:apply": "node --import tsx src/cli.ts labels:apply",
