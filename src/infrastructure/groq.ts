@@ -62,7 +62,11 @@ export class GroqClient implements LlmPort {
             ],
             response_format: {
               type: 'json_schema',
-              json_schema: { name: request.schemaName, strict: false, schema: request.jsonSchema },
+              json_schema: {
+                name: request.schemaName,
+                strict: request.strict ?? false,
+                schema: request.jsonSchema,
+              },
             },
           }),
         },

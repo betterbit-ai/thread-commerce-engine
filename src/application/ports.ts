@@ -17,6 +17,7 @@ export interface StructuredRequest<T> {
   input: unknown;
   schemaName: string;
   jsonSchema: Record<string, unknown>;
+  strict?: boolean;
   parse: (value: unknown) => T;
   model: string;
   temperature: number;

@@ -52,6 +52,9 @@ describe('HTTP adapters with fixtures', () => {
   it('parses and runtime-validates Groq structured output', async () => {
     const fetchFn: typeof fetch = (_input, init) => {
       expect(new Headers(init?.headers).get('Authorization')).toBe('Bearer key');
+      expect(JSON.parse(String(init?.body))).toMatchObject({
+        response_format: { json_schema: { strict: true } },
+      });
       return response({ choices: [{ message: { content: '{"answer":42}' } }] });
     };
     const client = new GroqClient({
@@ -66,6 +69,7 @@ describe('HTTP adapters with fixtures', () => {
       prompt: 'return json',
       input: { x: 1 },
       schemaName: 'answer',
+      strict: true,
       jsonSchema: { type: 'object' },
       parse: (value) => value as { answer: number },
       model: 'configured-model',

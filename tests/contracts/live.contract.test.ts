@@ -33,6 +33,7 @@ describe.skipIf(!live)('secret-backed read-only contracts', () => {
       prompt: 'Return JSON with ok true.',
       input: { ping: true },
       schemaName: 'connectivity',
+      strict: true,
       jsonSchema: {
         type: 'object',
         properties: { ok: { type: 'boolean' } },
@@ -42,7 +43,7 @@ describe.skipIf(!live)('secret-backed read-only contracts', () => {
       parse: (value) => value as { ok: boolean },
       model: process.env.GROQ_MODEL!,
       temperature: 0,
-      maxTokens: 32,
+      maxTokens: 128,
     });
     expect(result.ok).toBe(true);
   });
