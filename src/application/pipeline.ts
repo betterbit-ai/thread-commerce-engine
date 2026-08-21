@@ -1058,7 +1058,13 @@ export async function buildAnalyticsProjection(
       totals.orders,
       totals.commission_krw,
       [...latestThreads.values()].reduce(
-        (sum, item) => sum + (item.likes ?? 0) + (item.replies ?? 0) + (item.reposts ?? 0) + (item.quotes ?? 0) + (item.shares ?? 0),
+        (sum, item) =>
+          sum +
+          (item.likes ?? 0) +
+          (item.replies ?? 0) +
+          (item.reposts ?? 0) +
+          (item.quotes ?? 0) +
+          (item.shares ?? 0),
         0,
       ),
       [...latestThreads.values()].reduce((sum, item) => sum + (item.replies ?? 0), 0),
