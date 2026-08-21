@@ -15,6 +15,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
   title={`${offer.offer_code}번 · ${offer.product}`}
   description={`${offer.product} 확인 정보`}
   disclosure={storefrontData.disclosure}
+  showDisclosure={true}
 >
   <article class="detail shell">
     <a class="back" href={`${base}/`}>← 전체 장비로</a>

@@ -2,12 +2,14 @@
 interface Props {
   title: string;
   description?: string;
-  disclosure: string;
+  disclosure?: string;
+  showDisclosure?: boolean;
 }
 const {
   title,
   disclosure,
-  description = '오래 일하는 개발자를 위한 검증 가능한 장비 정보',
+  showDisclosure = false,
+  description = '일하는 사람의 책상·장비·업무도구 기록',
 } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
 ---
@@ -25,14 +27,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
   <body>
     <header class="site-header">
       <a class="brand" href={`${base}/`} aria-label="홈">
-        <span class="brand-mark">⌁</span><span>오래 일하는 개발자의 장비</span>
+        <span class="brand-mark">✦</span><span>테크픽</span>
       </a>
     </header>
     <main><slot /></main>
     <footer>
-      <strong>광고·제휴 안내</strong>
-      <p>{disclosure}</p>
-      <p>표시 가격은 캡처 시점의 참고 정보이며, 실제 가격과 재고는 쿠팡에서 다시 확인해 주세요.</p>
+      <strong>테크픽 | 일하는 사람의 도구</strong>
+      <p>오래 앉아 일하는 사람의 책상·장비·업무도구 기록</p>
+      {
+        showDisclosure && disclosure ? (
+          <p class="footer-disclosure">광고·제휴 안내: {disclosure}</p>
+        ) : null
+      }
     </footer>
   </body>
 </html>
@@ -40,14 +46,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
 <style is:global>
   :root {
     color-scheme: light;
-    --ink: #101512;
-    --muted: #607066;
-    --paper: #f5f4ee;
-    --card: #fffef9;
-    --line: #d8ddd7;
-    --accent: #25a667;
-    --accent-dark: #147746;
-    --warm: #f1b84b;
+    --ink: #18203a;
+    --muted: #65708a;
+    --paper: #f7f8fc;
+    --card: #ffffff;
+    --line: #dfe4f1;
+    --accent: #5b8cff;
+    --accent-dark: #345fc8;
+    --warm: #f2b45e;
     font-family:
       Pretendard,
       Inter,
@@ -88,8 +94,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
     width: 2rem;
     height: 2rem;
     color: white;
-    background: var(--ink);
-    border-radius: 10px;
+    background: var(--accent-dark);
+    border-radius: 50%;
   }
   main {
     min-height: 70vh;
@@ -137,5 +143,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
     border-left: 4px solid var(--warm);
     background: #fff8e7;
     font-size: 0.86rem;
+  }
+  .footer-disclosure {
+    margin-top: 1rem;
   }
 </style>
