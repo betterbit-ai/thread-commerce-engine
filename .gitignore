@@ -10,11 +10,6 @@ data/cache/
 *.log
 .DS_Store
 .omx/
-.codex/*
-!.codex/agents/
-!.codex/agents/**
-!.codex/skills/
-!.codex/skills/**
-.codex/skills/.system/**
-!.codex/prompts/
-!.codex/prompts/**
+AGENTS.md
+.codex/
+.pnpm-store/
