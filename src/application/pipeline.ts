@@ -338,19 +338,16 @@ export async function planContent(
           schemaName: 'product_analysis',
           jsonSchema: genericObjectSchema,
           parse: (value) => {
-            const parsed = analysisSchema.parse(value);
             return analysisSchema.parse({
-              ...parsed,
+              ...(value && typeof value === 'object' ? value : {}),
+              schema_version: 1,
               product_key: product.product_key,
               category: deterministic.category,
               founder_experience_supported: deterministic.founder_experience_supported,
               deal_signal: deterministic.deal_signal,
               review_signal: deterministic.review_signal,
               commission_economics: deterministic.commission_economics,
-              mac_compatibility:
-                deterministic.mac_compatibility === 'unknown'
-                  ? 'unknown'
-                  : parsed.mac_compatibility,
+              mac_compatibility: deterministic.mac_compatibility,
             });
           },
           model: deps.config.llm.primary_model,
