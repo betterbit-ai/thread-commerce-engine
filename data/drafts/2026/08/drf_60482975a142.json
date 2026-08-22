@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "draft_id": "drf_60482975a142",
+  "campaign_id": "cmp_20260822_9d0774fb21",
+  "product_key": "coupang:8468914303",
+  "angle": "pain_solution",
+  "text": "오늘도 긴 코딩 세션 중에 손목이 뭉쳐서 작업이 끊기는 순간이 있었나요? 손목·팔목 피로가 쌓이면 집중력이 떨어지고 디버깅 시간이 늘어집니다. 아이리버 멀티페어링 인체공학 무선키보드는 손목을 자연스럽게 지지하도록 설계돼 장시간 타이핑에도 부담을 줄여줍니다. 다만 무선이므로 배터리 교체·충전 관리가 필요하니 사용 전 확인이 필요합니다. 지금 구매하시면 할인코드 100을 입력해 10% 할인받을 수 있어요. 자세한 내용은 https://link.coupang.com/re/AFFSDP?lptag=AF4905906&pageKey=8468914303&itemId=24502295873&vendorItemId=91515362044 를 확인해 보세요.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+  "text_hash": "a6b898d3a329da9492e968ba78d0a3e7a168cb06a01e12fd7bbd511a782c90c6",
+  "offer_code": 100,
+  "created_at": "2026-08-22T01:20:39.693Z",
+  "prompt_version": "product-analyst:v1|angle-generator:v1|writer:v1|judge:v1",
+  "model": "openai/gpt-oss-120b",
+  "input_hash": "fa895b4aba328e2df21b6edce71798332454bd36cdd91664507abfd571c10f15",
+  "judge": {
+    "schema_version": 1,
+    "scores": {
+      "hook": 80,
+      "persona_fit": 85,
+      "purchase_intent": 78,
+      "specificity": 70,
+      "authenticity": 55,
+      "trust": 60,
+      "cta_quality": 80,
+      "policy_safety": 95,
+      "redundancy": 85
+    },
+    "reasons": {
+      "hook": "Starts with a relatable question that grabs attention of developers facing wrist fatigue.",
+      "persona_fit": "Directly addresses Korean IT workers who code for long periods, matching the identified target persona.",
+      "purchase_intent": "Includes a discount code and clear purchase prompt, encouraging conversion.",
+      "specificity": "Mentions product name, ergonomic design, wireless nature, and battery considerations but lacks detailed specs.",
+      "authenticity": "Claims ergonomic benefits without supporting evidence beyond a generic keyword search, lowering credibility.",
+      "trust": "Provides affiliate disclosure but lacks independent reviews or ratings, resulting in moderate trust.",
+      "cta_quality": "Clear call‑to‑action with discount code and link to purchase page.",
+      "policy_safety": "No prohibited content, complies with affiliate disclosure requirements.",
+      "redundancy": "Some repetition of wrist‑fatigue theme but overall concise."
+    },
+    "detected_risks": [
+      "Unsubstantiated health benefit claim regarding reduction of wrist/finger fatigue"
+    ],
+    "hard_fail_suggestions": [
+      "Add verifiable source or study supporting ergonomic benefit claim"
+    ],
+    "overall_score": 76.44,
+    "confidence": 0.78,
+    "improvement": "Include credible evidence for ergonomic claims to boost authenticity and trust.",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1"
+  },
+  "policy": {
+    "hard_fail": false,
+    "failures": []
+  },
+  "human_label": null
+}
