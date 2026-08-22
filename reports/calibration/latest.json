@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-22T01:20:39.700Z",
+  "generated_at": "2026-08-22T01:37:51.608Z",
   "threshold_status": "disabled_initially",
   "score_distribution": [
-    76.44
+    78.89
   ],
   "score_distribution_by_dimension": {
     "hook": [
@@ -13,22 +13,22 @@
       85
     ],
     "purchase_intent": [
-      78
-    ],
-    "specificity": [
       70
     ],
+    "specificity": [
+      65
+    ],
     "authenticity": [
-      55
-    ],
-    "trust": [
-      60
-    ],
-    "cta_quality": [
       80
     ],
+    "trust": [
+      80
+    ],
+    "cta_quality": [
+      65
+    ],
     "policy_safety": [
-      95
+      100
     ],
     "redundancy": [
       85
@@ -36,12 +36,12 @@
   },
   "score_distribution_by_angle": {
     "pain_solution": [
-      76.44
+      78.89
     ]
   },
   "score_distribution_by_category": {
     "keyboard": [
-      76.44
+      78.89
     ]
   },
   "approved_rejected_overlap": {
@@ -53,34 +53,39 @@
   "score_correlation_with_human_labels": null,
   "drafts": [
     {
-      "draft_id": "drf_60482975a142",
+      "draft_id": "drf_44529bbfce8e",
       "product": "아이리버 멀티페어링 인체공학 무선키보드, 화이트, EQwear-ERGO WAVE EW3, 제조사축",
       "category": "keyboard",
       "angle": "pain_solution",
-      "text": "오늘도 긴 코딩 세션 중에 손목이 뭉쳐서 작업이 끊기는 순간이 있었나요? 손목·팔목 피로가 쌓이면 집중력이 떨어지고 디버깅 시간이 늘어집니다. 아이리버 멀티페어링 인체공학 무선키보드는 손목을 자연스럽게 지지하도록 설계돼 장시간 타이핑에도 부담을 줄여줍니다. 다만 무선이므로 배터리 교체·충전 관리가 필요하니 사용 전 확인이 필요합니다. 지금 구매하시면 할인코드 100을 입력해 10% 할인받을 수 있어요. 자세한 내용은 https://link.coupang.com/re/AFFSDP?lptag=AF4905906&pageKey=8468914303&itemId=24502295873&vendorItemId=91515362044 를 확인해 보세요.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+      "text": "아침에 코딩을 시작했는데 손목이 금방 뻐근해지는 걸 느끼셨나요?\n장시간 타이핑에 지친 개발자를 위해 인체공학 설계와 멀티페어링을 지원하는 무선키보드가 있습니다.\n키보드가 손목을 자연스럽게 지지해 피로를 줄여주지만, 배터리 충전이 필요하고 무선 지연이 아주 미미하게 느껴질 수 있어요.\n프로필에서 코드 100을 입력하면 자세히 확인할 수 있어요.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
       "scores": {
         "hook": 80,
         "persona_fit": 85,
-        "purchase_intent": 78,
-        "specificity": 70,
-        "authenticity": 55,
-        "trust": 60,
-        "cta_quality": 80,
-        "policy_safety": 95,
+        "purchase_intent": 70,
+        "specificity": 65,
+        "authenticity": 80,
+        "trust": 80,
+        "cta_quality": 65,
+        "policy_safety": 100,
         "redundancy": 85
       },
-      "overall_score": 76.44,
-      "hard_fails": [],
+      "overall_score": 78.89,
+      "hard_fails": [
+        {
+          "code": "unsupported_health_claim",
+          "detail": "Medical/health outcome claim is not supported."
+        }
+      ],
       "judge_explanation": {
-        "hook": "Starts with a relatable question that grabs attention of developers facing wrist fatigue.",
-        "persona_fit": "Directly addresses Korean IT workers who code for long periods, matching the identified target persona.",
-        "purchase_intent": "Includes a discount code and clear purchase prompt, encouraging conversion.",
-        "specificity": "Mentions product name, ergonomic design, wireless nature, and battery considerations but lacks detailed specs.",
-        "authenticity": "Claims ergonomic benefits without supporting evidence beyond a generic keyword search, lowering credibility.",
-        "trust": "Provides affiliate disclosure but lacks independent reviews or ratings, resulting in moderate trust.",
-        "cta_quality": "Clear call‑to‑action with discount code and link to purchase page.",
+        "hook": "Opening question directly addresses developer wrist pain, creating curiosity.",
+        "persona_fit": "Copy speaks to Korean IT workers who code long hours, matching analysis persona.",
+        "purchase_intent": "Provides a soft CTA (code 100) rather than a direct purchase link, limiting conversion drive.",
+        "specificity": "Mentions ergonomic design, multi‑pairing, battery need, slight latency but lacks detailed specs (e.g., battery life, dimensions).",
+        "authenticity": "Claims are realistic and include a disclosure, no exaggerated promises.",
+        "trust": "Disclosure of affiliate relationship and balanced pros/cons builds credibility.",
+        "cta_quality": "CTA asks for a code to view details; could be stronger with a direct link or button.",
         "policy_safety": "No prohibited content, complies with affiliate disclosure requirements.",
-        "redundancy": "Some repetition of wrist‑fatigue theme but overall concise."
+        "redundancy": "Content is concise with minimal repetition."
       },
       "model": "openai/gpt-oss-120b",
       "prompt_version": "v1",

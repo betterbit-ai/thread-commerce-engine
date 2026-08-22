@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "draft_id": "drf_44529bbfce8e",
+  "campaign_id": "cmp_20260822_9d0774fb21",
+  "product_key": "coupang:8468914303",
+  "angle": "pain_solution",
+  "text": "아침에 코딩을 시작했는데 손목이 금방 뻐근해지는 걸 느끼셨나요?\n장시간 타이핑에 지친 개발자를 위해 인체공학 설계와 멀티페어링을 지원하는 무선키보드가 있습니다.\n키보드가 손목을 자연스럽게 지지해 피로를 줄여주지만, 배터리 충전이 필요하고 무선 지연이 아주 미미하게 느껴질 수 있어요.\n프로필에서 코드 100을 입력하면 자세히 확인할 수 있어요.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+  "text_hash": "1578ba6f64c0a01505fd78478320e8511c837b4b908d648a06ee19e7fdd65e70",
+  "offer_code": 100,
+  "created_at": "2026-08-22T01:37:51.603Z",
+  "prompt_version": "product-analyst:v1|angle-generator:v1|writer:v1|judge:v1",
+  "model": "openai/gpt-oss-120b",
+  "input_hash": "0a3a99dd1257083f824b3f2eea1c4c3fde0f5732e72b605bf7feae578d2aca3d",
+  "judge": {
+    "schema_version": 1,
+    "scores": {
+      "hook": 80,
+      "persona_fit": 85,
+      "purchase_intent": 70,
+      "specificity": 65,
+      "authenticity": 80,
+      "trust": 80,
+      "cta_quality": 65,
+      "policy_safety": 100,
+      "redundancy": 85
+    },
+    "reasons": {
+      "hook": "Opening question directly addresses developer wrist pain, creating curiosity.",
+      "persona_fit": "Copy speaks to Korean IT workers who code long hours, matching analysis persona.",
+      "purchase_intent": "Provides a soft CTA (code 100) rather than a direct purchase link, limiting conversion drive.",
+      "specificity": "Mentions ergonomic design, multi‑pairing, battery need, slight latency but lacks detailed specs (e.g., battery life, dimensions).",
+      "authenticity": "Claims are realistic and include a disclosure, no exaggerated promises.",
+      "trust": "Disclosure of affiliate relationship and balanced pros/cons builds credibility.",
+      "cta_quality": "CTA asks for a code to view details; could be stronger with a direct link or button.",
+      "policy_safety": "No prohibited content, complies with affiliate disclosure requirements.",
+      "redundancy": "Content is concise with minimal repetition."
+    },
+    "detected_risks": [],
+    "hard_fail_suggestions": [],
+    "overall_score": 78.89,
+    "confidence": 0.78,
+    "improvement": "Add concrete specifications (e.g., battery life, key travel) and a direct purchase CTA to boost specificity and conversion potential.",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1"
+  },
+  "policy": {
+    "hard_fail": true,
+    "failures": [
+      {
+        "code": "unsupported_health_claim",
+        "detail": "Medical/health outcome claim is not supported."
+      }
+    ]
+  },
+  "human_label": null
+}
