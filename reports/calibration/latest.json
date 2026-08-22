@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-22T01:37:51.608Z",
+  "generated_at": "2026-08-22T01:39:40.890Z",
   "threshold_status": "disabled_initially",
   "score_distribution": [
-    78.89
+    65
   ],
   "score_distribution_by_dimension": {
     "hook": [
@@ -13,35 +13,35 @@
       85
     ],
     "purchase_intent": [
-      70
+      40
     ],
     "specificity": [
-      65
+      55
     ],
     "authenticity": [
-      80
+      45
     ],
     "trust": [
-      80
+      60
     ],
     "cta_quality": [
-      65
+      30
     ],
     "policy_safety": [
       100
     ],
     "redundancy": [
-      85
+      90
     ]
   },
   "score_distribution_by_angle": {
     "pain_solution": [
-      78.89
+      65
     ]
   },
   "score_distribution_by_category": {
     "keyboard": [
-      78.89
+      65
     ]
   },
   "approved_rejected_overlap": {
@@ -53,39 +53,34 @@
   "score_correlation_with_human_labels": null,
   "drafts": [
     {
-      "draft_id": "drf_44529bbfce8e",
+      "draft_id": "drf_ad5c3de63433",
       "product": "아이리버 멀티페어링 인체공학 무선키보드, 화이트, EQwear-ERGO WAVE EW3, 제조사축",
       "category": "keyboard",
       "angle": "pain_solution",
-      "text": "아침에 코딩을 시작했는데 손목이 금방 뻐근해지는 걸 느끼셨나요?\n장시간 타이핑에 지친 개발자를 위해 인체공학 설계와 멀티페어링을 지원하는 무선키보드가 있습니다.\n키보드가 손목을 자연스럽게 지지해 피로를 줄여주지만, 배터리 충전이 필요하고 무선 지연이 아주 미미하게 느껴질 수 있어요.\n프로필에서 코드 100을 입력하면 자세히 확인할 수 있어요.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+      "text": "오늘도 노트북과 태블릿을 오가며 작업할 때, 키보드 케이블이 뒤섞여 시간만 뺏기죠. 무선 멀티페어링을 지원하는 아이리버 EW3라면 한 번의 연결로 여러 기기를 자유롭게 전환할 수 있어요. 다만 배터리 교체 주기를 확인해 두면 중간에 끊김 없이 사용할 수 있습니다. 프로필에서 '100' 코드를 입력하면 확인해 볼 수 있어요.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
       "scores": {
         "hook": 80,
         "persona_fit": 85,
-        "purchase_intent": 70,
-        "specificity": 65,
-        "authenticity": 80,
-        "trust": 80,
-        "cta_quality": 65,
+        "purchase_intent": 40,
+        "specificity": 55,
+        "authenticity": 45,
+        "trust": 60,
+        "cta_quality": 30,
         "policy_safety": 100,
-        "redundancy": 85
+        "redundancy": 90
       },
-      "overall_score": 78.89,
-      "hard_fails": [
-        {
-          "code": "unsupported_health_claim",
-          "detail": "Medical/health outcome claim is not supported."
-        }
-      ],
+      "overall_score": 65,
+      "hard_fails": [],
       "judge_explanation": {
-        "hook": "Opening question directly addresses developer wrist pain, creating curiosity.",
-        "persona_fit": "Copy speaks to Korean IT workers who code long hours, matching analysis persona.",
-        "purchase_intent": "Provides a soft CTA (code 100) rather than a direct purchase link, limiting conversion drive.",
-        "specificity": "Mentions ergonomic design, multi‑pairing, battery need, slight latency but lacks detailed specs (e.g., battery life, dimensions).",
-        "authenticity": "Claims are realistic and include a disclosure, no exaggerated promises.",
-        "trust": "Disclosure of affiliate relationship and balanced pros/cons builds credibility.",
-        "cta_quality": "CTA asks for a code to view details; could be stronger with a direct link or button.",
-        "policy_safety": "No prohibited content, complies with affiliate disclosure requirements.",
-        "redundancy": "Content is concise with minimal repetition."
+        "hook": "Starts with a relatable problem of tangled cables, capturing attention.",
+        "persona_fit": "Addresses Korean IT workers who switch between laptop and tablet, matching the target persona.",
+        "purchase_intent": "Does not include a direct encouragement to buy or click a link, limiting purchase motivation.",
+        "specificity": "Mentions multi‑pairing and battery‑swap timing, but lacks detailed specs or comparative data.",
+        "authenticity": "Claims fatigue reduction without supporting evidence beyond generic ergonomic label.",
+        "trust": "Disclosure of affiliate relationship is present, but limited product evidence reduces credibility.",
+        "cta_quality": "No explicit call‑to‑action or affiliate link; only a vague “100” code mention.",
+        "policy_safety": "Content complies with policies; includes required disclosure and no prohibited material.",
+        "redundancy": "Content is concise with no repeated statements."
       },
       "model": "openai/gpt-oss-120b",
       "prompt_version": "v1",
