@@ -23,7 +23,7 @@ import {
   runDryRun,
 } from './application/pipeline.js';
 import { log } from './shared/logger.js';
-import { kstDate } from './domain/scheduling.js';
+import { isWarmupComplete, kstDate } from './domain/scheduling.js';
 
 const command = process.argv[2];
 const config = await loadConfig();
@@ -129,6 +129,10 @@ async function execute(): Promise<void> {
     return;
   }
   if (command === 'content:plan') {
+    if (!isWarmupComplete(config, now())) {
+      log('info', 'content.plan.skipped', { reason: 'warmup_period' });
+      return;
+    }
     const deps = realDependencies({ coupang: true, groq: true });
     const products = await deps.store.readJsonl('data/catalog/products.jsonl', productSchema);
     await planContent(products, deps, await loadExperience());

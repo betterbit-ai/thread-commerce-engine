@@ -28,6 +28,8 @@ const configSchema = z
     }),
     publishing: z.object({
       mode: z.enum(['calibration', 'human_approved', 'auto']),
+      warmup_started_at: z.string().date(),
+      warmup_days: z.number().int().nonnegative(),
       require_storefront_deployment_receipt: z.boolean(),
       slots_kst: z.array(z.string().regex(/^\d{2}:\d{2}$/)),
       absolute_threshold: nullableThreshold,

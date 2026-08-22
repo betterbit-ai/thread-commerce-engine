@@ -20,6 +20,12 @@ export function isDue(iso: string, now = new Date()): boolean {
   return new Date(iso).getTime() <= now.getTime();
 }
 
+export function isWarmupComplete(config: AppConfig, now = new Date()): boolean {
+  const start = new Date(`${config.publishing.warmup_started_at}T00:00:00+09:00`);
+  const finish = start.getTime() + config.publishing.warmup_days * 86400000;
+  return now.getTime() >= finish;
+}
+
 export function eligibleDrafts(drafts: Draft[], config: AppConfig): Draft[] {
   const safe = drafts.filter((draft) => !draft.policy.hard_fail);
   if (config.publishing.mode === 'calibration') return [];
@@ -29,7 +35,7 @@ export function eligibleDrafts(drafts: Draft[], config: AppConfig): Draft[] {
     !config.publishing.absolute_threshold.enabled &&
     !config.publishing.percentile_threshold.enabled
   )
-    return [];
+    return safe;
   const percentile = config.publishing.percentile_threshold.value;
   const cutoff =
     config.publishing.percentile_threshold.enabled && percentile !== null

@@ -16,6 +16,17 @@ if (process.env.SLACK_SUMMARY_PATH) {
     `반응률 ${percentage(metrics.engagement_rate)} · 답글률 ${percentage(metrics.reply_rate)} · CTR ${percentage(metrics.commerce_ctr)}`,
   ].join('\n');
 }
+if (process.env.SLACK_POLICY_REPORT) {
+  const report = JSON.parse(await readFile(process.env.SLACK_POLICY_REPORT, 'utf8'));
+  const blocked = (report.drafts ?? []).filter((draft) => draft.hard_fails?.length);
+  if (!blocked.length) process.exit(0);
+  text = [
+    `⚠️ Techpick 정책 검사에서 ${blocked.length}개 초안을 차단했습니다.`,
+    ...blocked.map(
+      (draft) => `- ${draft.product}: ${draft.hard_fails.map((item) => item.code).join(', ')}`,
+    ),
+  ].join('\n');
+}
 if (!text) throw new Error('SLACK_MESSAGE or SLACK_SUMMARY_PATH is required');
 
 const response = await globalThis.fetch('https://slack.com/api/chat.postMessage', {

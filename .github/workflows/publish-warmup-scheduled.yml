@@ -1,0 +1,54 @@
+name: Publish scheduled warmup text
+on:
+  schedule:
+    - cron: '0 0 * * *'
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: Warmup slot to publish
+        required: true
+        type: choice
+        options: [morning, evening]
+permissions: { contents: write }
+concurrency: { group: repository-writer, cancel-in-progress: false }
+jobs:
+  publish:
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.15.0 }
+      - uses: actions/setup-node@v6
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - id: content
+        env:
+          WARMUP_SLOT: ${{ inputs.slot || (github.event.schedule == '0 0 * * *' && 'morning') || 'evening' }}
+        run: node scripts/warmup-content.mjs >> "$GITHUB_OUTPUT"
+      - run: pnpm warmup:prepare
+        env:
+          PUBLISH_ENABLED: 'true'
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          WARMUP_ID: ${{ steps.content.outputs.warmup_id }}
+          WARMUP_TEXT: ${{ steps.content.outputs.warmup_text }}
+      - run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A data/state/warmup-publications
+          git diff --cached --quiet || git commit -m "data(warmup): claim scheduled Threads post [skip ci]"
+          git push
+      - run: pnpm warmup:publish
+        env:
+          PUBLISH_ENABLED: 'true'
+          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          WARMUP_ID: ${{ steps.content.outputs.warmup_id }}
+          WARMUP_TEXT: ${{ steps.content.outputs.warmup_text }}
+      - if: always()
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A data/state/warmup-publications
+          git diff --cached --quiet || git commit -m "data(warmup): record scheduled Threads receipt [skip ci]"
+          git push
