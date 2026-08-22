@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-21T21:35:35.003Z",
-  "campaigns": 0,
+  "generated_at": "2026-08-22T01:47:17.242Z",
+  "campaigns": 1,
   "unmapped_coupang_events": 0,
   "totals": {
     "threads_views": 159,
@@ -16,5 +16,28 @@
     "engagement_rate": 0.025157232704402517,
     "reply_rate": 0
   },
-  "segments": []
+  "segments": [
+    {
+      "campaign_id": "cmp_20260822_9d0774fb21",
+      "vertical": "ergonomic_core",
+      "category": "keyboard",
+      "product": "coupang:8468914303",
+      "angle": "pain_solution",
+      "hook_style": "problem-first",
+      "cta_variant": "profile-offer-code",
+      "publishing_slot": "23:10",
+      "founder_experience_supported": false,
+      "engine": "evergreen",
+      "judge_overall": 65,
+      "threads_views": null,
+      "coupang_clicks": null,
+      "orders": null,
+      "commission_krw": null,
+      "commerce_ctr": null,
+      "purchase_cvr": null,
+      "rpmv": null,
+      "engagement_rate": null,
+      "reply_rate": null
+    }
+  ]
 }
