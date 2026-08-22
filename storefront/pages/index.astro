@@ -1,53 +1,44 @@
 ---
 import Base from '../layouts/Base.astro';
 import { storefrontData } from '../lib/offers';
-const offers = storefrontData.offers;
+
 const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
-const recommendedOffers = offers.filter((offer) => offer.recommended);
+const recommendedOffers = storefrontData.offers.filter((offer) => offer.recommended);
 const showToolSearch = recommendedOffers.length >= 3;
 ---
 
 <Base title="테크픽 | 일하는 사람의 도구">
   <section class="hero shell">
     <div class="hero-copy">
-      <p class="eyebrow">TECHPICK DAILY</p>
+      <p class="kicker">테크픽 데일리</p>
       <h1>일하는 날을<br /><em>조금 덜 소모적으로.</em></h1>
-      <p>오래 앉아 일하는 사람의 책상·장비·업무도구 기록입니다.</p>
+      <p class="intro">오래 앉아 일하는 사람의 책상·장비·업무도구 기록입니다.</p>
       <a
         class="thread-link"
         href="https://www.threads.com/@techpick_daily"
         target="_blank"
-        rel="noopener">Threads에서 기록 보기 ↗</a
+        rel="noopener">Threads에서 기록 보기 <span aria-hidden="true">↗</span></a
       >
-    </div>
-    <aside class="principle-card">
-      <span>테크픽의 기준</span>
-      <strong>과장보다 확인된 정보,<br />장점만큼 단점도.</strong>
-      <p>일상에서 오래 쓰는 도구를 더 잘 고르기 위한 생각을 남깁니다.</p>
-    </aside>
-  </section>
-
-  <section class="shell notes">
-    <div class="section-heading">
-      <p class="eyebrow">OUR PRINCIPLES</p>
-      <h2>테크픽의 기준</h2>
-    </div>
-    <div class="principles">
-      <p>과장보다 확인된 정보</p>
-      <p>장점만큼 단점도</p>
-      <p>추천은 충분히 검토한 뒤에</p>
+      <div class="principles" aria-label="테크픽의 기준">
+        <p><span>01</span>과장보다 확인된 정보</p>
+        <p><span>02</span>장점만큼 단점도</p>
+        <p><span>03</span>추천은 충분히 검토한 뒤에</p>
+      </div>
     </div>
   </section>
 
-  <section class="shell tools">
-    <div class="section-heading row">
-      <div><p class="eyebrow">RECOMMENDED TOOLS</p><h2>검토한 도구</h2></div>
+  <section class="tools shell">
+    <header class="tools-heading">
+      <div>
+        <p class="kicker">도구 기록</p>
+        <h2>추천하는 도구</h2>
+      </div>
       <span>{recommendedOffers.length}개 공개</span>
-    </div>
+    </header>
     {
       showToolSearch ? (
         <label class="tool-search">
-          <span>검토한 도구 검색</span>
+          <span>도구 검색</span>
           <input id="tool-search" type="search" placeholder="도구 이름으로 검색" />
         </label>
       ) : null
@@ -55,32 +46,41 @@ const showToolSearch = recommendedOffers.length >= 3;
     {
       recommendedOffers.length === 0 ? (
         <div class="empty">
-          <strong>아직 공개한 추천 도구가 없습니다.</strong>
-          <p>기록을 쌓은 뒤, 충분히 검토한 도구만 이곳에 소개합니다.</p>
+          <strong>아직 공개한 도구가 없습니다.</strong>
+          <p>충분히 검토한 도구만 이곳에 소개합니다.</p>
         </div>
       ) : (
-        <div class="grid">
+        <div class="tool-list">
           {recommendedOffers.map((offer) => (
             <article
-              class="card"
+              class="tool-row"
               data-tool-search={`${offer.product} ${offer.category}`.toLowerCase()}
             >
-              <span class="code">{offer.offer_code}번</span>
-              <h3>{offer.product}</h3>
-              <p>{offer.detail}</p>
-              <a href={`${base}/offer/${offer.offer_code}/`}>검토 내용 보기 →</a>
+              {
+                offer.image_url ? (
+                  <img src={offer.image_url} alt="" loading="lazy" />
+                ) : (
+                  <span class="tool-number">{String(offer.offer_code).padStart(2, '0')}</span>
+                )
+              }
+              <div>
+                <h3>{offer.product}</h3>
+                <p>{offer.detail}</p>
+              </div>
+              <a href={`${base}/offer/${offer.offer_code}/`} aria-label={`${offer.product} 검토 내용 보기`}>보기</a>
             </article>
           ))}
         </div>
       )
     }
   </section>
+
   <script>
     const input = document.querySelector('#tool-search');
     input?.addEventListener('input', () => {
       const query = input.value.trim().toLowerCase();
-      document.querySelectorAll('[data-tool-search]').forEach((card) => {
-        card.hidden = !card.dataset.toolSearch.includes(query);
+      document.querySelectorAll('[data-tool-search]').forEach((tool) => {
+        tool.hidden = !tool.dataset.toolSearch.includes(query);
       });
     });
   </script>
@@ -88,157 +88,223 @@ const showToolSearch = recommendedOffers.length >= 3;
 
 <style>
   .hero {
-    display: grid;
-    grid-template-columns: 1.18fr 0.82fr;
-    gap: clamp(2rem, 6vw, 6rem);
-    align-items: center;
-    padding: 6rem 0 5rem;
+    padding: clamp(3.5rem, 9vw, 7rem) 0 2.5rem;
+  }
+  .hero-copy {
+    max-width: 50rem;
+  }
+  .kicker {
+    margin: 0 0 1rem;
+    color: var(--accent-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    letter-spacing: -0.04em;
   }
   h1 {
-    margin: 0.5rem 0 1.25rem;
-    font-size: clamp(2.35rem, 6vw, 5rem);
-    line-height: 1.02;
-    letter-spacing: -0.065em;
+    max-width: 12ch;
+    margin: 0;
+    font-size: clamp(3rem, 8vw, 5.75rem);
+    line-height: 1.03;
   }
   h1 em {
     color: var(--accent-dark);
     font-style: normal;
   }
-  .hero-copy > p {
-    max-width: 42rem;
+  .intro {
+    max-width: 32rem;
+    margin: 1.5rem 0 0;
     color: var(--muted);
-    font-size: 1.05rem;
+    font-size: clamp(1.03rem, 2vw, 1.2rem);
+    line-height: 1.7;
   }
   .thread-link {
     display: inline-flex;
-    margin-top: 1rem;
-    color: var(--accent-dark);
+    gap: 0.25rem;
+    margin-top: 1.6rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid currentColor;
+    color: var(--ink);
     font-weight: 800;
     text-decoration: none;
   }
-  .principle-card {
-    padding: 2rem;
-    border: 1px solid #cad6fb;
-    border-radius: 24px;
-    background: #eaf0ff;
-  }
-  .principle-card span {
+  .thread-link:hover {
     color: var(--accent-dark);
-    font-size: 0.78rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-  }
-  .principle-card strong {
-    display: block;
-    margin: 1rem 0;
-    font-size: clamp(1.55rem, 3vw, 2.2rem);
-    line-height: 1.22;
-    letter-spacing: -0.05em;
-  }
-  .principle-card p {
-    margin: 0;
-    color: var(--muted);
-  }
-  .notes,
-  .tools {
-    padding: 4rem 0;
-  }
-  .notes {
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .section-heading h2 {
-    margin: 0.3rem 0 0;
-    font-size: clamp(1.9rem, 4vw, 3rem);
-    letter-spacing: -0.05em;
   }
   .principles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: clamp(2.75rem, 6vw, 4.5rem);
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
   }
   .principles p {
     margin: 0;
-    padding: 0.7rem 0.95rem;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    color: var(--muted);
+    color: var(--ink);
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
-  .card p {
-    color: var(--muted);
+  .principles span {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--accent-dark);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
   }
-  .row {
+  .tools {
+    padding: 1.5rem 0 clamp(4rem, 9vw, 7rem);
+  }
+  .tools-heading {
     display: flex;
     align-items: end;
     justify-content: space-between;
-    margin: 2rem 0 1rem;
-  }
-  .row > span {
-    color: var(--muted);
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
   }
-  .card {
-    min-width: 0;
-    padding: 1.15rem;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 16px;
+  .tools-heading .kicker {
+    margin-bottom: 0.65rem;
   }
-  .card[hidden] {
-    display: none;
+  .tools-heading h2 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
   }
-  .code {
-    color: var(--accent-dark);
-    font-weight: 900;
-  }
-  .card h3 {
-    margin: 1.2rem 0 0.45rem;
-    font-size: 1.3rem;
-    letter-spacing: -0.03em;
-  }
-  .card a {
-    font-weight: 800;
-    color: var(--accent-dark);
-  }
-  .empty {
-    padding: 3rem;
-    text-align: center;
-    border: 1px dashed var(--line);
-    border-radius: 16px;
+  .tools-heading > span {
+    padding-bottom: 0.35rem;
     color: var(--muted);
+    white-space: nowrap;
   }
   .tool-search {
     display: block;
-    max-width: 28rem;
-    margin: 1.5rem 0;
+    max-width: 26rem;
+    margin: 1.75rem 0 0;
   }
   .tool-search span {
     display: block;
     margin-bottom: 0.45rem;
-    font-size: 0.85rem;
-    font-weight: 800;
+    color: var(--muted);
+    font-size: 0.84rem;
+    font-weight: 700;
   }
   .tool-search input {
     width: 100%;
-    padding: 0.8rem 0.9rem;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--card);
+    padding: 0.8rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+    background: transparent;
     color: var(--ink);
     font: inherit;
   }
-  @media (max-width: 780px) {
+  .tool-search input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+  .empty {
+    margin-top: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .empty strong {
+    font-size: 1.05rem;
+  }
+  .empty p {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+  }
+  .tool-list {
+    margin-top: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+  .tool-row {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+    gap: 1.1rem;
+    align-items: center;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .tool-row[hidden] {
+    display: none;
+  }
+  .tool-row img,
+  .tool-number {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  .tool-number {
+    display: grid;
+    place-items: center;
+    background: #e7edff;
+    color: var(--accent-dark);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+  .tool-row h3,
+  .tool-row p {
+    margin: 0;
+  }
+  .tool-row h3 {
+    font-size: 1.08rem;
+  }
+  .tool-row p {
+    margin-top: 0.35rem;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .tool-row a {
+    color: var(--accent-dark);
+    font-weight: 800;
+    text-decoration: none;
+  }
+  @media (max-width: 700px) {
     .hero {
-      grid-template-columns: 1fr;
-      padding: 3rem 0;
+      padding-top: 3.25rem;
     }
-    .grid {
+    .principles {
       grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    .principles p {
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 0.45rem;
+      align-items: baseline;
+    }
+    .principles span {
+      margin: 0;
+    }
+    .tools-heading {
+      align-items: start;
+      flex-direction: column;
+    }
+    .tools-heading > span {
+      padding: 0;
+    }
+    .tool-row {
+      grid-template-columns: 3.75rem minmax(0, 1fr);
+      gap: 0.85rem;
+    }
+    .tool-row img,
+    .tool-number {
+      width: 3.75rem;
+      height: 3.75rem;
+    }
+    .tool-row a {
+      grid-column: 2;
     }
   }
 </style>

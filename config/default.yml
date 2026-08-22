@@ -10,10 +10,10 @@ ingest:
     - USB-C 허브
     - 맥북 액세서리
 content:
-  posts_per_day: 4
-  candidate_products: 10
-  generation_count: 3
-  angles_per_product: 3
+  posts_per_day: 1
+  candidate_products: 1
+  generation_count: 1
+  angles_per_product: 1
   duplicate_threshold: 0.82
   exploration_ratio: 0.2
   category_mix:
