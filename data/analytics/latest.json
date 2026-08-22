@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-22T09:38:14.219Z",
+  "generated_at": "2026-08-22T12:57:50.723Z",
   "campaigns": 1,
   "unmapped_coupang_events": 0,
   "totals": {
-    "threads_views": 161,
+    "threads_views": 295,
     "coupang_clicks": 0,
     "orders": 0,
     "commission_krw": 0
@@ -13,7 +13,7 @@
     "commerce_ctr": 0,
     "purchase_cvr": null,
     "rpmv": 0,
-    "engagement_rate": 0.037267080745341616,
+    "engagement_rate": 0.030508474576271188,
     "reply_rate": 0
   },
   "segments": [
