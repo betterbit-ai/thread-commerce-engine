@@ -122,6 +122,28 @@ describe('experience and hard-fail policy', () => {
         duplicateThreshold: 0.8,
       }).failures.map((item) => item.code),
     ).toContain('unsupported_health_claim'));
+  it('hard-fails unsupported ergonomic outcomes, discounts, and direct affiliate links', () =>
+    expect(
+      validatePolicy({
+        text: enforceDisclosure(
+          '손목 피로를 줄여주고 할인코드 100으로 10% 할인받으세요. https://link.coupang.com/a/x',
+          disclosure,
+        ),
+        productKey: 'p',
+        affiliateUrl: 'https://link.coupang.com/a/x',
+        campaignKnown: true,
+        disclosure,
+        experience: emptyExperience,
+        priorTexts: [],
+        duplicateThreshold: 0.8,
+      }).failures.map((item) => item.code),
+    ).toEqual(
+      expect.arrayContaining([
+        'unsupported_health_claim',
+        'unsupported_factual_claim',
+        'policy_violation',
+      ]),
+    ));
   it('hard-fails missing disclosure and false price/scarcity claims', () => {
     const codes = validatePolicy({
       text: '오늘만 역대 최저가',

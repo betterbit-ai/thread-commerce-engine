@@ -13,12 +13,15 @@ const firsthandPatterns = [
 ];
 const medicalPatterns = [
   /손목.{0,8}(치료|완치|낫|예방)/iu,
+  /손목.{0,12}(피로|부담|뭉침).{0,12}(줄|감소|완화|덜)/iu,
   /터널증후군.{0,8}(예방|치료)/iu,
   /(자세|통증).{0,8}(고쳐|교정|없애|보장)/iu,
   /의학적으로.{0,8}(증명|입증)/iu,
 ];
 const scarcityPatterns = [/오늘만/iu, /곧 품절/iu, /마감 임박/iu, /지금 아니면/iu];
 const superlativePatterns = [/역대 최저/iu, /최저가/iu, /가장 싸/iu];
+const unsupportedDiscountPattern = /(할인코드|쿠폰|\d+\s*%\s*할인)/iu;
+const directAffiliateLinkPattern = /https:\/\/link\.coupang\.com/iu;
 
 export interface PolicyInput {
   text: string;
@@ -54,6 +57,13 @@ export function validatePolicy(input: PolicyInput): PolicyResult {
     add('false_scarcity', 'Scarcity claim lacks trustworthy current evidence.');
   if (superlativePatterns.some((pattern) => pattern.test(input.text)))
     add('unsupported_price_superlative', 'Price superlative lacks historical/current evidence.');
+  if (unsupportedDiscountPattern.test(input.text))
+    add('unsupported_factual_claim', 'Discount or coupon claim has no supplied evidence.');
+  if (directAffiliateLinkPattern.test(input.text))
+    add(
+      'policy_violation',
+      'Product posts must route through the approved offer page, not a direct affiliate link.',
+    );
   const compatibilityClaim = /맥(?:북)?(?:과|에).*호환|Mac.*compatible/iu.test(input.text);
   const reviewClaim = /리뷰\s*\d+|평점\s*\d/iu.test(input.text);
   const claims = input.supportedClaims ?? [];
