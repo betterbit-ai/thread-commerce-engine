@@ -10,6 +10,10 @@ on:
         required: true
         type: choice
         options: [morning, evening]
+      date_kst:
+        description: Optional YYYY-MM-DD override for a scheduled content-bank entry
+        required: false
+        type: string
 permissions: { contents: write }
 concurrency: { group: repository-writer, cancel-in-progress: false }
 jobs:
@@ -26,26 +30,30 @@ jobs:
       - id: content
         env:
           WARMUP_SLOT: ${{ inputs.slot || (github.event.schedule == '0 0 * * *' && 'morning') || 'evening' }}
+          WARMUP_DATE: ${{ inputs.date_kst }}
         run: node scripts/warmup-content.mjs >> "$GITHUB_OUTPUT"
-      - run: pnpm warmup:prepare
+      - if: ${{ steps.content.outputs.skip != 'true' }}
+        run: pnpm warmup:prepare
         env:
           PUBLISH_ENABLED: 'true'
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           WARMUP_ID: ${{ steps.content.outputs.warmup_id }}
           WARMUP_TEXT: ${{ steps.content.outputs.warmup_text }}
-      - run: |
+      - if: ${{ steps.content.outputs.skip != 'true' }}
+        run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add -A data/state/warmup-publications
           git diff --cached --quiet || git commit -m "data(warmup): claim scheduled Threads post [skip ci]"
           git push
-      - run: pnpm warmup:publish
+      - if: ${{ steps.content.outputs.skip != 'true' }}
+        run: pnpm warmup:publish
         env:
           PUBLISH_ENABLED: 'true'
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           WARMUP_ID: ${{ steps.content.outputs.warmup_id }}
           WARMUP_TEXT: ${{ steps.content.outputs.warmup_text }}
-      - if: always()
+      - if: ${{ always() && steps.content.outputs.skip != 'true' }}
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com

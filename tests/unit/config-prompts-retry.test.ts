@@ -9,9 +9,11 @@ import { eligibleDrafts } from '../../src/domain/scheduling.js';
 import { selectProductsByMix } from '../../src/application/product.js';
 
 describe('configuration and prompts', () => {
-  it('keeps all initial publishing thresholds disabled', async () => {
+  it('keeps automatic publishing policy-gated after the warmup period', async () => {
     const config = await loadConfig();
-    expect(config.publishing.mode).toBe('calibration');
+    expect(config.publishing.mode).toBe('auto');
+    expect(config.publishing.warmup_started_at).toBe('2026-08-24');
+    expect(config.publishing.warmup_days).toBe(7);
     expect(config.publishing.absolute_threshold).toEqual({ enabled: false, value: null });
     expect(config.publishing.percentile_threshold).toEqual({ enabled: false, value: null });
   });
@@ -28,7 +30,7 @@ describe('configuration and prompts', () => {
     expect(prompt.text).toContain('Korean Threads writer');
     expect(prompt.hash).toMatch(/^[a-f0-9]{64}$/u);
   });
-  it('never selects a draft while initial calibration mode is active', async () => {
+  it('selects a policy-safe draft in automatic publishing mode', async () => {
     const config = await loadConfig();
     const scores = {
       hook: 100,
@@ -69,7 +71,7 @@ describe('configuration and prompts', () => {
       policy: { hard_fail: false, failures: [] },
       human_label: 'approve',
     });
-    expect(eligibleDrafts([draft], config)).toEqual([]);
+    expect(eligibleDrafts([draft], config)).toEqual([draft]);
   });
   it('selects configurable bootstrap categories without application-code changes', async () => {
     const config = await loadConfig();
@@ -81,10 +83,8 @@ describe('configuration and prompts', () => {
       config.content.category_mix,
       config.content.candidate_products,
     );
-    expect(selected).toHaveLength(10);
-    expect(new Set(selected.map((product) => product.category))).toEqual(
-      new Set(['mouse', 'keyboard', 'desk', 'productivity', 'apple_accessory', 'apple_device']),
-    );
+    expect(selected).toHaveLength(1);
+    expect(selected[0]?.category).toBe('mouse');
   });
 });
 

@@ -25,7 +25,7 @@ content:
     apple_device: 0.10
 publishing:
   mode: auto
-  warmup_started_at: '2026-08-21'
+  warmup_started_at: '2026-08-24'
   warmup_days: 7
   require_storefront_deployment_receipt: true
   slots_kst: ['08:10', '12:20', '18:40', '22:10']
