@@ -1,104 +1,104 @@
 {
   "schema_version": 1,
-  "strategy": "Warm up a Korean knowledge-worker audience by collecting concrete workstation preferences and friction points before publishing affiliate product reviews.",
+  "strategy": "Build recognition and replies through specific work-life moments first; use opinion prompts to collect tool context; reserve two posts for transitioning into reviewed-tool content.",
   "posts": [
     {
       "warmup_id": "2026-08-24-morning",
       "date_kst": "2026-08-24",
       "slot": "morning",
-      "theme": "desk_setup_preference",
-      "text": "일 잘되는 날의 책상은 보통 깔끔해서가 아니라, 손이 갈 곳이 정해져 있어서 좋더라고요.\n\n모니터 옆에 꼭 두는 물건 하나만 고른다면 뭘 두시나요?"
+      "theme": "relationship",
+      "text": "이번 주말에 사람보다 모니터를 더 오래 본 사람 있나요...?\n\n저는 주말 저녁이 되면 갑자기 내가 뭘 했는지 기억이 안 나서 조금 허무해져요."
     },
     {
       "warmup_id": "2026-08-24-evening",
       "date_kst": "2026-08-24",
       "slot": "evening",
-      "theme": "workflow_friction",
-      "text": "퇴근 직전에 가장 자주 하는 말은 뭔가요?\n\n저는 “이것만 보고 끄자”인데, 그 한 가지가 늘 세 가지가 됩니다.\n\n다른 분들은 어떤가요?"
+      "theme": "relationship",
+      "text": "일요일 밤에는 내일부터 잘 살겠다는 다짐을 유난히 많이 하게 됩니다.\n\n그리고 월요일 아침이 되면 그 다짐을 어디 뒀는지 모르겠어요.\n\n저만 그런가요?"
     },
     {
       "warmup_id": "2026-08-25-morning",
       "date_kst": "2026-08-25",
       "slot": "morning",
-      "theme": "keyboard_preference",
-      "text": "업무용 키보드는 결국 두 부류로 나뉘는 것 같아요.\n\n소음이 적은 쪽 vs 손에 닿는 감각이 좋은 쪽.\n\n하나만 포기해야 한다면 어느 쪽을 고르시겠어요?"
+      "theme": "relationship",
+      "text": "월요일인데 벌써 퇴근 생각나는 사람 손.\n\n오늘은 그냥 할 일 하나만 제대로 끝내도 성공으로 치려고요."
     },
     {
       "warmup_id": "2026-08-25-evening",
       "date_kst": "2026-08-25",
       "slot": "evening",
-      "theme": "workstation_regret",
-      "text": "책상 장비 중에 “진작 바꿀 걸” 싶었던 건 무엇이었나요?\n\n비싼 장비 말고, 생각보다 일상에서 자주 쓰게 된 것들도 궁금합니다."
+      "theme": "opinion",
+      "text": "일 잘하는 사람 책상은 진짜 깔끔한가요?\n\n저는 오히려 자주 쓰는 것들이 다 꺼내져 있어야 일이 잘 되더라고요.\n\n깔끔파 vs 펼쳐두는 파, 어디세요?"
     },
     {
       "warmup_id": "2026-08-26-morning",
       "date_kst": "2026-08-26",
       "slot": "morning",
-      "theme": "device_switching",
-      "text": "노트북, 태블릿, 회사 PC를 오갈 때 제일 귀찮은 건 파일이 아니라 주변기기 연결일 때가 많습니다.\n\n기기 전환이 잦은 분들은 무엇으로 해결하고 계신가요?"
+      "theme": "relationship",
+      "text": "출근해서 제일 먼저 보는 건 메일도 메신저도 아니고, 오늘 퇴근 시간이에요.\n\n그래도 커피 한 잔 마시면 또 어떻게든 시작하게 되죠."
     },
     {
       "warmup_id": "2026-08-26-evening",
       "date_kst": "2026-08-26",
       "slot": "evening",
-      "theme": "purchase_criteria",
-      "text": "장비를 살 때 리뷰보다 먼저 보는 기준이 있나요?\n\n저는 “매일 꺼내 쓸 이유가 있는가”를 먼저 보게 됩니다.\n\n다른 기준도 배우고 싶어요."
+      "theme": "relationship",
+      "text": "오늘 대화한 사람은 많은데, 정작 내 얘기는 거의 못 한 날 있지 않나요?\n\n그런 날은 집에 와서도 머리가 계속 켜져 있는 느낌이에요."
     },
     {
       "warmup_id": "2026-08-27-morning",
       "date_kst": "2026-08-27",
       "slot": "morning",
-      "theme": "monitor_setup",
-      "text": "듀얼 모니터가 집중을 높여준다는 말, 절반만 맞는 것 같아요.\n\n창이 많아지는 만큼 시선도 더 바빠지더라고요.\n\n한 화면이 편한 분, 두 화면이 편한 분 어디에 더 가까우세요?"
+      "theme": "opinion",
+      "text": "업무용 키보드는 조용한 게 먼저인가요, 누르는 맛이 먼저인가요?\n\n둘 다 잡으려다 결국 몇 번을 바꿨다는 사람도 주변에 많더라고요."
     },
     {
       "warmup_id": "2026-08-27-evening",
       "date_kst": "2026-08-27",
       "slot": "evening",
-      "theme": "desk_setup_preference",
-      "text": "책상 위에서 가장 자주 쓰는 도구는 의외로 메인 장비가 아닐 때가 있습니다.\n\n케이블, 충전기, 받침대처럼 작지만 없으면 바로 불편한 것 하나씩 있지 않나요?"
+      "theme": "relationship",
+      "text": "퇴근 전에 “이것만 하고 가자”를 세 번 이상 말한 사람은 오늘 야근 인정입니다.\n\n마지막 한 가지는 왜 늘 마지막이 아닐까요."
     },
     {
       "warmup_id": "2026-08-28-morning",
       "date_kst": "2026-08-28",
       "slot": "morning",
-      "theme": "work_routine",
-      "text": "집중이 안 되는 날에는 새로운 앱보다 책상 위에서 한 가지를 치우는 게 더 빠를 때가 있어요.\n\n일 시작 전에 꼭 하는 작은 루틴이 있다면 알려주세요."
+      "theme": "relationship",
+      "text": "요즘은 바쁜 날보다 애매하게 바쁜 날이 더 힘든 것 같아요.\n\n한 건도 제대로 끝낸 느낌은 없는데, 하루는 이미 지나가 있더라고요."
     },
     {
       "warmup_id": "2026-08-28-evening",
       "date_kst": "2026-08-28",
       "slot": "evening",
-      "theme": "purchase_regret",
-      "text": "후기가 너무 좋아서 샀는데, 내 작업 방식에는 안 맞았던 장비가 있나요?\n\n좋은 제품과 나에게 맞는 제품은 다르다는 걸 자주 배웁니다."
+      "theme": "opinion",
+      "text": "노트북 하나로 일하는 사람, 모니터까지 연결해야 일하는 사람.\n\n저는 화면이 늘어나면 집중도 같이 늘어날 줄 알았는데 창만 더 많이 열게 됐어요."
     },
     {
       "warmup_id": "2026-08-29-morning",
       "date_kst": "2026-08-29",
       "slot": "morning",
-      "theme": "desk_setup_preference",
-      "text": "마우스는 비싼 걸 사도 결국 손이 가는 것만 계속 쓰게 되더라고요.\n\n업무용 마우스를 고를 때 가장 못 포기하는 조건은 무엇인가요?"
+      "theme": "relationship",
+      "text": "금요일 아침인데도 다음 주 할 일이 먼저 떠오르는 사람 있나요?\n\n오늘의 나는 아직 이번 주에 살고 싶은데, 머리만 벌써 월요일이에요."
     },
     {
       "warmup_id": "2026-08-29-evening",
       "date_kst": "2026-08-29",
       "slot": "evening",
-      "theme": "workstation_regret",
-      "text": "장비를 많이 사는 것보다, 불편 하나를 정확히 해결하는 게 더 오래 남는 것 같아요.\n\n최근에 “이건 잘 샀다” 싶었던 작은 도구가 있나요?"
+      "theme": "opinion",
+      "text": "장비는 비싼 것보다 자주 손이 가는 게 결국 남는 것 같아요.\n\n사놓고 가장 오래 잘 쓰고 있는 작은 도구 하나만 자랑해 주세요."
     },
     {
       "warmup_id": "2026-08-30-morning",
       "date_kst": "2026-08-30",
       "slot": "morning",
-      "theme": "device_switching",
-      "text": "집에서 일할 때와 회사에서 일할 때, 가장 달라지는 장비는 무엇인가요?\n\n저는 충전과 연결 문제만 줄어도 하루가 훨씬 단순해진다고 느낍니다."
+      "theme": "relationship",
+      "text": "주말에는 늦잠을 자도 피곤하고, 일찍 일어나도 피곤하죠.\n\n그래서 오늘은 생산적인 사람 말고 기분 좋은 사람이 되기로 했습니다."
     },
     {
       "warmup_id": "2026-08-30-evening",
       "date_kst": "2026-08-30",
       "slot": "evening",
-      "theme": "content_transition",
-      "text": "이번 주에 나온 책상·장비 이야기를 정리해보고 있어요.\n\n다음 주부터는 실제로 오래 쓰는 도구를 고를 때 무엇을 확인해야 하는지도 하나씩 기록해보려 합니다.\n\n가장 먼저 다뤘으면 하는 도구가 있나요?"
+      "theme": "tool_transition",
+      "text": "다음 주부터는 오래 일할 때 실제로 도움이 됐던 도구들도 하나씩 기록해보려 해요.\n\n광고 같은 추천 말고, 어떤 사람에게 맞고 안 맞는지까지요.\n\n제일 먼저 궁금한 장비가 있나요?"
     }
   ]
 }
