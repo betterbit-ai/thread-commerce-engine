@@ -56,18 +56,21 @@ const showToolSearch = recommendedOffers.length >= 3;
               class="tool-row"
               data-tool-search={`${offer.product} ${offer.category}`.toLowerCase()}
             >
-              {
-                offer.image_url ? (
-                  <img src={offer.image_url} alt="" loading="lazy" />
-                ) : (
-                  <span class="tool-number">{String(offer.offer_code).padStart(2, '0')}</span>
-                )
-              }
+              {offer.image_url ? (
+                <img src={offer.image_url} alt="" loading="lazy" />
+              ) : (
+                <span class="tool-number">{String(offer.offer_code).padStart(2, '0')}</span>
+              )}
               <div>
                 <h3>{offer.product}</h3>
                 <p>{offer.detail}</p>
               </div>
-              <a href={`${base}/offer/${offer.offer_code}/`} aria-label={`${offer.product} 검토 내용 보기`}>보기</a>
+              <a
+                href={`${base}/offer/${offer.offer_code}/`}
+                aria-label={`${offer.product} 검토 내용 보기`}
+              >
+                보기
+              </a>
             </article>
           ))}
         </div>

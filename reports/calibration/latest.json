@@ -2,47 +2,23 @@
   "schema_version": 1,
   "generated_at": "2026-08-22T01:39:40.890Z",
   "threshold_status": "disabled_initially",
-  "score_distribution": [
-    65
-  ],
+  "score_distribution": [65],
   "score_distribution_by_dimension": {
-    "hook": [
-      80
-    ],
-    "persona_fit": [
-      85
-    ],
-    "purchase_intent": [
-      40
-    ],
-    "specificity": [
-      55
-    ],
-    "authenticity": [
-      45
-    ],
-    "trust": [
-      60
-    ],
-    "cta_quality": [
-      30
-    ],
-    "policy_safety": [
-      100
-    ],
-    "redundancy": [
-      90
-    ]
+    "hook": [80],
+    "persona_fit": [85],
+    "purchase_intent": [40],
+    "specificity": [55],
+    "authenticity": [45],
+    "trust": [60],
+    "cta_quality": [30],
+    "policy_safety": [100],
+    "redundancy": [90]
   },
   "score_distribution_by_angle": {
-    "pain_solution": [
-      65
-    ]
+    "pain_solution": [65]
   },
   "score_distribution_by_category": {
-    "keyboard": [
-      65
-    ]
+    "keyboard": [65]
   },
   "approved_rejected_overlap": {
     "approved_range": null,

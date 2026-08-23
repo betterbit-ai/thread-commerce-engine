@@ -38,9 +38,7 @@
     "detected_risks": [
       "Unsubstantiated health benefit claim regarding reduction of wrist/finger fatigue"
     ],
-    "hard_fail_suggestions": [
-      "Add verifiable source or study supporting ergonomic benefit claim"
-    ],
+    "hard_fail_suggestions": ["Add verifiable source or study supporting ergonomic benefit claim"],
     "overall_score": 76.44,
     "confidence": 0.78,
     "improvement": "Include credible evidence for ergonomic claims to boost authenticity and trust.",

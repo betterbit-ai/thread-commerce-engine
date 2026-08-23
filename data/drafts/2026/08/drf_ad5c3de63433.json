@@ -35,9 +35,7 @@
       "policy_safety": "Content complies with policies; includes required disclosure and no prohibited material.",
       "redundancy": "Content is concise with no repeated statements."
     },
-    "detected_risks": [
-      "Potentially overstated ergonomic benefit without supporting evidence"
-    ],
+    "detected_risks": ["Potentially overstated ergonomic benefit without supporting evidence"],
     "hard_fail_suggestions": [],
     "overall_score": 65,
     "confidence": 0.92,
