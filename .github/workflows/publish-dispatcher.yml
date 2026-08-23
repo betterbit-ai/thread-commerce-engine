@@ -10,32 +10,48 @@ jobs:
   publish:
     environment: production
     runs-on: ubuntu-latest
-    if: ${{ vars.PUBLISH_ENABLED == 'true' }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v4
+      - id: gate
+        env:
+          PUBLISH_ENABLED: ${{ vars.PUBLISH_ENABLED }}
+        run: |
+          if [ "$PUBLISH_ENABLED" = "true" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Publish dispatcher is disabled by the production environment variable."
+          fi
+      - if: ${{ steps.gate.outputs.enabled == 'true' }}
+        uses: actions/checkout@v6
+      - if: ${{ steps.gate.outputs.enabled == 'true' }}
+        uses: pnpm/action-setup@v4
         with: { version: 10.15.0 }
-      - uses: actions/setup-node@v6
+      - if: ${{ steps.gate.outputs.enabled == 'true' }}
+        uses: actions/setup-node@v6
         with: { node-version: 24, cache: pnpm }
-      - run: pnpm install --frozen-lockfile
+      - if: ${{ steps.gate.outputs.enabled == 'true' }}
+        run: pnpm install --frozen-lockfile
       - name: Create and persist one-time Threads containers
+        if: ${{ steps.gate.outputs.enabled == 'true' }}
         run: pnpm publish:prepare
         env:
           PUBLISH_ENABLED: 'true'
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
       - name: Commit publication claims before external publish
+        if: ${{ steps.gate.outputs.enabled == 'true' }}
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add data/campaigns data/runtime data/state/publications
           git diff --cached --quiet || git commit -m "data(publish): claim one-time Threads containers [skip ci]"
           git push
-      - run: pnpm publish:due
+      - if: ${{ steps.gate.outputs.enabled == 'true' }}
+        run: pnpm publish:due
         env:
           PUBLISH_ENABLED: 'true'
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
       - name: Persist publication receipt
-        if: always()
+        if: ${{ always() && steps.gate.outputs.enabled == 'true' }}
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
