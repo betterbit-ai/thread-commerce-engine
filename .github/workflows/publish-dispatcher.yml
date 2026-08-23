@@ -42,7 +42,7 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add data/campaigns data/runtime data/state/publications
+          git add -A data
           git diff --cached --quiet || git commit -m "data(publish): claim one-time Threads containers [skip ci]"
           git push
       - if: ${{ steps.gate.outputs.enabled == 'true' }}
@@ -55,6 +55,6 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add data/campaigns data/runtime data/state
+          git add -A data
           git diff --cached --quiet || git commit -m "data(publish): record Threads publication receipts [skip ci]"
           git push
