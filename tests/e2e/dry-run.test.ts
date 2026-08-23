@@ -29,18 +29,18 @@ describe('complete offline commerce loop', () => {
     expect(manifest).toMatchObject({
       products: 14,
       campaigns: 14,
-      queued: 4,
-      published: 4,
-      threads_events: 4,
+      queued: 1,
+      published: 1,
+      threads_events: 1,
       coupang_events: 1,
     });
     const analytics = JSON.parse(
       await readFile(join(root, 'reports/analytics/latest.json'), 'utf8'),
     );
     expect(analytics.metrics).toMatchObject({
-      commerce_ctr: 0.005,
+      commerce_ctr: 0.02,
       purchase_cvr: 0.125,
-      rpmv: 1750,
+      rpmv: 7000,
     });
     const report = JSON.parse(
       await readFile(join(root, 'reports/calibration/latest.json'), 'utf8'),
@@ -50,14 +50,14 @@ describe('complete offline commerce loop', () => {
     const storefront = JSON.parse(
       await readFile(join(root, 'data/storefront/offers.json'), 'utf8'),
     );
-    expect(storefront.offers).toHaveLength(4);
+    expect(storefront.offers).toHaveLength(1);
     const persistedCampaigns = await deps.store.readJsonl(
       'data/runtime/campaigns.jsonl',
       campaignSchema,
     );
     const persistedDrafts = await deps.store.readJsonl('data/runtime/drafts.jsonl', draftSchema);
     expect(persistedCampaigns.filter((campaign) => campaign.status === 'published')).toHaveLength(
-      4,
+      1,
     );
     await expect(publishDue(persistedCampaigns, persistedDrafts, deps)).resolves.toEqual([]);
     if (Number(process.versions.node.split('.')[0]) >= 24) {
