@@ -23,6 +23,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           GROQ_MODEL: ${{ vars.GROQ_MODEL }}
           GROQ_JUDGE_MODEL: ${{ vars.GROQ_JUDGE_MODEL }}
+      - run: pnpm exec prettier --write data/campaigns data/drafts data/runtime data/state data/storefront reports/calibration
       - if: success()
         run: node scripts/slack-notify.mjs
         env:
