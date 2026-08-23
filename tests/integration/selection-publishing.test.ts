@@ -33,6 +33,7 @@ describe('selection and dispatch invariants', () => {
         mode: 'human_approved' as const,
         require_storefront_deployment_receipt: false,
       },
+      content: { ...base.content, generation_count: 3, angles_per_product: 3 },
     };
     const time = () => new Date('2026-08-21T14:00:00.000Z');
     const store = new RepositoryStore(root);
@@ -74,7 +75,14 @@ describe('selection and dispatch invariants', () => {
       llm: new FixtureLlm({}),
       threads: new FixtureThreads(time),
       store,
-      config: base,
+      config: {
+        ...base,
+        publishing: {
+          ...base.publishing,
+          mode: 'calibration' as const,
+          require_storefront_deployment_receipt: false,
+        },
+      },
       now: time,
     };
     const planned = await planContent([product], calibrationDeps, emptyExperience, {
@@ -127,6 +135,7 @@ describe('selection and dispatch invariants', () => {
         mode: 'human_approved' as const,
         require_storefront_deployment_receipt: false,
       },
+      content: { ...base.content, generation_count: 3, angles_per_product: 3 },
     };
     const time = () => new Date('2026-08-21T14:00:00.000Z');
     const store = new RepositoryStore(root);
