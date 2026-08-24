@@ -4,6 +4,8 @@
 
 Write concise Korean as an experienced IT worker focused on long work sessions: useful, specific, and candid—not corporate affiliate spam. One main idea, a verified insight/caveat, offer-code CTA, then disclosure. Avoid hashtag/emoji spam.
 
+Warmup posts use natural banmal and may ask for personal experiences around work and daily discomfort. They must not diagnose, recommend treatment, name a provider, or give exercise/medical instructions.
+
 Unknown compatibility, ratings, reviews, discounts, scarcity, commission, and health effects remain unknown. “Who should not buy this” is encouraged only when based on verified specifications, explicit comparisons, or curated founder experience.
 
 ## Founder experience

@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
-  "strategy": "Build recognition and replies through specific work-life moments first; use opinion prompts to collect tool context; reserve two posts for transitioning into reviewed-tool content.",
+  "voice": "banmal",
+  "strategy": "Build recognition and replies through specific work-life moments first; use opinion prompts to collect tool context; reserve two posts for transitioning into reviewed-tool content. Medical-adjacent posts ask only for personal experience, never diagnosis or treatment advice.",
   "posts": [
     {
       "warmup_id": "2026-08-24-morning",
@@ -20,85 +21,85 @@
       "warmup_id": "2026-08-25-morning",
       "date_kst": "2026-08-25",
       "slot": "morning",
-      "theme": "relationship",
-      "text": "월요일인데 벌써 퇴근 생각나는 사람 손.\n\n오늘은 그냥 할 일 하나만 제대로 끝내도 성공으로 치려고요."
+      "theme": "wrist_experience",
+      "text": "손목 안 좋은데 운동은 또 하고 싶은 사람 있어?\n\n나는 요즘 운동 영상 볼 때도 손목 쓰는 동작부터 보게 돼.\n\n운동 계속하는 사람들은 어떻게 하고 있어? 경험만 들려줘."
     },
     {
       "warmup_id": "2026-08-25-evening",
       "date_kst": "2026-08-25",
       "slot": "evening",
-      "theme": "opinion",
-      "text": "일 잘하는 사람 책상은 진짜 깔끔한가요?\n\n저는 오히려 자주 쓰는 것들이 다 꺼내져 있어야 일이 잘 되더라고요.\n\n깔끔파 vs 펼쳐두는 파, 어디세요?"
+      "theme": "wrist_experience",
+      "text": "손목 불편해서 병원 가본 사람 있어?\n\n처음에는 어디부터 가야 하는지도 몰라서 그냥 미루게 되더라.\n\n진단 말고, 처음에 어떻게 움직였는지 경험만 알려줘."
     },
     {
       "warmup_id": "2026-08-26-morning",
       "date_kst": "2026-08-26",
       "slot": "morning",
       "theme": "relationship",
-      "text": "출근해서 제일 먼저 보는 건 메일도 메신저도 아니고, 오늘 퇴근 시간이에요.\n\n그래도 커피 한 잔 마시면 또 어떻게든 시작하게 되죠."
+      "text": "출근해서 제일 먼저 보는 건 메일도 메신저도 아니고 오늘 퇴근 시간이야.\n\n그래도 커피 한 잔 마시면 또 어떻게든 시작하게 되지."
     },
     {
       "warmup_id": "2026-08-26-evening",
       "date_kst": "2026-08-26",
       "slot": "evening",
-      "theme": "relationship",
-      "text": "오늘 대화한 사람은 많은데, 정작 내 얘기는 거의 못 한 날 있지 않나요?\n\n그런 날은 집에 와서도 머리가 계속 켜져 있는 느낌이에요."
+      "theme": "opinion",
+      "text": "일 잘하는 사람 책상은 진짜 깔끔할까?\n\n나는 오히려 자주 쓰는 것들이 다 꺼내져 있어야 일이 잘 되더라.\n\n깔끔파 vs 펼쳐두는 파, 어디야?"
     },
     {
       "warmup_id": "2026-08-27-morning",
       "date_kst": "2026-08-27",
       "slot": "morning",
-      "theme": "opinion",
-      "text": "업무용 키보드는 조용한 게 먼저인가요, 누르는 맛이 먼저인가요?\n\n둘 다 잡으려다 결국 몇 번을 바꿨다는 사람도 주변에 많더라고요."
+      "theme": "relationship",
+      "text": "오늘 대화한 사람은 많은데, 정작 내 얘기는 거의 못 한 날 있지 않아?\n\n그런 날은 집에 와서도 머리가 계속 켜져 있는 느낌이야."
     },
     {
       "warmup_id": "2026-08-27-evening",
       "date_kst": "2026-08-27",
       "slot": "evening",
-      "theme": "relationship",
-      "text": "퇴근 전에 “이것만 하고 가자”를 세 번 이상 말한 사람은 오늘 야근 인정입니다.\n\n마지막 한 가지는 왜 늘 마지막이 아닐까요."
+      "theme": "opinion",
+      "text": "업무용 키보드는 조용한 게 먼저야, 누르는 맛이 먼저야?\n\n둘 다 잡으려다 결국 몇 번을 바꿨다는 사람도 주변에 많더라."
     },
     {
       "warmup_id": "2026-08-28-morning",
       "date_kst": "2026-08-28",
       "slot": "morning",
       "theme": "relationship",
-      "text": "요즘은 바쁜 날보다 애매하게 바쁜 날이 더 힘든 것 같아요.\n\n한 건도 제대로 끝낸 느낌은 없는데, 하루는 이미 지나가 있더라고요."
+      "text": "퇴근 전에 “이것만 하고 가자”를 세 번 이상 말한 사람은 오늘 야근 인정.\n\n마지막 한 가지는 왜 늘 마지막이 아닐까."
     },
     {
       "warmup_id": "2026-08-28-evening",
       "date_kst": "2026-08-28",
       "slot": "evening",
       "theme": "opinion",
-      "text": "노트북 하나로 일하는 사람, 모니터까지 연결해야 일하는 사람.\n\n저는 화면이 늘어나면 집중도 같이 늘어날 줄 알았는데 창만 더 많이 열게 됐어요."
+      "text": "노트북 하나로 일하는 사람, 모니터까지 연결해야 일하는 사람.\n\n나는 화면이 늘어나면 집중도 같이 늘어날 줄 알았는데 창만 더 많이 열게 됐어."
     },
     {
       "warmup_id": "2026-08-29-morning",
       "date_kst": "2026-08-29",
       "slot": "morning",
       "theme": "relationship",
-      "text": "금요일 아침인데도 다음 주 할 일이 먼저 떠오르는 사람 있나요?\n\n오늘의 나는 아직 이번 주에 살고 싶은데, 머리만 벌써 월요일이에요."
+      "text": "금요일 아침인데도 다음 주 할 일이 먼저 떠오르는 사람 있어?\n\n오늘의 나는 아직 이번 주에 살고 싶은데, 머리만 벌써 월요일이야."
     },
     {
       "warmup_id": "2026-08-29-evening",
       "date_kst": "2026-08-29",
       "slot": "evening",
       "theme": "opinion",
-      "text": "장비는 비싼 것보다 자주 손이 가는 게 결국 남는 것 같아요.\n\n사놓고 가장 오래 잘 쓰고 있는 작은 도구 하나만 자랑해 주세요."
+      "text": "장비는 비싼 것보다 자주 손이 가는 게 결국 남는 것 같아.\n\n사놓고 가장 오래 잘 쓰고 있는 작은 도구 하나만 자랑해줘."
     },
     {
       "warmup_id": "2026-08-30-morning",
       "date_kst": "2026-08-30",
       "slot": "morning",
       "theme": "relationship",
-      "text": "주말에는 늦잠을 자도 피곤하고, 일찍 일어나도 피곤하죠.\n\n그래서 오늘은 생산적인 사람 말고 기분 좋은 사람이 되기로 했습니다."
+      "text": "주말에는 늦잠을 자도 피곤하고, 일찍 일어나도 피곤하지.\n\n그래서 오늘은 생산적인 사람 말고 기분 좋은 사람이 되기로 했어."
     },
     {
       "warmup_id": "2026-08-30-evening",
       "date_kst": "2026-08-30",
       "slot": "evening",
       "theme": "tool_transition",
-      "text": "다음 주부터는 오래 일할 때 실제로 도움이 됐던 도구들도 하나씩 기록해보려 해요.\n\n광고 같은 추천 말고, 어떤 사람에게 맞고 안 맞는지까지요.\n\n제일 먼저 궁금한 장비가 있나요?"
+      "text": "다음 주부터는 오래 일할 때 실제로 도움이 됐던 도구들도 하나씩 기록해보려고 해.\n\n광고 같은 추천 말고, 어떤 사람에게 맞고 안 맞는지까지.\n\n제일 먼저 궁금한 장비 있어?"
     }
   ]
 }
