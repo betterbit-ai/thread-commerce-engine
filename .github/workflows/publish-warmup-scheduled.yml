@@ -1,8 +1,8 @@
 name: Publish scheduled warmup text
 on:
   schedule:
-    - cron: '0 0 * * *'
-    - cron: '0 9 * * *'
+    - cron: '0,30 0 * * *'
+    - cron: '0,30 9 * * *'
   workflow_dispatch:
     inputs:
       slot:
@@ -29,7 +29,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - id: content
         env:
-          WARMUP_SLOT: ${{ inputs.slot || (github.event.schedule == '0 0 * * *' && 'morning') || 'evening' }}
+          WARMUP_SLOT: ${{ inputs.slot || (github.event.schedule == '0,30 0 * * *' && 'morning') || 'evening' }}
           WARMUP_DATE: ${{ inputs.date_kst }}
         run: node scripts/warmup-content.mjs >> "$GITHUB_OUTPUT"
       - if: ${{ steps.content.outputs.skip != 'true' }}

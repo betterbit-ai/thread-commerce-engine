@@ -2,7 +2,7 @@
 
 ## Schedules
 
-Ingest and planning run daily; the dispatcher runs every ten minutes and publishes all due eligible records. Threads collection runs every three hours; Coupang reporting is lower-frequency after its documented daily availability. GitHub cron may be delayed/dropped, so no workflow assumes exact firing.
+Ingest and planning run daily; the dispatcher runs every ten minutes and publishes all due eligible records. Threads collection runs every three hours; Coupang reporting is lower-frequency after its documented daily availability. Warmup posts have a primary and a 30-minute recovery trigger at 09:00/09:30 and 18:00/18:30 KST; the stored warmup ID makes recovery runs a no-op after a successful post. GitHub cron may still be delayed/dropped, so no workflow assumes exact firing.
 
 Human-approved/auto planning projects queued offers into `data/storefront` before dispatch. The Pages workflow must complete successfully before enabling the production dispatcher; `publish:prepare` also refuses any campaign missing from the storefront projection.
 
