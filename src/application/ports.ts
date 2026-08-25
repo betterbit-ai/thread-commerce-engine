@@ -34,7 +34,7 @@ export interface PublishResult {
 }
 export interface ThreadsPort {
   checkConnectivity(): Promise<{ ok: boolean; detail: string; expiresAt: string | null }>;
-  createTextContainer(text: string): Promise<string>;
+  createTextContainer(text: string, options?: { linkAttachment?: string }): Promise<string>;
   publishContainer(containerId: string): Promise<PublishResult>;
   publishText(text: string, idempotencyKey: string): Promise<PublishResult>;
   getPost(postId: string): Promise<PublishResult>;

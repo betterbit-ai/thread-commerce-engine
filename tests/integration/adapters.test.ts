@@ -119,10 +119,14 @@ describe('HTTP adapters with fixtures', () => {
     });
     await expect(disabled.publishText('x', 'key')).rejects.toBeInstanceOf(PublishSafetyError);
     let call = 0;
+    let latestContainerUrl = '';
     const fetchFn: typeof fetch = (input) => {
       call += 1;
       const url = String(input);
-      if (url.includes('/me/threads?')) return response({ id: 'container' });
+      if (url.includes('/me/threads?')) {
+        latestContainerUrl = url;
+        return response({ id: 'container' });
+      }
       if (url.includes('/me/threads_publish?')) return response({ id: 'post' });
       if (url.includes('/post/insights?'))
         return response({
@@ -143,6 +147,15 @@ describe('HTTP adapters with fixtures', () => {
       fetchFn,
       now: () => new Date('2026-08-21T00:00:00Z'),
     });
+    await expect(
+      client.createTextContainer('deal', {
+        linkAttachment: 'https://link.coupang.com/a/test',
+      }),
+    ).resolves.toBe('container');
+    expect(new URL(latestContainerUrl).searchParams.get('text')).toBe('deal');
+    expect(new URL(latestContainerUrl).searchParams.get('link_attachment')).toBe(
+      'https://link.coupang.com/a/test',
+    );
     const published = await client.publishText('hello', 'cmp');
     expect(published.postId).toBe('post');
     const insight = await client.getInsights('post', 'cmp');

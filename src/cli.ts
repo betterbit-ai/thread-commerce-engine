@@ -141,12 +141,16 @@ async function execute(): Promise<void> {
   if (command === 'warmup:prepare' || command === 'warmup:publish') {
     const warmupId = z.string().min(1).parse(process.env.WARMUP_ID);
     const text = z.string().min(1).max(500).parse(process.env.WARMUP_TEXT);
+    const linkAttachment = process.env.WARMUP_LINK_URL
+      ? z.string().url().parse(process.env.WARMUP_LINK_URL)
+      : null;
     const deps = realDependencies({ threads: true });
     const receiptPath = `data/state/warmup-publications/${warmupId}.json`;
     const receiptSchema = z.object({
       schema_version: z.literal(1),
       warmup_id: z.string(),
       text: z.string(),
+      link_url: z.string().url().nullable().optional(),
       container_id: z.string(),
       status: z.enum(['container_created', 'published']),
       post_id: z.string().nullable(),
@@ -156,11 +160,14 @@ async function execute(): Promise<void> {
     const existing = await deps.store.readJson(receiptPath, receiptSchema).catch(() => null);
     if (command === 'warmup:prepare') {
       if (existing) return;
-      const containerId = await deps.threads.createTextContainer(text);
+      const containerId = await deps.threads.createTextContainer(text, {
+        ...(linkAttachment ? { linkAttachment } : {}),
+      });
       await deps.store.writeJson(receiptPath, {
         schema_version: 1,
         warmup_id: warmupId,
         text,
+        link_url: linkAttachment,
         container_id: containerId,
         status: 'container_created',
         post_id: null,

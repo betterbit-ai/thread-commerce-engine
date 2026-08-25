@@ -39,6 +39,7 @@ jobs:
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           WARMUP_ID: ${{ steps.content.outputs.warmup_id }}
           WARMUP_TEXT: ${{ steps.content.outputs.warmup_text }}
+          WARMUP_LINK_URL: ${{ steps.content.outputs.warmup_link_url }}
       - if: ${{ steps.content.outputs.skip != 'true' }}
         run: |
           git config user.name github-actions[bot]

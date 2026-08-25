@@ -78,12 +78,15 @@ export class ThreadsClient implements ThreadsPort {
     this.published.set(idempotencyKey, result);
     return result;
   }
-  async createTextContainer(text: string): Promise<string> {
+  async createTextContainer(
+    text: string,
+    options: { linkAttachment?: string } = {},
+  ): Promise<string> {
     if (!this.options.publishEnabled)
       throw new PublishSafetyError('Live Threads publication requires PUBLISH_ENABLED=true');
-    const container = idSchema.parse(
-      await this.call('POST', '/me/threads', new URLSearchParams({ media_type: 'TEXT', text })),
-    );
+    const params = new URLSearchParams({ media_type: 'TEXT', text });
+    if (options.linkAttachment) params.set('link_attachment', options.linkAttachment);
+    const container = idSchema.parse(await this.call('POST', '/me/threads', params));
     return String(container.id);
   }
   async publishContainer(containerId: string): Promise<PublishResult> {
