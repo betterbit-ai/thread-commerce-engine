@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "draft_id": "drf_e4619155751d",
+  "campaign_id": "cmp_20260830_91b25dc931",
+  "product_key": "coupang:7295558262",
+  "angle": "pain_solution",
+  "text": "오늘도 코드 리뷰하면서 마우스 움직임이 자꾸 꼬여서 클릭이 안 될 때가 있잖아? 로지텍 리프트 버티컬는 손목을 크게 움직이지 않아도 포인터를 정확히 잡아줘서 화면 전환이 훨씬 부드러워. 처음엔 손에 익숙해지는 데 시간이 좀 걸릴 수 있지만, 금방 적응할 수 있어. 자세한 내용은 프로필에서 확인하고, 코드 101을 입력해봐.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+  "text_hash": "d984b310b252e802dd7d5652750d1ae301f16ddd6f46a396c31ddef169c02ec9",
+  "offer_code": 101,
+  "created_at": "2026-08-30T23:48:02.093Z",
+  "prompt_version": "product-analyst:v1|angle-generator:v1|writer:v1|judge:v1",
+  "model": "openai/gpt-oss-120b",
+  "input_hash": "9eff0023c30656f1e363e5deb2c7241e876ab2775275e99f1543123102d1f351",
+  "judge": {
+    "schema_version": 1,
+    "scores": {
+      "hook": 80,
+      "persona_fit": 90,
+      "purchase_intent": 70,
+      "specificity": 65,
+      "authenticity": 80,
+      "trust": 85,
+      "cta_quality": 60,
+      "policy_safety": 100,
+      "redundancy": 90
+    },
+    "reasons": {
+      "hook": "Starts with a relatable developer scenario that grabs attention.",
+      "persona_fit": "Directly addresses Korean IT workers who code long hours.",
+      "purchase_intent": "Highlights benefits but CTA is indirect, limiting purchase drive.",
+      "specificity": "Mentions ergonomic benefit but lacks detailed specs or price info.",
+      "authenticity": "Conversational tone feels genuine without exaggerated claims.",
+      "trust": "Includes clear affiliate disclosure and no false statements.",
+      "cta_quality": "CTA asks to check profile and enter a code, not a direct purchase link.",
+      "policy_safety": "No prohibited content; disclosure meets policy requirements.",
+      "redundancy": "Content is concise with no repeated ideas."
+    },
+    "detected_risks": [
+      "The claim that the mouse reduces wrist strain could be interpreted as a health claim and may attract additional review."
+    ],
+    "hard_fail_suggestions": [],
+    "overall_score": 80,
+    "confidence": 0.95,
+    "improvement": "Add a direct purchase link and include key specs (e.g., DPI, battery life) to strengthen purchase intent and specificity.",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1"
+  },
+  "policy": {
+    "hard_fail": false,
+    "failures": []
+  },
+  "human_label": null
+}
