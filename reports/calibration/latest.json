@@ -1,24 +1,24 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-30T23:48:02.099Z",
+  "generated_at": "2026-09-01T00:46:32.834Z",
   "threshold_status": "disabled_initially",
-  "score_distribution": [80],
+  "score_distribution": [76.67],
   "score_distribution_by_dimension": {
-    "hook": [80],
+    "hook": [75],
     "persona_fit": [90],
-    "purchase_intent": [70],
-    "specificity": [65],
-    "authenticity": [80],
-    "trust": [85],
-    "cta_quality": [60],
-    "policy_safety": [100],
-    "redundancy": [90]
+    "purchase_intent": [60],
+    "specificity": [70],
+    "authenticity": [85],
+    "trust": [80],
+    "cta_quality": [50],
+    "policy_safety": [95],
+    "redundancy": [85]
   },
   "score_distribution_by_angle": {
-    "pain_solution": [80]
+    "pain_solution": [76.67]
   },
   "score_distribution_by_category": {
-    "mouse": [80]
+    "mouse": [76.67]
   },
   "approved_rejected_overlap": {
     "approved_range": null,
@@ -29,34 +29,34 @@
   "score_correlation_with_human_labels": null,
   "drafts": [
     {
-      "draft_id": "drf_e4619155751d",
+      "draft_id": "drf_3bb7860e1763",
       "product": "로지텍 코리아 리프트 버티컬 인체공학 무선 블루투스 마우스 LIFT VERTICAL, MR0094, 그래파이트",
       "category": "mouse",
       "angle": "pain_solution",
-      "text": "오늘도 코드 리뷰하면서 마우스 움직임이 자꾸 꼬여서 클릭이 안 될 때가 있잖아? 로지텍 리프트 버티컬는 손목을 크게 움직이지 않아도 포인터를 정확히 잡아줘서 화면 전환이 훨씬 부드러워. 처음엔 손에 익숙해지는 데 시간이 좀 걸릴 수 있지만, 금방 적응할 수 있어. 자세한 내용은 프로필에서 확인하고, 코드 101을 입력해봐.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+      "text": "아침에 코드 리뷰하면서 마우스 움직임이 어색해서 커서가 자꾸 빗나가면 작업 흐름이 금방 끊기죠. 로지텍 리프트 버티컬은 손목을 비틀지 않고 수직으로 잡을 수 있게 설계돼, 손목 회전을 최소화하면서도 블루투스로 무선 연결돼 여러 대를 손쉽게 전환할 수 있어요. 다만 처음 잡는 느낌이 익숙해지는 데 약간의 적응 시간이 필요합니다. 프로필에서 코드 102로 확인해보세요.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
       "scores": {
-        "hook": 80,
+        "hook": 75,
         "persona_fit": 90,
-        "purchase_intent": 70,
-        "specificity": 65,
-        "authenticity": 80,
-        "trust": 85,
-        "cta_quality": 60,
-        "policy_safety": 100,
-        "redundancy": 90
+        "purchase_intent": 60,
+        "specificity": 70,
+        "authenticity": 85,
+        "trust": 80,
+        "cta_quality": 50,
+        "policy_safety": 95,
+        "redundancy": 85
       },
-      "overall_score": 80,
+      "overall_score": 76.67,
       "hard_fails": [],
       "judge_explanation": {
-        "hook": "Starts with a relatable developer scenario that grabs attention.",
-        "persona_fit": "Directly addresses Korean IT workers who code long hours.",
-        "purchase_intent": "Highlights benefits but CTA is indirect, limiting purchase drive.",
-        "specificity": "Mentions ergonomic benefit but lacks detailed specs or price info.",
-        "authenticity": "Conversational tone feels genuine without exaggerated claims.",
-        "trust": "Includes clear affiliate disclosure and no false statements.",
-        "cta_quality": "CTA asks to check profile and enter a code, not a direct purchase link.",
-        "policy_safety": "No prohibited content; disclosure meets policy requirements.",
-        "redundancy": "Content is concise with no repeated ideas."
+        "hook": "Starts with a relatable coding scenario that grabs attention but could be more striking.",
+        "persona_fit": "Directly addresses Korean IT workers who code long hours, matching the target persona well.",
+        "purchase_intent": "Highlights benefits but lacks a strong, direct invitation to buy the mouse.",
+        "specificity": "Mentions vertical design, wrist rotation reduction, Bluetooth and multi‑device switching, yet omits detailed specs like DPI or battery life.",
+        "authenticity": "Claims are realistic and include a note about an adaptation period, enhancing credibility.",
+        "trust": "Includes clear affiliate disclosure and no exaggerated promises, building trust.",
+        "cta_quality": "CTA is vague (“프로필에서 코드 102로 확인해보세요”) and does not provide a clear purchase link.",
+        "policy_safety": "No prohibited content; proper disclosure satisfies policy requirements.",
+        "redundancy": "Content is concise with minimal repetition."
       },
       "model": "openai/gpt-oss-120b",
       "prompt_version": "v1",

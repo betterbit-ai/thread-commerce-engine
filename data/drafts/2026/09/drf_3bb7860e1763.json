@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "draft_id": "drf_3bb7860e1763",
+  "campaign_id": "cmp_20260901_91b25dc931",
+  "product_key": "coupang:7295558262",
+  "angle": "pain_solution",
+  "text": "아침에 코드 리뷰하면서 마우스 움직임이 어색해서 커서가 자꾸 빗나가면 작업 흐름이 금방 끊기죠. 로지텍 리프트 버티컬은 손목을 비틀지 않고 수직으로 잡을 수 있게 설계돼, 손목 회전을 최소화하면서도 블루투스로 무선 연결돼 여러 대를 손쉽게 전환할 수 있어요. 다만 처음 잡는 느낌이 익숙해지는 데 약간의 적응 시간이 필요합니다. 프로필에서 코드 102로 확인해보세요.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+  "text_hash": "85db883e1bb70e6bd6e8e1cb19b58046d9cb12626cada6dcc4f7de793662eebe",
+  "offer_code": 102,
+  "created_at": "2026-09-01T00:46:32.828Z",
+  "prompt_version": "product-analyst:v1|angle-generator:v1|writer:v1|judge:v1",
+  "model": "openai/gpt-oss-120b",
+  "input_hash": "600c5eca96ce42e263354d79b310d5983fb551a3e99e00266f7352fee70678f0",
+  "judge": {
+    "schema_version": 1,
+    "scores": {
+      "hook": 75,
+      "persona_fit": 90,
+      "purchase_intent": 60,
+      "specificity": 70,
+      "authenticity": 85,
+      "trust": 80,
+      "cta_quality": 50,
+      "policy_safety": 95,
+      "redundancy": 85
+    },
+    "reasons": {
+      "hook": "Starts with a relatable coding scenario that grabs attention but could be more striking.",
+      "persona_fit": "Directly addresses Korean IT workers who code long hours, matching the target persona well.",
+      "purchase_intent": "Highlights benefits but lacks a strong, direct invitation to buy the mouse.",
+      "specificity": "Mentions vertical design, wrist rotation reduction, Bluetooth and multi‑device switching, yet omits detailed specs like DPI or battery life.",
+      "authenticity": "Claims are realistic and include a note about an adaptation period, enhancing credibility.",
+      "trust": "Includes clear affiliate disclosure and no exaggerated promises, building trust.",
+      "cta_quality": "CTA is vague (“프로필에서 코드 102로 확인해보세요”) and does not provide a clear purchase link.",
+      "policy_safety": "No prohibited content; proper disclosure satisfies policy requirements.",
+      "redundancy": "Content is concise with minimal repetition."
+    },
+    "detected_risks": [],
+    "hard_fail_suggestions": [],
+    "overall_score": 76.67,
+    "confidence": 0.93,
+    "improvement": "Add a clear, direct call‑to‑action with the affiliate purchase link to boost conversion intent.",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1"
+  },
+  "policy": {
+    "hard_fail": false,
+    "failures": []
+  },
+  "human_label": null
+}
