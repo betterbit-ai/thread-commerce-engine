@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "draft_id": "drf_e4365b1b61e0",
+  "campaign_id": "cmp_20260901_91b25dc931",
+  "product_key": "coupang:7295558262",
+  "angle": "pain_solution",
+  "text": "아침에 코드 리뷰하면서 마우스 움직임이 어색해서 클릭이 자꾸 빗나가곤 해. 이런 순간엔 손이 자연스럽게 움직이는 마우스가 필요하지 않을까?\n로지텍 리프트 버티컬은 세로형 디자인이라 손이 자연스럽게 위치하고, 블루투스 무선이라 케이블 얽힘 없이 깔끔해. 배터리도 2년 정도 오래 가서 교체 걱정이 적어.\n다만 버튼 배치가 평소와 달라서 처음엔 적응이 필요할 수 있어. 프로필에서 코드 102 확인해보고 직접 써보는 걸 추천할게.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+  "text_hash": "9d81d7d096688e293a51e1529037c9169142acd082d00d9599b961ddda1b6c15",
+  "offer_code": 102,
+  "created_at": "2026-09-01T23:32:19.149Z",
+  "prompt_version": "product-analyst:v1|angle-generator:v1|writer:v1|judge:v1",
+  "model": "openai/gpt-oss-120b",
+  "input_hash": "77c8c899aec5dc91a99449967c9aa77f49bf0e973db7b49214697e06ccf715b9",
+  "judge": {
+    "schema_version": 1,
+    "scores": {
+      "hook": 75,
+      "persona_fit": 90,
+      "purchase_intent": 70,
+      "specificity": 60,
+      "authenticity": 55,
+      "trust": 60,
+      "cta_quality": 50,
+      "policy_safety": 95,
+      "redundancy": 85
+    },
+    "reasons": {
+      "hook": "Starts with a relatable developer scenario that catches attention.",
+      "persona_fit": "Directly addresses Korean IT workers and developers using coding language.",
+      "purchase_intent": "Highlights benefits but lacks a strong, direct purchase prompt.",
+      "specificity": "Provides concrete features (vertical design, Bluetooth, 2‑year battery) but evidence for battery claim is missing.",
+      "authenticity": "Some claims are unverified by the provided evidence, reducing perceived authenticity.",
+      "trust": "Disclosure is present, yet unsubstantiated technical claims may lower trust.",
+      "cta_quality": "No explicit call‑to‑action or affiliate link; only a vague recommendation to try it.",
+      "policy_safety": "No policy violations; proper affiliate disclosure is included.",
+      "redundancy": "Content is concise with minimal repetition."
+    },
+    "detected_risks": [
+      "Unverified claim about 2‑year battery life may be considered misleading",
+      "Ambiguous reference to \"프로필에서 코드 102\" could confuse readers"
+    ],
+    "hard_fail_suggestions": [
+      "Remove or provide a source for the 2‑year battery life claim",
+      "Clarify or eliminate the \"프로필에서 코드 102\" statement",
+      "Add a clear, compliant call‑to‑action with the affiliate link"
+    ],
+    "overall_score": 71.11,
+    "confidence": 0.85,
+    "improvement": "Include a clear CTA with the affiliate URL and ensure all technical claims (e.g., battery lifespan) are backed by verifiable evidence.",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1"
+  },
+  "policy": {
+    "hard_fail": false,
+    "failures": []
+  },
+  "human_label": null
+}
