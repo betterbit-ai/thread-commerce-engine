@@ -1,24 +1,24 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01T23:32:19.155Z",
+  "generated_at": "2026-09-02T23:31:46.567Z",
   "threshold_status": "disabled_initially",
-  "score_distribution": [71.11],
+  "score_distribution": [80.89],
   "score_distribution_by_dimension": {
-    "hook": [75],
+    "hook": [85],
     "persona_fit": [90],
     "purchase_intent": [70],
-    "specificity": [60],
-    "authenticity": [55],
-    "trust": [60],
-    "cta_quality": [50],
+    "specificity": [75],
+    "authenticity": [85],
+    "trust": [78],
+    "cta_quality": [60],
     "policy_safety": [95],
-    "redundancy": [85]
+    "redundancy": [90]
   },
   "score_distribution_by_angle": {
-    "pain_solution": [71.11]
+    "pain_solution": [80.89]
   },
   "score_distribution_by_category": {
-    "mouse": [71.11]
+    "mouse": [80.89]
   },
   "approved_rejected_overlap": {
     "approved_range": null,
@@ -29,34 +29,34 @@
   "score_correlation_with_human_labels": null,
   "drafts": [
     {
-      "draft_id": "drf_e4365b1b61e0",
+      "draft_id": "drf_bec6df19bd40",
       "product": "로지텍 코리아 리프트 버티컬 인체공학 무선 블루투스 마우스 LIFT VERTICAL, MR0094, 그래파이트",
       "category": "mouse",
       "angle": "pain_solution",
-      "text": "아침에 코드 리뷰하면서 마우스 움직임이 어색해서 클릭이 자꾸 빗나가곤 해. 이런 순간엔 손이 자연스럽게 움직이는 마우스가 필요하지 않을까?\n로지텍 리프트 버티컬은 세로형 디자인이라 손이 자연스럽게 위치하고, 블루투스 무선이라 케이블 얽힘 없이 깔끔해. 배터리도 2년 정도 오래 가서 교체 걱정이 적어.\n다만 버튼 배치가 평소와 달라서 처음엔 적응이 필요할 수 있어. 프로필에서 코드 102 확인해보고 직접 써보는 걸 추천할게.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+      "text": "노트북 화면만 보면서 마우스를 잡을 때 손이 자꾸 비스듬히 잡히는 거, 있지? 그때 로지텍 리프트 버티컬 마우스를 꺼내면 손이 자연스럽게 일자 모드로 놓여서 움직임이 더 직관적이야. 세로형 디자인에 블루투스와 무선 2.4GHz 연결을 동시에 지원해서 데스크탑·노트북을 오갈 때도 한 번만 페어링하면 바로 쓸 수 있어.\n\n다만 배터리 교체가 필요하고, 처음 페어링할 때 약간 번거로울 수 있다는 점은 기억해 두자.\n\n관심 있으면 프로필에 \"103\" 입력해서 확인해봐.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
       "scores": {
-        "hook": 75,
+        "hook": 85,
         "persona_fit": 90,
         "purchase_intent": 70,
-        "specificity": 60,
-        "authenticity": 55,
-        "trust": 60,
-        "cta_quality": 50,
+        "specificity": 75,
+        "authenticity": 85,
+        "trust": 78,
+        "cta_quality": 60,
         "policy_safety": 95,
-        "redundancy": 85
+        "redundancy": 90
       },
-      "overall_score": 71.11,
+      "overall_score": 80.89,
       "hard_fails": [],
       "judge_explanation": {
-        "hook": "Starts with a relatable developer scenario that catches attention.",
-        "persona_fit": "Directly addresses Korean IT workers and developers using coding language.",
-        "purchase_intent": "Highlights benefits but lacks a strong, direct purchase prompt.",
-        "specificity": "Provides concrete features (vertical design, Bluetooth, 2‑year battery) but evidence for battery claim is missing.",
-        "authenticity": "Some claims are unverified by the provided evidence, reducing perceived authenticity.",
-        "trust": "Disclosure is present, yet unsubstantiated technical claims may lower trust.",
-        "cta_quality": "No explicit call‑to‑action or affiliate link; only a vague recommendation to try it.",
-        "policy_safety": "No policy violations; proper affiliate disclosure is included.",
-        "redundancy": "Content is concise with minimal repetition."
+        "hook": "Starts with a relatable problem statement that catches attention quickly.",
+        "persona_fit": "Directly addresses Korean IT professionals who code for long hours, matching the defined target persona.",
+        "purchase_intent": "Mentions product benefits and includes an affiliate link, but the call‑to‑action is indirect, lowering conversion drive.",
+        "specificity": "Provides concrete features (vertical design, Bluetooth/2.4 GHz, battery swap) yet the ergonomic benefit claim lacks quantitative support.",
+        "authenticity": "Conversational tone, balanced pros/cons, and clear affiliate disclosure give a genuine feel.",
+        "trust": "Disclosure and balanced view build trust, but the unsubstantiated claim about reducing wrist strain slightly undermines it.",
+        "cta_quality": "The CTA asks users to enter \"103\" in their profile, which is vague and not a direct purchase prompt.",
+        "policy_safety": "No prohibited content, proper affiliate disclosure, and no deceptive language beyond the ergonomic claim.",
+        "redundancy": "Content is concise with no unnecessary repetition."
       },
       "model": "openai/gpt-oss-120b",
       "prompt_version": "v1",

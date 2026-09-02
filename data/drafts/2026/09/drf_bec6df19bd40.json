@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "draft_id": "drf_bec6df19bd40",
+  "campaign_id": "cmp_20260902_91b25dc931",
+  "product_key": "coupang:7295558262",
+  "angle": "pain_solution",
+  "text": "노트북 화면만 보면서 마우스를 잡을 때 손이 자꾸 비스듬히 잡히는 거, 있지? 그때 로지텍 리프트 버티컬 마우스를 꺼내면 손이 자연스럽게 일자 모드로 놓여서 움직임이 더 직관적이야. 세로형 디자인에 블루투스와 무선 2.4GHz 연결을 동시에 지원해서 데스크탑·노트북을 오갈 때도 한 번만 페어링하면 바로 쓸 수 있어.\n\n다만 배터리 교체가 필요하고, 처음 페어링할 때 약간 번거로울 수 있다는 점은 기억해 두자.\n\n관심 있으면 프로필에 \"103\" 입력해서 확인해봐.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+  "text_hash": "54bbec6c698311555239b515f7313f51f62cc0fa007e1737ce8684f322f8a45d",
+  "offer_code": 103,
+  "created_at": "2026-09-02T23:31:46.561Z",
+  "prompt_version": "product-analyst:v1|angle-generator:v1|writer:v1|judge:v1",
+  "model": "openai/gpt-oss-120b",
+  "input_hash": "6cb67eb190d6013535a408ad485ef84542ba3184c1c99c22e204c4d7cb886fb1",
+  "judge": {
+    "schema_version": 1,
+    "scores": {
+      "hook": 85,
+      "persona_fit": 90,
+      "purchase_intent": 70,
+      "specificity": 75,
+      "authenticity": 85,
+      "trust": 78,
+      "cta_quality": 60,
+      "policy_safety": 95,
+      "redundancy": 90
+    },
+    "reasons": {
+      "hook": "Starts with a relatable problem statement that catches attention quickly.",
+      "persona_fit": "Directly addresses Korean IT professionals who code for long hours, matching the defined target persona.",
+      "purchase_intent": "Mentions product benefits and includes an affiliate link, but the call‑to‑action is indirect, lowering conversion drive.",
+      "specificity": "Provides concrete features (vertical design, Bluetooth/2.4 GHz, battery swap) yet the ergonomic benefit claim lacks quantitative support.",
+      "authenticity": "Conversational tone, balanced pros/cons, and clear affiliate disclosure give a genuine feel.",
+      "trust": "Disclosure and balanced view build trust, but the unsubstantiated claim about reducing wrist strain slightly undermines it.",
+      "cta_quality": "The CTA asks users to enter \"103\" in their profile, which is vague and not a direct purchase prompt.",
+      "policy_safety": "No prohibited content, proper affiliate disclosure, and no deceptive language beyond the ergonomic claim.",
+      "redundancy": "Content is concise with no unnecessary repetition."
+    },
+    "detected_risks": [
+      "Unsubstantiated health/ergonomic claim about reducing wrist strain may be considered misleading."
+    ],
+    "hard_fail_suggestions": [
+      "Provide credible evidence (e.g., study or manufacturer data) to support the wrist‑strain reduction claim or rephrase it to a subjective comfort statement.",
+      "Replace the vague \"입력해서 확인해봐\" CTA with a clear, direct link to the product or a specific action like \"클릭해서 구매하기\"."
+    ],
+    "overall_score": 80.89,
+    "confidence": 0.88,
+    "improvement": "Add a clear, direct purchase link and back any ergonomic benefit claims with verifiable evidence or softer language.",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1"
+  },
+  "policy": {
+    "hard_fail": false,
+    "failures": []
+  },
+  "human_label": null
+}
