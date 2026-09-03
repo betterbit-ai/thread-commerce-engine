@@ -16,7 +16,7 @@
   "groq_model": "openai/gpt-oss-120b",
   "judge_overall": 73.33,
   "founder_experience_supported": false,
-  "status": "queued",
+  "status": "publishing",
   "threads_post_id": null,
   "permalink": null,
   "published_at": null
