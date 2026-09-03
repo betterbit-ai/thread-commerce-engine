@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "draft_id": "drf_f48bee429a7c",
+  "campaign_id": "cmp_20260903_91b25dc931",
+  "product_key": "coupang:7295558262",
+  "angle": "pain_solution",
+  "text": "아침에 노트북으로 코딩하고, 점심엔 데스크탑으로 디자인 작업을 바꿀 때 마우스 위치를 매번 잡아야 하는 불편함, 겪어본 적 있나요?\nLogitech Lift는 세로형 디자인으로 손이 자연스럽게 놓여서 마우스 이동이 부드럽고, DPI 조절 버튼 하나로 작업에 맞는 정밀도를 바로 바꿀 수 있어요.\n다만 블루투스 연결 시 초기 페어링이 조금 번거로울 수 있고, 배터리는 약 2개월 정도 지속돼서 주기적인 충전이 필요합니다.\n프로필에서 코드 104를 입력하면 자세히 볼 수 있어요!\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+  "text_hash": "0a6465404f558d3a2c414048a78d087f97f7089dc54119c7c085d7d822333df4",
+  "offer_code": 104,
+  "created_at": "2026-09-03T23:30:09.866Z",
+  "prompt_version": "product-analyst:v1|angle-generator:v1|writer:v1|judge:v1",
+  "model": "openai/gpt-oss-120b",
+  "input_hash": "24fb2476c64f4cd6a160cf7cb44e786c4f725f7c130d2be77f0ca89e517f2712",
+  "judge": {
+    "schema_version": 1,
+    "scores": {
+      "hook": 85,
+      "persona_fit": 90,
+      "purchase_intent": 70,
+      "specificity": 65,
+      "authenticity": 60,
+      "trust": 65,
+      "cta_quality": 55,
+      "policy_safety": 80,
+      "redundancy": 90
+    },
+    "reasons": {
+      "hook": "The opening question directly addresses a common annoyance for developers/designers, making it attention‑grabbing.",
+      "persona_fit": "The copy mentions coding and design work and targets long‑hour PC users, matching the identified persona.",
+      "purchase_intent": "Features are listed but the call‑to‑action is vague (“enter code 104”) and lacks a direct purchase link, limiting intent.",
+      "specificity": "Provides some concrete details (vertical design, DPI button, ~2‑month battery), but omits key specs like DPI range, weight, or price justification.",
+      "authenticity": "Claims about ergonomic comfort and reduced forearm pronation are not backed by the single “버티컬” evidence, reducing perceived authenticity.",
+      "trust": "Affiliate disclosure is present, but unverified health/ergonomic claims and battery life statement may lower trust.",
+      "cta_quality": "The CTA is indirect and does not guide the reader to the product page, reducing effectiveness.",
+      "policy_safety": "No prohibited content, but health‑related claims without supporting evidence could be flagged under policy for unsubstantiated claims.",
+      "redundancy": "The text is concise with no repeated ideas."
+    },
+    "detected_risks": [
+      "Unsubstantiated ergonomic/health benefit claim (reducing wrist strain)",
+      "Battery life duration claim lacks supporting evidence",
+      "Vague CTA may be considered insufficient for affiliate compliance"
+    ],
+    "hard_fail_suggestions": [
+      "Remove or qualify health‑related claims unless backed by credible sources",
+      "Add a citation for battery life or rephrase to a generic statement",
+      "Replace the indirect “enter code 104” CTA with a clear, direct link to the product page"
+    ],
+    "overall_score": 73.33,
+    "confidence": 0.85,
+    "improvement": "Add a clear, direct purchase link and back ergonomic/battery claims with verifiable evidence to boost trust and compliance.",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1"
+  },
+  "policy": {
+    "hard_fail": false,
+    "failures": []
+  },
+  "human_label": null
+}
