@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "draft_id": "drf_ab8566958c81",
+  "campaign_id": "cmp_20260904_91b25dc931",
+  "product_key": "coupang:7295558262",
+  "angle": "pain_solution",
+  "text": "오늘도 두 대의 노트북 사이를 왔다갔다하면서 마우스 연결을 계속 바꾸는 게 번거로웠어.\n로지텍 리프트 버티컬은 블루투스로 한 번에 두 기기까지 연결하고, 버튼 하나로 손쉽게 전환할 수 있어.\n다만 몸무게가 조금 무거워서 처음엔 살짝 적응이 필요할 수 있어.\n프로필에 있는 코드 105로 확인해 보면 도움이 될 거야.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+  "text_hash": "cb5d2ebac99985a854fef47b4d4b70f2fea6a350acb07d3bd4a3d433061078c7",
+  "offer_code": 105,
+  "created_at": "2026-09-04T23:14:29.662Z",
+  "prompt_version": "product-analyst:v1|angle-generator:v1|writer:v1|judge:v1",
+  "model": "openai/gpt-oss-120b",
+  "input_hash": "456794e0dede2017ea759d564393da47d21b1932715dbcb127a0bd2456c080ef",
+  "judge": {
+    "schema_version": 1,
+    "scores": {
+      "hook": 80,
+      "persona_fit": 85,
+      "purchase_intent": 65,
+      "specificity": 78,
+      "authenticity": 85,
+      "trust": 80,
+      "cta_quality": 60,
+      "policy_safety": 100,
+      "redundancy": 90
+    },
+    "reasons": {
+      "hook": "Relatable opening about juggling two laptops captures attention.",
+      "persona_fit": "Directly addresses Korean IT workers who use PCs for long periods.",
+      "purchase_intent": "Mentions benefits but lacks a strong, clear call to buy.",
+      "specificity": "Provides concrete features (dual‑Bluetooth, weight) and a drawback.",
+      "authenticity": "Personal anecdote makes the claim feel genuine.",
+      "trust": "Includes affiliate disclosure and no exaggerated claims.",
+      "cta_quality": "CTA is vague (code 105) and not linked to a purchase action.",
+      "policy_safety": "No prohibited content, proper disclosure, safe language.",
+      "redundancy": "Information is concise with minimal repetition."
+    },
+    "detected_risks": [],
+    "hard_fail_suggestions": [],
+    "overall_score": 80.33,
+    "confidence": 0.94,
+    "improvement": "Add a clear, direct CTA with a clickable affiliate link to boost purchase intent.",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1"
+  },
+  "policy": {
+    "hard_fail": false,
+    "failures": []
+  },
+  "human_label": null
+}

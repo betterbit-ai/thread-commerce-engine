@@ -1,24 +1,24 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-03T23:30:09.872Z",
+  "generated_at": "2026-09-04T23:14:29.668Z",
   "threshold_status": "disabled_initially",
-  "score_distribution": [73.33],
+  "score_distribution": [80.33],
   "score_distribution_by_dimension": {
-    "hook": [85],
-    "persona_fit": [90],
-    "purchase_intent": [70],
-    "specificity": [65],
-    "authenticity": [60],
-    "trust": [65],
-    "cta_quality": [55],
-    "policy_safety": [80],
+    "hook": [80],
+    "persona_fit": [85],
+    "purchase_intent": [65],
+    "specificity": [78],
+    "authenticity": [85],
+    "trust": [80],
+    "cta_quality": [60],
+    "policy_safety": [100],
     "redundancy": [90]
   },
   "score_distribution_by_angle": {
-    "pain_solution": [73.33]
+    "pain_solution": [80.33]
   },
   "score_distribution_by_category": {
-    "mouse": [73.33]
+    "mouse": [80.33]
   },
   "approved_rejected_overlap": {
     "approved_range": null,
@@ -29,34 +29,34 @@
   "score_correlation_with_human_labels": null,
   "drafts": [
     {
-      "draft_id": "drf_f48bee429a7c",
+      "draft_id": "drf_ab8566958c81",
       "product": "로지텍 코리아 리프트 버티컬 인체공학 무선 블루투스 마우스 LIFT VERTICAL, MR0094, 그래파이트",
       "category": "mouse",
       "angle": "pain_solution",
-      "text": "아침에 노트북으로 코딩하고, 점심엔 데스크탑으로 디자인 작업을 바꿀 때 마우스 위치를 매번 잡아야 하는 불편함, 겪어본 적 있나요?\nLogitech Lift는 세로형 디자인으로 손이 자연스럽게 놓여서 마우스 이동이 부드럽고, DPI 조절 버튼 하나로 작업에 맞는 정밀도를 바로 바꿀 수 있어요.\n다만 블루투스 연결 시 초기 페어링이 조금 번거로울 수 있고, 배터리는 약 2개월 정도 지속돼서 주기적인 충전이 필요합니다.\n프로필에서 코드 104를 입력하면 자세히 볼 수 있어요!\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+      "text": "오늘도 두 대의 노트북 사이를 왔다갔다하면서 마우스 연결을 계속 바꾸는 게 번거로웠어.\n로지텍 리프트 버티컬은 블루투스로 한 번에 두 기기까지 연결하고, 버튼 하나로 손쉽게 전환할 수 있어.\n다만 몸무게가 조금 무거워서 처음엔 살짝 적응이 필요할 수 있어.\n프로필에 있는 코드 105로 확인해 보면 도움이 될 거야.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
       "scores": {
-        "hook": 85,
-        "persona_fit": 90,
-        "purchase_intent": 70,
-        "specificity": 65,
-        "authenticity": 60,
-        "trust": 65,
-        "cta_quality": 55,
-        "policy_safety": 80,
+        "hook": 80,
+        "persona_fit": 85,
+        "purchase_intent": 65,
+        "specificity": 78,
+        "authenticity": 85,
+        "trust": 80,
+        "cta_quality": 60,
+        "policy_safety": 100,
         "redundancy": 90
       },
-      "overall_score": 73.33,
+      "overall_score": 80.33,
       "hard_fails": [],
       "judge_explanation": {
-        "hook": "The opening question directly addresses a common annoyance for developers/designers, making it attention‑grabbing.",
-        "persona_fit": "The copy mentions coding and design work and targets long‑hour PC users, matching the identified persona.",
-        "purchase_intent": "Features are listed but the call‑to‑action is vague (“enter code 104”) and lacks a direct purchase link, limiting intent.",
-        "specificity": "Provides some concrete details (vertical design, DPI button, ~2‑month battery), but omits key specs like DPI range, weight, or price justification.",
-        "authenticity": "Claims about ergonomic comfort and reduced forearm pronation are not backed by the single “버티컬” evidence, reducing perceived authenticity.",
-        "trust": "Affiliate disclosure is present, but unverified health/ergonomic claims and battery life statement may lower trust.",
-        "cta_quality": "The CTA is indirect and does not guide the reader to the product page, reducing effectiveness.",
-        "policy_safety": "No prohibited content, but health‑related claims without supporting evidence could be flagged under policy for unsubstantiated claims.",
-        "redundancy": "The text is concise with no repeated ideas."
+        "hook": "Relatable opening about juggling two laptops captures attention.",
+        "persona_fit": "Directly addresses Korean IT workers who use PCs for long periods.",
+        "purchase_intent": "Mentions benefits but lacks a strong, clear call to buy.",
+        "specificity": "Provides concrete features (dual‑Bluetooth, weight) and a drawback.",
+        "authenticity": "Personal anecdote makes the claim feel genuine.",
+        "trust": "Includes affiliate disclosure and no exaggerated claims.",
+        "cta_quality": "CTA is vague (code 105) and not linked to a purchase action.",
+        "policy_safety": "No prohibited content, proper disclosure, safe language.",
+        "redundancy": "Information is concise with minimal repetition."
       },
       "model": "openai/gpt-oss-120b",
       "prompt_version": "v1",
