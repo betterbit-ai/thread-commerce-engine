@@ -1,24 +1,24 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T23:14:29.668Z",
+  "generated_at": "2026-09-05T23:13:03.638Z",
   "threshold_status": "disabled_initially",
-  "score_distribution": [80.33],
+  "score_distribution": [66.11],
   "score_distribution_by_dimension": {
-    "hook": [80],
-    "persona_fit": [85],
-    "purchase_intent": [65],
-    "specificity": [78],
-    "authenticity": [85],
-    "trust": [80],
-    "cta_quality": [60],
-    "policy_safety": [100],
-    "redundancy": [90]
+    "hook": [70],
+    "persona_fit": [80],
+    "purchase_intent": [60],
+    "specificity": [55],
+    "authenticity": [60],
+    "trust": [55],
+    "cta_quality": [40],
+    "policy_safety": [90],
+    "redundancy": [85]
   },
   "score_distribution_by_angle": {
-    "pain_solution": [80.33]
+    "pain_solution": [66.11]
   },
   "score_distribution_by_category": {
-    "mouse": [80.33]
+    "mouse": [66.11]
   },
   "approved_rejected_overlap": {
     "approved_range": null,
@@ -29,34 +29,39 @@
   "score_correlation_with_human_labels": null,
   "drafts": [
     {
-      "draft_id": "drf_ab8566958c81",
+      "draft_id": "drf_d1517769e413",
       "product": "로지텍 코리아 리프트 버티컬 인체공학 무선 블루투스 마우스 LIFT VERTICAL, MR0094, 그래파이트",
       "category": "mouse",
       "angle": "pain_solution",
-      "text": "오늘도 두 대의 노트북 사이를 왔다갔다하면서 마우스 연결을 계속 바꾸는 게 번거로웠어.\n로지텍 리프트 버티컬은 블루투스로 한 번에 두 기기까지 연결하고, 버튼 하나로 손쉽게 전환할 수 있어.\n다만 몸무게가 조금 무거워서 처음엔 살짝 적응이 필요할 수 있어.\n프로필에 있는 코드 105로 확인해 보면 도움이 될 거야.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+      "text": "아침에 노트북만 쓰다 보니 마우스 바꾸는 게 귀찮았어.\n그때 로지텍 코리아 리프트 버티컬 무선 블루투스 마우스를 써봤어—세로형 디자인이라 움직임을 최소화하면서도 클릭이 정확해.\n다만 처음 익히는 데 약간의 적응 시간이 필요하고, 맥에서는 호환 확인이 필요해.\n프로필에 코드 106 입력하면 확인할 수 있어.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
       "scores": {
-        "hook": 80,
-        "persona_fit": 85,
-        "purchase_intent": 65,
-        "specificity": 78,
-        "authenticity": 85,
-        "trust": 80,
-        "cta_quality": 60,
-        "policy_safety": 100,
-        "redundancy": 90
+        "hook": 70,
+        "persona_fit": 80,
+        "purchase_intent": 60,
+        "specificity": 55,
+        "authenticity": 60,
+        "trust": 55,
+        "cta_quality": 40,
+        "policy_safety": 90,
+        "redundancy": 85
       },
-      "overall_score": 80.33,
-      "hard_fails": [],
+      "overall_score": 66.11,
+      "hard_fails": [
+        {
+          "code": "unsupported_factual_claim",
+          "detail": "A compatibility/review claim has no supplied evidence."
+        }
+      ],
       "judge_explanation": {
-        "hook": "Relatable opening about juggling two laptops captures attention.",
-        "persona_fit": "Directly addresses Korean IT workers who use PCs for long periods.",
-        "purchase_intent": "Mentions benefits but lacks a strong, clear call to buy.",
-        "specificity": "Provides concrete features (dual‑Bluetooth, weight) and a drawback.",
-        "authenticity": "Personal anecdote makes the claim feel genuine.",
-        "trust": "Includes affiliate disclosure and no exaggerated claims.",
-        "cta_quality": "CTA is vague (code 105) and not linked to a purchase action.",
-        "policy_safety": "No prohibited content, proper disclosure, safe language.",
-        "redundancy": "Information is concise with minimal repetition."
+        "hook": "Opening line is relatable and catches attention but not exceptionally striking.",
+        "persona_fit": "Mentions developers and long coding sessions, aligning well with the target persona.",
+        "purchase_intent": "Mentions product and affiliate disclosure but lacks a direct purchase call‑to‑action.",
+        "specificity": "Provides some product details and adaptation note, but many claims are vague and lack data.",
+        "authenticity": "Personal anecdote adds some authenticity, yet health benefit claim is unsupported.",
+        "trust": "Affiliate disclosure is present, but unsubstantiated ergonomic claim reduces credibility.",
+        "cta_quality": "No clear CTA to buy; the code‑106 note is ambiguous for purchase intent.",
+        "policy_safety": "Disclosure present and no prohibited content; only risk is unverified health claim.",
+        "redundancy": "Content is concise with no unnecessary repetition."
       },
       "model": "openai/gpt-oss-120b",
       "prompt_version": "v1",

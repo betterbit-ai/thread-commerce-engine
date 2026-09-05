@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "draft_id": "drf_d1517769e413",
+  "campaign_id": "cmp_20260905_91b25dc931",
+  "product_key": "coupang:7295558262",
+  "angle": "pain_solution",
+  "text": "아침에 노트북만 쓰다 보니 마우스 바꾸는 게 귀찮았어.\n그때 로지텍 코리아 리프트 버티컬 무선 블루투스 마우스를 써봤어—세로형 디자인이라 움직임을 최소화하면서도 클릭이 정확해.\n다만 처음 익히는 데 약간의 적응 시간이 필요하고, 맥에서는 호환 확인이 필요해.\n프로필에 코드 106 입력하면 확인할 수 있어.\n\n이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
+  "text_hash": "efec44837244b03d10a92c0b4dab7ddaa403cc0c79b9eac6a9d88c1392050591",
+  "offer_code": 106,
+  "created_at": "2026-09-05T23:13:03.632Z",
+  "prompt_version": "product-analyst:v1|angle-generator:v1|writer:v1|judge:v1",
+  "model": "openai/gpt-oss-120b",
+  "input_hash": "b2c18487f08b1bb7ddf56b1757c7d6e9d3109fdb6007d969e29d2b3a8c550255",
+  "judge": {
+    "schema_version": 1,
+    "scores": {
+      "hook": 70,
+      "persona_fit": 80,
+      "purchase_intent": 60,
+      "specificity": 55,
+      "authenticity": 60,
+      "trust": 55,
+      "cta_quality": 40,
+      "policy_safety": 90,
+      "redundancy": 85
+    },
+    "reasons": {
+      "hook": "Opening line is relatable and catches attention but not exceptionally striking.",
+      "persona_fit": "Mentions developers and long coding sessions, aligning well with the target persona.",
+      "purchase_intent": "Mentions product and affiliate disclosure but lacks a direct purchase call‑to‑action.",
+      "specificity": "Provides some product details and adaptation note, but many claims are vague and lack data.",
+      "authenticity": "Personal anecdote adds some authenticity, yet health benefit claim is unsupported.",
+      "trust": "Affiliate disclosure is present, but unsubstantiated ergonomic claim reduces credibility.",
+      "cta_quality": "No clear CTA to buy; the code‑106 note is ambiguous for purchase intent.",
+      "policy_safety": "Disclosure present and no prohibited content; only risk is unverified health claim.",
+      "redundancy": "Content is concise with no unnecessary repetition."
+    },
+    "detected_risks": [
+      "Unsubstantiated health claim that the vertical design reduces wrist strain for developers"
+    ],
+    "hard_fail_suggestions": [
+      "Remove or qualify the health benefit claim or provide credible evidence (e.g., study or reputable source) to support it"
+    ],
+    "overall_score": 66.11,
+    "confidence": 0.92,
+    "improvement": "Add verifiable evidence for ergonomic benefits and include a clear, direct call‑to‑action to purchase.",
+    "model": "openai/gpt-oss-120b",
+    "prompt_version": "v1"
+  },
+  "policy": {
+    "hard_fail": true,
+    "failures": [
+      {
+        "code": "unsupported_factual_claim",
+        "detail": "A compatibility/review claim has no supplied evidence."
+      }
+    ]
+  },
+  "human_label": null
+}
