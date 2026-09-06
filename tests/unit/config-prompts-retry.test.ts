@@ -30,6 +30,23 @@ describe('configuration and prompts', () => {
     expect(prompt.text).toContain('Korean Threads writer');
     expect(prompt.hash).toMatch(/^[a-f0-9]{64}$/u);
   });
+  it('keeps scheduled equipment threads concise and disclosure-safe', async () => {
+    const bank = JSON.parse(
+      await readFile(resolve('data/content/scheduled-threads.json'), 'utf8'),
+    ) as {
+      posts: Array<{ root_text: string; replies: string[] }>;
+    };
+    const disclosure =
+      '이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
+    expect(bank.posts).toHaveLength(5);
+    for (const post of bank.posts) {
+      expect(post.root_text).not.toContain('\n');
+      expect(post.root_text).not.toContain('http');
+      expect(post.replies).toHaveLength(3);
+      expect(post.replies[2]).toMatch(new RegExp(`^${disclosure}`));
+      expect(post.replies[2]).toContain('https://url.kr/sn9v9m');
+    }
+  });
   it('selects a policy-safe draft in automatic publishing mode', async () => {
     const config = await loadConfig();
     const scores = {

@@ -156,6 +156,12 @@ describe('HTTP adapters with fixtures', () => {
     expect(new URL(latestContainerUrl).searchParams.get('link_attachment')).toBe(
       'https://link.coupang.com/a/test',
     );
+    await expect(
+      client.createTextContainer('reply', {
+        replyToId: 'root-post',
+      }),
+    ).resolves.toBe('container');
+    expect(new URL(latestContainerUrl).searchParams.get('reply_to_id')).toBe('root-post');
     const published = await client.publishText('hello', 'cmp');
     expect(published.postId).toBe('post');
     const insight = await client.getInsights('post', 'cmp');

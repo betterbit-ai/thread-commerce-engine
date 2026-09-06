@@ -1,7 +1,6 @@
 name: Publish scheduled warmup text
 on:
   schedule:
-    - cron: '0,30 0 * * *'
     - cron: '0,30 9 * * *'
   workflow_dispatch:
     inputs:
@@ -9,7 +8,7 @@ on:
         description: Warmup slot to publish
         required: true
         type: choice
-        options: [morning, evening]
+        options: [evening]
       date_kst:
         description: Optional YYYY-MM-DD override for a scheduled content-bank entry
         required: false
@@ -21,43 +20,47 @@ jobs:
     environment: production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v4
-        with: { version: 10.15.0 }
-      - uses: actions/setup-node@v6
-        with: { node-version: 24, cache: pnpm }
-      - run: pnpm install --frozen-lockfile
-      - id: content
+      - id: gate
         env:
-          WARMUP_SLOT: ${{ inputs.slot || (github.event.schedule == '0,30 0 * * *' && 'morning') || 'evening' }}
+          PUBLISH_ENABLED: ${{ vars.PUBLISH_ENABLED }}
+        run: |
+          if [ "$PUBLISH_ENABLED" = "true" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Scheduled Threads publishing is disabled."
+          fi
+      - if: ${{ steps.gate.outputs.enabled == 'true' }}
+        uses: actions/checkout@v6
+      - if: ${{ steps.gate.outputs.enabled == 'true' }}
+        uses: pnpm/action-setup@v4
+        with: { version: 10.15.0 }
+      - if: ${{ steps.gate.outputs.enabled == 'true' }}
+        uses: actions/setup-node@v6
+        with: { node-version: 24, cache: pnpm }
+      - if: ${{ steps.gate.outputs.enabled == 'true' }}
+        run: pnpm install --frozen-lockfile
+      - id: content
+        if: ${{ steps.gate.outputs.enabled == 'true' }}
+        env:
+          WARMUP_SLOT: evening
           WARMUP_DATE: ${{ inputs.date_kst }}
         run: node scripts/warmup-content.mjs >> "$GITHUB_OUTPUT"
-      - if: ${{ steps.content.outputs.skip != 'true' }}
-        run: pnpm warmup:prepare
+      - name: Advance and persist the Threads reply chain
+        if: ${{ steps.gate.outputs.enabled == 'true' && steps.content.outputs.skip != 'true' }}
         env:
           PUBLISH_ENABLED: 'true'
           THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
           WARMUP_ID: ${{ steps.content.outputs.warmup_id }}
-          WARMUP_TEXT: ${{ steps.content.outputs.warmup_text }}
-          WARMUP_LINK_URL: ${{ steps.content.outputs.warmup_link_url }}
-      - if: ${{ steps.content.outputs.skip != 'true' }}
+          WARMUP_PAYLOAD_B64: ${{ steps.content.outputs.warmup_payload_b64 }}
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -A data/state/warmup-publications
-          git diff --cached --quiet || git commit -m "data(warmup): claim scheduled Threads post [skip ci]"
-          git push
-      - if: ${{ steps.content.outputs.skip != 'true' }}
-        run: pnpm warmup:publish
-        env:
-          PUBLISH_ENABLED: 'true'
-          THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
-          WARMUP_ID: ${{ steps.content.outputs.warmup_id }}
-          WARMUP_TEXT: ${{ steps.content.outputs.warmup_text }}
-      - if: ${{ always() && steps.content.outputs.skip != 'true' }}
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -A data/state/warmup-publications
-          git diff --cached --quiet || git commit -m "data(warmup): record scheduled Threads receipt [skip ci]"
-          git push
+          for step in 1 2 3 4 5 6 7 8; do
+            pnpm warmup:advance
+            git add -A data/state/warmup-publications
+            if ! git diff --cached --quiet; then
+              git commit -m "data(thread): advance scheduled reply chain [skip ci]"
+              git push
+            fi
+          done

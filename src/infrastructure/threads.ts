@@ -80,12 +80,13 @@ export class ThreadsClient implements ThreadsPort {
   }
   async createTextContainer(
     text: string,
-    options: { linkAttachment?: string } = {},
+    options: { linkAttachment?: string; replyToId?: string } = {},
   ): Promise<string> {
     if (!this.options.publishEnabled)
       throw new PublishSafetyError('Live Threads publication requires PUBLISH_ENABLED=true');
     const params = new URLSearchParams({ media_type: 'TEXT', text });
     if (options.linkAttachment) params.set('link_attachment', options.linkAttachment);
+    if (options.replyToId) params.set('reply_to_id', options.replyToId);
     const container = idSchema.parse(await this.call('POST', '/me/threads', params));
     return String(container.id);
   }

@@ -138,26 +138,120 @@ async function execute(): Promise<void> {
     await planContent(products, deps, await loadExperience());
     return;
   }
-  if (command === 'warmup:prepare' || command === 'warmup:publish') {
+  if (
+    command === 'warmup:prepare' ||
+    command === 'warmup:publish' ||
+    command === 'warmup:advance'
+  ) {
     const warmupId = z.string().min(1).parse(process.env.WARMUP_ID);
-    const text = z.string().min(1).max(500).parse(process.env.WARMUP_TEXT);
+    const payload = process.env.WARMUP_PAYLOAD_B64
+      ? z
+          .object({
+            root_text: z.string().min(1).max(500),
+            replies: z.array(z.string().min(1).max(500)).max(3),
+          })
+          .parse(JSON.parse(Buffer.from(process.env.WARMUP_PAYLOAD_B64, 'base64').toString('utf8')))
+      : null;
+    const text = payload?.root_text ?? z.string().min(1).max(500).parse(process.env.WARMUP_TEXT);
     const linkAttachment = process.env.WARMUP_LINK_URL
       ? z.string().url().parse(process.env.WARMUP_LINK_URL)
       : null;
     const deps = realDependencies({ threads: true });
     const receiptPath = `data/state/warmup-publications/${warmupId}.json`;
     const receiptSchema = z.object({
-      schema_version: z.literal(1),
+      schema_version: z.union([z.literal(1), z.literal(2)]),
       warmup_id: z.string(),
       text: z.string(),
       link_url: z.string().url().nullable().optional(),
       container_id: z.string(),
-      status: z.enum(['container_created', 'published']),
+      status: z.enum(['container_created', 'root_published', 'published']),
       post_id: z.string().nullable(),
       permalink: z.string().url().nullable(),
+      replies: z
+        .array(
+          z.object({
+            text: z.string(),
+            container_id: z.string().nullable(),
+            post_id: z.string().nullable(),
+            permalink: z.string().url().nullable(),
+          }),
+        )
+        .optional(),
       updated_at: z.string().datetime(),
     });
     const existing = await deps.store.readJson(receiptPath, receiptSchema).catch(() => null);
+    if (command === 'warmup:advance') {
+      if (!payload) throw new Error('WARMUP_PAYLOAD_B64 is required for warmup:advance');
+      if (!existing) {
+        const containerId = await deps.threads.createTextContainer(payload.root_text);
+        await deps.store.writeJson(receiptPath, {
+          schema_version: 2,
+          warmup_id: warmupId,
+          text: payload.root_text,
+          link_url: null,
+          container_id: containerId,
+          status: 'container_created',
+          post_id: null,
+          permalink: null,
+          replies: payload.replies.map((replyText) => ({
+            text: replyText,
+            container_id: null,
+            post_id: null,
+            permalink: null,
+          })),
+          updated_at: now().toISOString(),
+        });
+        return;
+      }
+      if (existing.text !== payload.root_text)
+        throw new Error(`Warmup publication ${warmupId} root text changed after preparation`);
+      const replies = existing.replies ?? [];
+      if (JSON.stringify(replies.map((reply) => reply.text)) !== JSON.stringify(payload.replies))
+        throw new Error(`Warmup publication ${warmupId} replies changed after preparation`);
+      if (!existing.post_id) {
+        const result = await deps.threads.publishContainer(existing.container_id);
+        await deps.store.writeJson(receiptPath, {
+          ...existing,
+          status: replies.length ? 'root_published' : 'published',
+          post_id: result.postId,
+          permalink: result.permalink,
+          updated_at: now().toISOString(),
+        });
+        return;
+      }
+      for (const [index, reply] of replies.entries()) {
+        const parentId = index === 0 ? existing.post_id : replies[index - 1]?.post_id;
+        if (!parentId) throw new Error(`Warmup publication ${warmupId} reply parent is missing`);
+        if (!reply.container_id) {
+          const containerId = await deps.threads.createTextContainer(reply.text, {
+            replyToId: parentId,
+          });
+          replies[index] = { ...reply, container_id: containerId };
+          await deps.store.writeJson(receiptPath, {
+            ...existing,
+            replies,
+            updated_at: now().toISOString(),
+          });
+          return;
+        }
+        if (!reply.post_id) {
+          const result = await deps.threads.publishContainer(reply.container_id);
+          replies[index] = {
+            ...reply,
+            post_id: result.postId,
+            permalink: result.permalink,
+          };
+          await deps.store.writeJson(receiptPath, {
+            ...existing,
+            status: index === replies.length - 1 ? 'published' : 'root_published',
+            replies,
+            updated_at: now().toISOString(),
+          });
+          return;
+        }
+      }
+      return;
+    }
     if (command === 'warmup:prepare') {
       if (existing) return;
       const containerId = await deps.threads.createTextContainer(text, {
@@ -223,7 +317,7 @@ async function execute(): Promise<void> {
         'data/state/warmup-publications',
         z.object({
           warmup_id: z.string(),
-          status: z.enum(['container_created', 'published']),
+          status: z.enum(['container_created', 'root_published', 'published']),
           post_id: z.string().nullable(),
         }),
       );

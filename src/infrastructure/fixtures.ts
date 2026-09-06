@@ -72,8 +72,14 @@ export class FixtureThreads implements ThreadsPort {
     this.posts.set(key, result);
     return result;
   }
-  async createTextContainer(text: string, options: { linkAttachment?: string } = {}) {
-    const id = createEntityId('container', `${text}:${options.linkAttachment ?? ''}`);
+  async createTextContainer(
+    text: string,
+    options: { linkAttachment?: string; replyToId?: string } = {},
+  ) {
+    const id = createEntityId(
+      'container',
+      `${text}:${options.linkAttachment ?? ''}:${options.replyToId ?? ''}`,
+    );
     this.containers.set(id, text);
     return id;
   }

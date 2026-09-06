@@ -23,3 +23,5 @@ Fabricated experience; unsupported fact; unsupported health claim; missing/exact
 ## Disclosure
 
 The configured Korean disclosure is appended by code and shown on every applicable storefront page. Do not ask the LLM to remember it or abbreviate it.
+
+Scheduled affiliate threads use one hook post followed by three authored replies. The final reply begins with the exact disclosure, then provides the approved short landing URL. The disclosure must never be omitted, abbreviated, or placed after the link.

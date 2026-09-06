@@ -22,5 +22,18 @@ const storefrontSchema = z.object({
   offers: z.array(offerSchema),
 });
 
-const dataPath = resolve(process.env.STOREFRONT_DATA_PATH ?? 'data/storefront/offers.json');
-export const storefrontData = storefrontSchema.parse(JSON.parse(readFileSync(dataPath, 'utf8')));
+const customDataPath = process.env.STOREFRONT_DATA_PATH;
+const dataPath = resolve(customDataPath ?? 'data/storefront/offers.json');
+const generated = storefrontSchema.parse(JSON.parse(readFileSync(dataPath, 'utf8')));
+const manual = customDataPath
+  ? { offers: [] }
+  : storefrontSchema.parse(
+      JSON.parse(readFileSync(resolve('data/storefront/manual-offers.json'), 'utf8')),
+    );
+const mergedOffers = new Map(
+  [...generated.offers, ...manual.offers].map((offer) => [offer.offer_code, offer]),
+);
+export const storefrontData = {
+  ...generated,
+  offers: [...mergedOffers.values()],
+};
