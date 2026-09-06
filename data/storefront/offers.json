@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-05T23:13:03.637Z",
+  "generated_at": "2026-09-06T23:04:37.384Z",
   "disclosure": "이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.",
   "offers": [
     {
@@ -61,6 +61,18 @@
       "image_url": "https://ads-partners.coupang.com/image1/v4GLKgL-mCFU6akUv3_gYAuQh71UbucuFGohyizHmTeBMRp-hnMftX-6N64yxjPiqBDN-3UWDi6o0AR5s8op9QAhYuEEyEcg_swPLnjmDnq6P_zBz4neeRXhLvKQoDc1kTBFISDMx1kFtoYX0cRQ-a_S9KfKiEb0mBrBADfj3DIq3_QyzdtlMTxMMMDHoMO0wxJoRGeeraUtri9b9gqBR6_9CUawcTeJYUYT7-8AlxZJ7EqC9tgW19KG0SKjpdMhKBALRAduiP1-59tJAWz8whrNciXYc2x0qz-FcG3qQ-FdtVaXkoXu1I33wT1oYylJaFdbGVjxUaVLzPX8aSL9AkoejSr0tvrJi3vlKT0Av_PGexWB926m4mSZ0qVy1hhzgfHo_X9DEa6QCMFgLXe2j4TZLJaGoNjTgPcvp5rZ2m9ly2tvURhEF30fjU2_117ARWij2w3htQ9REReEb9qRUu1J0mzRKpXn-LnCRdmuKcsEXuSDEyZXsbj0iRTyybLZdiuOT6f4T1Eoec3DDoNGM_00YuozjVc=",
       "affiliate_url": "https://link.coupang.com/re/AFFSDP?lptag=AF4905906&pageKey=7295558262&itemId=20340965740&vendorItemId=94880728421&traceid=V0-153-d77ec1f97d1ba8c1&clickBeacon=01563590-a8b5-11f1-8e40-1f50bf1c6425%7E3&requestid=20260905080438860187855883&token=31850C%7CCMG&pt=1&slot=1",
       "recommended": true,
+      "detail": "확인된 상품 정보와 캠페인 기록을 바탕으로 표시합니다."
+    },
+    {
+      "offer_code": 107,
+      "campaign_id": "cmp_20260906_91b25dc931",
+      "product": "로지텍 코리아 리프트 버티컬 인체공학 무선 블루투스 마우스 LIFT VERTICAL, MR0094, 그래파이트",
+      "category": "mouse",
+      "price_krw": 70830,
+      "captured_at": "2026-09-05T22:57:32.774Z",
+      "image_url": "https://ads-partners.coupang.com/image1/v4GLKgL-mCFU6akUv3_gYAuQh71UbucuFGohyizHmTeBMRp-hnMftX-6N64yxjPiqBDN-3UWDi6o0AR5s8op9QAhYuEEyEcg_swPLnjmDnq6P_zBz4neeRXhLvKQoDc1kTBFISDMx1kFtoYX0cRQ-a_S9KfKiEb0mBrBADfj3DIq3_QyzdtlMTxMMMDHoMO0wxJoRGeeraUtri9b9gqBR6_9CUawcTeJYUYT7-8AlxZJ7EqC9tgW19KG0SKjpdMhKBALRAduiP1-59tJAWz8whrNciXYc2x0qz-FcG3qQ-FdtVaXkoXu1I33wT1oYylJaFdbGVjxUaVLzPX8aSL9AkoejSr0tvrJi3vlKT0Av_PGexWB926m4mSZ0qVy1hhzgfHo_X9DEa6QCMFgLXe2j4TZLJaGoNjTgPcvp5rZ2m9ly2tvURhEF30fjU2_117ARWij2w3htQ9REReEb9qRUu1J0mzRKpXn-LnCRdmuKcsEXuSDEyZXsbj0iRTyybLZdiuOT6f4T1Eoec3DDoNGM_00YuozjVc=",
+      "affiliate_url": "https://link.coupang.com/re/AFFSDP?lptag=AF4905906&pageKey=7295558262&itemId=20340965740&vendorItemId=94880728421&traceid=V0-153-d77ec1f97d1ba8c1&clickBeacon=2da043c0-a97d-11f1-bb0f-af9217d8a153%7E3&requestid=20260906075732516104110990&token=31850C%7CCMG&pt=1&slot=1",
+      "recommended": false,
       "detail": "확인된 상품 정보와 캠페인 기록을 바탕으로 표시합니다."
     }
   ]
