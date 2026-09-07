@@ -2,20 +2,8 @@
   "schema_version": 1,
   "posts": [
     {
-      "warmup_id": "2026-09-07-evening-hub",
+      "warmup_id": "2026-09-07-evening-mouse",
       "date_kst": "2026-09-07",
-      "slot": "evening",
-      "product_key": "coupang:8444359626",
-      "root_text": "노트북에 꽂힌 선이 3개 넘으면, 허브부터 정리해야 함.",
-      "replies": [
-        "나는 충전이랑 화면 출력, USB 연결을 한쪽으로 몰아두는 게 제일 덜 귀찮았음.",
-        "UGREEN Uno는 6포트·USB 3.2 10Gbps·HDMI 4K60Hz·PD100W 표기가 있는 제품이야. 내 노트북이랑 모니터에 필요한 포트가 맞는지는 먼저 봐야 하고.",
-        "이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.\n\n오늘 소개한 도구는 여기서 확인\nhttps://url.kr/sn9v9m"
-      ]
-    },
-    {
-      "warmup_id": "2026-09-08-evening-mouse",
-      "date_kst": "2026-09-08",
       "slot": "evening",
       "product_key": "coupang:7295558262",
       "root_text": "버티컬 마우스는 사고 나서 후회하는 포인트가 따로 있음.",
@@ -26,8 +14,8 @@
       ]
     },
     {
-      "warmup_id": "2026-09-09-evening-arm",
-      "date_kst": "2026-09-09",
+      "warmup_id": "2026-09-08-evening-arm",
+      "date_kst": "2026-09-08",
       "slot": "evening",
       "product_key": "coupang:8586588219",
       "root_text": "책상 좁은 사람은 모니터보다 모니터 밑 공간이 더 비쌈.",
@@ -38,8 +26,8 @@
       ]
     },
     {
-      "warmup_id": "2026-09-10-evening-stand",
-      "date_kst": "2026-09-10",
+      "warmup_id": "2026-09-09-evening-stand",
+      "date_kst": "2026-09-09",
       "slot": "evening",
       "product_key": "coupang:8164003727",
       "root_text": "안 쓰는 노트북이 책상 한 칸을 통째로 먹고 있었음.",
@@ -50,8 +38,8 @@
       ]
     },
     {
-      "warmup_id": "2026-09-11-evening-keyboard",
-      "date_kst": "2026-09-11",
+      "warmup_id": "2026-09-10-evening-keyboard",
+      "date_kst": "2026-09-10",
       "slot": "evening",
       "product_key": "coupang:8468914303",
       "root_text": "기기 두 개 쓰는데 키보드도 두 개면 책상이 먼저 포기함.",

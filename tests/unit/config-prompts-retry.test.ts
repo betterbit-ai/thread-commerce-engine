@@ -38,7 +38,7 @@ describe('configuration and prompts', () => {
     };
     const disclosure =
       '이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.';
-    expect(bank.posts).toHaveLength(5);
+    expect(bank.posts).toHaveLength(4);
     for (const post of bank.posts) {
       expect(post.root_text).not.toContain('\n');
       expect(post.root_text).not.toContain('http');

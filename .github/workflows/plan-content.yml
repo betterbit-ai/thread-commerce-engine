@@ -1,9 +1,6 @@
 name: Plan content
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '37 6 * * *'
-      timezone: Asia/Seoul
 permissions: { contents: write }
 concurrency: { group: repository-writer, cancel-in-progress: false }
 jobs:

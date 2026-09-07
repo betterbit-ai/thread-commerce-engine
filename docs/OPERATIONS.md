@@ -2,7 +2,7 @@
 
 ## Schedules
 
-Ingest and planning run daily; the dispatcher runs every ten minutes and publishes all due eligible records. Threads collection runs every three hours; Coupang reporting is lower-frequency after its documented daily availability. Prewritten equipment threads have a primary and a 30-minute recovery trigger at 18:00/18:30 KST; the stored thread-chain receipt makes recovery runs resume incomplete replies or become a no-op after success. GitHub cron may still be delayed/dropped, so no workflow assumes exact firing.
+Ingest runs daily; legacy LLM planning and long-form publishing are manual-only and disabled for external publication. Threads collection runs every three hours; Coupang reporting is lower-frequency after its documented daily availability. Prewritten equipment threads are the only automatic Threads publishing path, with a primary and a 30-minute recovery trigger at 18:00/18:30 KST. The stored thread-chain receipt makes recovery runs resume incomplete replies or become a no-op after success. GitHub cron may still be delayed/dropped, so no workflow assumes exact firing.
 
 Human-approved/auto planning projects queued offers into `data/storefront` before dispatch. The Pages workflow must complete successfully before enabling the production dispatcher; `publish:prepare` also refuses any campaign missing from the storefront projection.
 

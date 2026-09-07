@@ -1,4 +1,4 @@
-name: Publish scheduled warmup text
+name: Publish scheduled equipment threads
 on:
   schedule:
     - cron: '0,30 9 * * *'
