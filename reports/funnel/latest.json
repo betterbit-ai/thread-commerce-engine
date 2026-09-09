@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "kind": "daily_funnel",
-  "generated_at": "2026-09-09T11:15:38.418Z",
-  "published_threads_measured": 3,
+  "generated_at": "2026-09-09T16:34:24.875Z",
+  "published_threads_measured": 4,
   "stages": {
-    "threads_root_views": 1837,
-    "reply_1_views": 46,
-    "reply_2_views": 43,
-    "link_reply_views": 38,
+    "threads_root_views": 2152,
+    "reply_1_views": 49,
+    "reply_2_views": 46,
+    "link_reply_views": 42,
     "landing_page_views": null,
     "affiliate_clicks": null,
     "coupang_clicks": null,
@@ -15,9 +15,9 @@
     "commission_krw": null
   },
   "rates": {
-    "reply_1_reach": 0.025040827436037017,
-    "solution_reach": 0.023407729994556342,
-    "link_reach": 0.020685900925421885,
+    "reply_1_reach": 0.022769516728624536,
+    "solution_reach": 0.02137546468401487,
+    "link_reach": 0.019516728624535316,
     "landing_from_threads": null,
     "affiliate_click_rate": null,
     "purchase_rate": null
@@ -46,6 +46,18 @@
       "reply_2_views": 4,
       "link_reply_views": 4,
       "link_reach": 0.009478672985781991
+    },
+    {
+      "campaign_id": "warmup:2026-09-09-evening-stand",
+      "hook": "노트북 덮어둔 지 3시간 됐는데 책상은 왜 계속 좁지?",
+      "permalink": "https://www.threads.com/@techpick_daily/post/DdEYAjoG1Rq",
+      "root_views": 315,
+      "likes": 0,
+      "organic_replies": 0,
+      "reply_1_views": 3,
+      "reply_2_views": 3,
+      "link_reply_views": 4,
+      "link_reach": 0.012698412698412698
     },
     {
       "campaign_id": "warmup:2026-09-07-evening-mouse",
