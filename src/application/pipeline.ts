@@ -43,6 +43,7 @@ import {
 import type { RepositoryStore } from '../infrastructure/repository.js';
 import { log } from '../shared/logger.js';
 import { PublishSafetyError, ValidationError } from '../shared/errors.js';
+import { collectThreadInsights, type ThreadInsightFailure } from './thread-insights.js';
 
 const genericObjectSchema: Record<string, unknown> = { type: 'object', additionalProperties: true };
 const publicationReceiptSchema = z.object({
@@ -933,6 +934,7 @@ export async function collectAndAnalyze(
   include: { threads: boolean; coupang: boolean } = { threads: true, coupang: true },
 ): Promise<{
   threads: ThreadsEvent[];
+  threadFailures: ThreadInsightFailure[];
   coupang: CoupangEvent[];
   analytics: Record<string, unknown>;
 }> {
@@ -942,30 +944,30 @@ export async function collectAndAnalyze(
     'data/events/threads',
     threadsEventSchema,
   );
-  for (const campaign of include.threads ? campaigns.filter((item) => item.threads_post_id) : []) {
-    if (!campaign.published_at) continue;
-    const ageHours = (deps.now().getTime() - new Date(campaign.published_at).getTime()) / 3_600_000;
-    const sampledWindows = priorThreadEvents
-      .filter((event) => event.campaign_id === campaign.campaign_id)
-      .map(
-        (event) =>
-          (new Date(event.sampled_at).getTime() -
-            new Date(campaign.published_at as string).getTime()) /
-          3_600_000,
+  const threadTargets = (include.threads ? campaigns : [])
+    .filter((campaign) => campaign.threads_post_id && campaign.published_at)
+    .filter((campaign) => {
+      const ageHours =
+        (deps.now().getTime() - new Date(campaign.published_at as string).getTime()) / 3_600_000;
+      const sampledWindows = priorThreadEvents
+        .filter((event) => event.campaign_id === campaign.campaign_id)
+        .map(
+          (event) =>
+            (new Date(event.sampled_at).getTime() -
+              new Date(campaign.published_at as string).getTime()) /
+            3_600_000,
+        );
+      return deps.config.metrics.threads_windows_hours.some(
+        (window) => ageHours >= window && !sampledWindows.some((sampled) => sampled >= window),
       );
-    const due = deps.config.metrics.threads_windows_hours.some(
-      (window) => ageHours >= window && !sampledWindows.some((sampled) => sampled >= window),
-    );
-    if (!due) continue;
-    const event = threadsEventSchema.parse(
-      await deps.threads.getInsights(campaign.threads_post_id as string, campaign.campaign_id),
-    );
-    threads.push(event);
-    await deps.store.appendJsonl(
-      `data/events/threads/${date.slice(0, 4)}/${date.slice(5, 7)}/${date}.jsonl`,
-      event,
-    );
-  }
+    })
+    .map((campaign) => ({
+      campaignId: campaign.campaign_id,
+      postId: campaign.threads_post_id as string,
+      stage: 'root' as const,
+    }));
+  const collectedThreads = await collectThreadInsights(threadTargets, deps);
+  threads.push(...collectedThreads.events.map((event) => threadsEventSchema.parse(event)));
   const hourKst = Number(
     new Intl.DateTimeFormat('en-US', {
       timeZone: deps.config.timezone,
@@ -990,7 +992,7 @@ export async function collectAndAnalyze(
       event,
     );
   const analytics = await buildAnalyticsProjection(campaigns, deps.store, deps.now);
-  return { threads, coupang, analytics };
+  return { threads, threadFailures: collectedThreads.failures, coupang, analytics };
 }
 
 export async function buildAnalyticsProjection(

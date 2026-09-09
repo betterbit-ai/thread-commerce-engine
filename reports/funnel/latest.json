@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "daily_funnel",
+  "generated_at": "2026-09-09T04:52:19.293Z",
+  "published_threads_measured": 3,
+  "stages": {
+    "threads_root_views": 1835,
+    "reply_1_views": 42,
+    "reply_2_views": 40,
+    "link_reply_views": 38,
+    "landing_page_views": null,
+    "affiliate_clicks": null,
+    "coupang_clicks": null,
+    "coupang_orders": null,
+    "commission_krw": null
+  },
+  "rates": {
+    "reply_1_reach": 0.022888283378746595,
+    "solution_reach": 0.021798365122615803,
+    "link_reach": 0.020708446866485014,
+    "landing_from_threads": null,
+    "affiliate_click_rate": null,
+    "purchase_rate": null
+  },
+  "thread_performance": [
+    {
+      "campaign_id": "warmup:2026-09-07-evening-hub",
+      "hook": "노트북에 꽂힌 선이 3개 넘으면, 허브부터 정리해야 함.",
+      "permalink": "https://www.threads.com/@techpick_daily/post/Dc8wEwBG1HQ",
+      "root_views": 1218,
+      "likes": 0,
+      "organic_replies": 0,
+      "reply_1_views": 29,
+      "reply_2_views": 29,
+      "link_reply_views": 28,
+      "link_reach": 0.022988505747126436
+    },
+    {
+      "campaign_id": "warmup:2026-09-08-evening-arm",
+      "hook": "책상 좁은 사람은 모니터보다 모니터 밑 공간이 더 비쌈.",
+      "permalink": "https://www.threads.com/@techpick_daily/post/DdByN5hFuuj",
+      "root_views": 420,
+      "likes": 0,
+      "organic_replies": 0,
+      "reply_1_views": 5,
+      "reply_2_views": 4,
+      "link_reply_views": 4,
+      "link_reach": 0.009523809523809525
+    },
+    {
+      "campaign_id": "warmup:2026-09-07-evening-mouse",
+      "hook": "버티컬 마우스는 사고 나서 후회하는 포인트가 따로 있음.",
+      "permalink": "https://www.threads.com/@techpick_daily/post/Dc_XugjG0ZV",
+      "root_views": 197,
+      "likes": 1,
+      "organic_replies": 0,
+      "reply_1_views": 8,
+      "reply_2_views": 7,
+      "link_reply_views": 6,
+      "link_reach": 0.030456852791878174
+    }
+  ],
+  "blockers": ["landing_analytics_not_connected", "coupang_reporting_not_connected"]
+}

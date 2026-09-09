@@ -36,6 +36,7 @@ jobs:
         env:
           SITE_URL: https://${{ github.repository_owner }}.github.io
           SITE_BASE: /${{ github.event.repository.name }}
+          PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
       - uses: actions/upload-pages-artifact@v4
         with: { path: dist }
   deploy:

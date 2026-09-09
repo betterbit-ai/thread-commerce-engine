@@ -46,11 +46,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
     <a
       class="button cta"
       href={offer.affiliate_url}
+      data-affiliate-click
+      data-offer-code={offer.offer_code}
+      data-campaign-id={offer.campaign_id}
       rel="nofollow sponsored noopener"
       target="_blank">쿠팡에서 현재 정보 보기 ↗</a
     >
     <p class="disclosure">{storefrontData.disclosure}</p>
   </article>
+  <script>
+    document.querySelector('[data-affiliate-click]')?.addEventListener('click', (event) => {
+      const link = event.currentTarget;
+      if (!(link instanceof HTMLAnchorElement)) return;
+      const analyticsWindow = window as Window & {
+        gtag?: (command: string, eventName: string, parameters: Record<string, string>) => void;
+      };
+      analyticsWindow.gtag?.('event', 'affiliate_click', {
+        offer_code: link.dataset.offerCode,
+        campaign_id: link.dataset.campaignId,
+        transport_type: 'beacon',
+      });
+    });
+  </script>
 </Base>
 <style>
   .detail {

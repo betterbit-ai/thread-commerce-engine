@@ -12,6 +12,7 @@ const {
   description = '일하는 사람의 책상·장비·업무도구 기록',
 } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
 
 <!doctype html>
@@ -23,6 +24,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/u, '');
     <meta name="theme-color" content="#101512" />
     <link rel="icon" href={`${base}/favicon.svg`} />
     <title>{title}</title>
+    {
+      gaMeasurementId ? (
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} />
+      ) : null
+    }
+    <script is:inline define:vars={{ gaMeasurementId }}>
+      if (gaMeasurementId) {
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+          window.dataLayer.push(arguments);
+        };
+        window.gtag('js', new Date());
+        window.gtag('config', gaMeasurementId);
+      }
+    </script>
   </head>
   <body>
     <header class="site-header">

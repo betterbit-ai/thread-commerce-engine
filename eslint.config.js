@@ -7,6 +7,7 @@ export default tseslint.config(
       'dist/**',
       '.artifacts/**',
       '.astro/**',
+      '.codex/**',
       'node_modules/**',
       '.omx/**',
       'storefront/**/*.astro',

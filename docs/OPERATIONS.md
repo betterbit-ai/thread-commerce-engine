@@ -2,13 +2,14 @@
 
 ## Schedules
 
-Ingest runs daily; legacy LLM planning and long-form publishing are manual-only and disabled for external publication. Threads collection runs every three hours; Coupang reporting is lower-frequency after its documented daily availability. Prewritten equipment threads are the only automatic Threads publishing path, with a primary and a 30-minute recovery trigger at 18:00/18:30 KST. The stored thread-chain receipt makes recovery runs resume incomplete replies or become a no-op after success. GitHub cron may still be delayed/dropped, so no workflow assumes exact firing.
+Ingest runs daily; legacy LLM planning and long-form publishing are manual-only and disabled for external publication. Threads collection runs every three hours; Coupang reporting is lower-frequency after its documented daily availability. Prewritten equipment threads are the only automatic Threads publishing path, with a primary and a 30-minute recovery trigger at 18:00/18:30 KST. The stored thread-chain receipt makes recovery runs resume incomplete replies or become a no-op after success. A daily funnel snapshot and Slack summary run at 23:40 KST. GitHub cron may still be delayed/dropped, so no workflow assumes exact firing.
 
 Human-approved/auto planning projects queued offers into `data/storefront` before dispatch. The Pages workflow must complete successfully before enabling the production dispatcher; `publish:prepare` also refuses any campaign missing from the storefront projection.
 
 ## Failure handling
 
 - API calls have timeouts, bounded exponential retry, typed errors, and safe logs.
+- Threads Insights isolates inaccessible or deleted posts, records them in `reports/analytics/threads-collection.json`, and continues collecting healthy roots and replies.
 - 429/5xx may retry; policy/config/validation/authentication failures do not retry blindly.
 - Writer concurrency prevents simultaneous Git writes; idempotency/receipts remain the real duplicate defense.
 - The dispatcher first commits `data/state/publications/<campaign>.json` with a one-time container, then publishes it. A timeout/error after the publish request records `publication_unknown`; automatic retry stops. Inspect the account/container and reconcile the receipt manually—never clear the claim to “retry.”

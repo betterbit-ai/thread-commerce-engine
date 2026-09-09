@@ -23,7 +23,10 @@ import {
   runDryRun,
 } from './application/pipeline.js';
 import { log } from './shared/logger.js';
-import { isWarmupComplete, kstDate } from './domain/scheduling.js';
+import { isWarmupComplete } from './domain/scheduling.js';
+import { collectThreadInsights } from './application/thread-insights.js';
+import { buildFunnelReport } from './application/funnel.js';
+import { collectGoogleAnalytics } from './infrastructure/google-analytics.js';
 
 const command = process.argv[2];
 const config = await loadConfig();
@@ -308,7 +311,7 @@ async function execute(): Promise<void> {
       coupang: command === 'metrics:coupang',
     });
     const campaigns = await deps.store.readJsonl('data/runtime/campaigns.jsonl', campaignSchema);
-    await collectAndAnalyze(campaigns, deps, {
+    const collected = await collectAndAnalyze(campaigns, deps, {
       threads: command === 'metrics:threads',
       coupang: command === 'metrics:coupang',
     });
@@ -319,22 +322,65 @@ async function execute(): Promise<void> {
           warmup_id: z.string(),
           status: z.enum(['container_created', 'root_published', 'published']),
           post_id: z.string().nullable(),
+          replies: z
+            .array(
+              z.object({
+                post_id: z.string().nullable(),
+              }),
+            )
+            .optional(),
         }),
       );
-      const date = kstDate(now());
-      for (const receipt of warmupReceipts) {
-        if (receipt.status !== 'published' || receipt.post_id === null) continue;
-        const event = await deps.threads.getInsights(
-          receipt.post_id,
-          `warmup:${receipt.warmup_id}`,
-        );
-        await deps.store.appendJsonl(
-          `data/events/threads/${date.slice(0, 4)}/${date.slice(5, 7)}/${date}.jsonl`,
-          event,
-        );
-      }
+      const targets = warmupReceipts.flatMap((receipt) => {
+        if (receipt.status !== 'published' || receipt.post_id === null || !receipt.replies?.length)
+          return [];
+        return [
+          {
+            campaignId: `warmup:${receipt.warmup_id}`,
+            postId: receipt.post_id,
+            stage: 'root' as const,
+          },
+          ...(receipt.replies ?? []).flatMap((reply, index) =>
+            reply.post_id
+              ? [
+                  {
+                    campaignId: `warmup:${receipt.warmup_id}:reply:${index + 1}`,
+                    postId: reply.post_id,
+                    stage: `reply_${index + 1}` as 'reply_1' | 'reply_2' | 'reply_3',
+                  },
+                ]
+              : [],
+          ),
+        ];
+      });
+      const warmup = await collectThreadInsights(targets, deps);
+      await deps.store.writeJson('reports/analytics/threads-collection.json', {
+        schema_version: 1,
+        generated_at: now().toISOString(),
+        attempted: targets.length + collected.threads.length + collected.threadFailures.length,
+        succeeded: warmup.events.length + collected.threads.length,
+        failed: warmup.failures.length + collected.threadFailures.length,
+        failures: [...collected.threadFailures, ...warmup.failures],
+      });
       await buildAnalyticsProjection(campaigns, deps.store, now);
     }
+    return;
+  }
+  if (command === 'funnel:build') {
+    await buildFunnelReport(new RepositoryStore(), now);
+    return;
+  }
+  if (command === 'metrics:storefront') {
+    const propertyId = z.string().min(1).parse(process.env.GA4_PROPERTY_ID);
+    const credentialsJson = z.string().min(1).parse(process.env.GA4_SERVICE_ACCOUNT_JSON);
+    const metrics = await collectGoogleAnalytics({ propertyId, credentialsJson, now });
+    const store = new RepositoryStore();
+    await store.writeJson('data/analytics/storefront/latest.json', {
+      schema_version: 1,
+      sampled_at: now().toISOString(),
+      page_views: metrics.pageViews,
+      affiliate_clicks: metrics.affiliateClicks,
+    });
     return;
   }
   if (command === 'calibration:report') {

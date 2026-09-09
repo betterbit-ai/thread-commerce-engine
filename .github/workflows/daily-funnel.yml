@@ -1,0 +1,50 @@
+name: Report daily commerce funnel
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '40 14 * * *'
+      timezone: Asia/Seoul
+permissions: { contents: write }
+concurrency: { group: repository-writer, cancel-in-progress: false }
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.15.0 }
+      - uses: actions/setup-node@v6
+        with: { node-version: 24, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - id: storefront_analytics
+        env:
+          GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -n "$GA4_PROPERTY_ID" ] && [ -n "$GA4_SERVICE_ACCOUNT_JSON" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::GA4 reporting is not configured; landing stages will remain unconnected."
+          fi
+      - if: ${{ steps.storefront_analytics.outputs.enabled == 'true' }}
+        run: pnpm metrics:storefront
+        env:
+          GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+      - run: pnpm funnel:build
+      - run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add reports/funnel/latest.json
+          if [ -f data/analytics/storefront/latest.json ]; then
+            git add data/analytics/storefront/latest.json
+          fi
+          git diff --cached --quiet || git commit -m "data(analytics): refresh daily funnel [skip ci]"
+          git push
+      - run: node scripts/slack-notify.mjs
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL_ID: ${{ secrets.SLACK_CHANNEL_ID }}
+          SLACK_SUMMARY_PATH: reports/funnel/latest.json
+          SLACK_TITLE: '📊 Techpick 일일 퍼널'
