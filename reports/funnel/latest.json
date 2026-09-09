@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "daily_funnel",
-  "generated_at": "2026-09-09T04:52:19.293Z",
+  "generated_at": "2026-09-09T10:04:01.174Z",
   "published_threads_measured": 3,
   "stages": {
     "threads_root_views": 1835,
@@ -60,5 +60,8 @@
       "link_reach": 0.030456852791878174
     }
   ],
-  "blockers": ["landing_analytics_not_connected", "coupang_reporting_not_connected"]
+  "blockers": [
+    "landing_analytics_not_connected",
+    "coupang_reporting_not_connected"
+  ]
 }
