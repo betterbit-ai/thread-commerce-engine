@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "kind": "daily_funnel",
-  "generated_at": "2026-09-10T11:11:57.360Z",
-  "published_threads_measured": 4,
+  "generated_at": "2026-09-10T16:20:39.176Z",
+  "published_threads_measured": 5,
   "stages": {
-    "threads_root_views": 2163,
-    "reply_1_views": 51,
-    "reply_2_views": 48,
-    "link_reply_views": 43,
+    "threads_root_views": 2324,
+    "reply_1_views": 55,
+    "reply_2_views": 52,
+    "link_reply_views": 46,
     "landing_page_views": null,
     "affiliate_clicks": null,
     "coupang_clicks": null,
@@ -15,9 +15,9 @@
     "commission_krw": null
   },
   "rates": {
-    "reply_1_reach": 0.023578363384188627,
-    "solution_reach": 0.022191400832177532,
-    "link_reach": 0.019879796578825704,
+    "reply_1_reach": 0.023666092943201378,
+    "solution_reach": 0.022375215146299483,
+    "link_reach": 0.019793459552495698,
     "landing_from_threads": null,
     "affiliate_click_rate": null,
     "purchase_rate": null
@@ -54,8 +54,8 @@
       "root_views": 324,
       "likes": 0,
       "organic_replies": 0,
-      "reply_1_views": 5,
-      "reply_2_views": 5,
+      "reply_1_views": 6,
+      "reply_2_views": 6,
       "link_reply_views": 5,
       "link_reach": 0.015432098765432098
     },
@@ -70,6 +70,18 @@
       "reply_2_views": 10,
       "link_reply_views": 6,
       "link_reach": 0.030456852791878174
+    },
+    {
+      "campaign_id": "warmup:2026-09-10-evening-keyboard",
+      "hook": "노트북에서 태블릿으로 옮길 때마다 키보드 2개씩 밀어본 사람?",
+      "permalink": "https://www.threads.com/@techpick_daily/post/DdG7verjYwj",
+      "root_views": 161,
+      "likes": 0,
+      "organic_replies": 0,
+      "reply_1_views": 3,
+      "reply_2_views": 3,
+      "link_reply_views": 3,
+      "link_reach": 0.018633540372670808
     }
   ],
   "blockers": [
