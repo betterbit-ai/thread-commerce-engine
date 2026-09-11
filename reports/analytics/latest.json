@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-10T23:06:59.681Z",
+  "generated_at": "2026-09-11T04:31:07.546Z",
   "campaigns": 8,
   "unmapped_coupang_events": 0,
   "totals": {
-    "threads_views": 5552,
+    "threads_views": 5555,
     "coupang_clicks": 0,
     "orders": 0,
     "commission_krw": 0
@@ -13,8 +13,8 @@
     "commerce_ctr": 0,
     "purchase_cvr": null,
     "rpmv": 0,
-    "engagement_rate": 0.010806916426512969,
-    "reply_rate": 0.004322766570605188
+    "engagement_rate": 0.010801080108010801,
+    "reply_rate": 0.00432043204320432
   },
   "segments": [
     {
@@ -117,7 +117,7 @@
       "founder_experience_supported": false,
       "engine": "evergreen",
       "judge_overall": 73.33,
-      "threads_views": 6,
+      "threads_views": 7,
       "coupang_clicks": null,
       "orders": null,
       "commission_krw": null,
