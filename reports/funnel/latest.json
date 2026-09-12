@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "kind": "daily_funnel",
-  "generated_at": "2026-09-12T09:32:55.890Z",
+  "generated_at": "2026-09-12T10:40:28.744Z",
   "published_threads_measured": 5,
   "stages": {
-    "threads_root_views": 2335,
+    "threads_root_views": 2336,
     "reply_1_views": 58,
     "reply_2_views": 52,
     "link_reply_views": 46,
@@ -15,9 +15,9 @@
     "commission_krw": null
   },
   "rates": {
-    "reply_1_reach": 0.024839400428265525,
-    "solution_reach": 0.02226980728051392,
-    "link_reach": 0.019700214132762312,
+    "reply_1_reach": 0.02482876712328767,
+    "solution_reach": 0.02226027397260274,
+    "link_reach": 0.019691780821917807,
     "landing_from_threads": null,
     "affiliate_click_rate": null,
     "purchase_rate": null
@@ -51,13 +51,13 @@
       "campaign_id": "warmup:2026-09-09-evening-stand",
       "hook": "노트북 덮어둔 지 3시간 됐는데 책상은 왜 계속 좁지?",
       "permalink": "https://www.threads.com/@techpick_daily/post/DdEYAjoG1Rq",
-      "root_views": 326,
+      "root_views": 327,
       "likes": 0,
       "organic_replies": 0,
       "reply_1_views": 6,
       "reply_2_views": 6,
       "link_reply_views": 5,
-      "link_reach": 0.015337423312883436
+      "link_reach": 0.01529051987767584
     },
     {
       "campaign_id": "warmup:2026-09-07-evening-mouse",
