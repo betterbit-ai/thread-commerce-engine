@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "kind": "daily_funnel",
-  "generated_at": "2026-09-11T23:13:19.009Z",
+  "generated_at": "2026-09-12T04:28:40.298Z",
   "published_threads_measured": 5,
   "stages": {
-    "threads_root_views": 2333,
-    "reply_1_views": 57,
+    "threads_root_views": 2335,
+    "reply_1_views": 58,
     "reply_2_views": 52,
     "link_reply_views": 46,
     "landing_page_views": null,
@@ -15,9 +15,9 @@
     "commission_krw": null
   },
   "rates": {
-    "reply_1_reach": 0.0244320617231033,
-    "solution_reach": 0.022288898414059153,
-    "link_reach": 0.019717102443206173,
+    "reply_1_reach": 0.024839400428265525,
+    "solution_reach": 0.02226980728051392,
+    "link_reach": 0.019700214132762312,
     "landing_from_threads": null,
     "affiliate_click_rate": null,
     "purchase_rate": null
@@ -75,13 +75,13 @@
       "campaign_id": "warmup:2026-09-10-evening-keyboard",
       "hook": "노트북에서 태블릿으로 옮길 때마다 키보드 2개씩 밀어본 사람?",
       "permalink": "https://www.threads.com/@techpick_daily/post/DdG7verjYwj",
-      "root_views": 168,
+      "root_views": 170,
       "likes": 0,
       "organic_replies": 0,
-      "reply_1_views": 5,
+      "reply_1_views": 6,
       "reply_2_views": 3,
       "link_reply_views": 3,
-      "link_reach": 0.017857142857142856
+      "link_reach": 0.01764705882352941
     }
   ],
   "blockers": [
