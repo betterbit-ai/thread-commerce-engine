@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "kind": "daily_funnel",
-  "generated_at": "2026-09-26T11:17:45.936Z",
+  "generated_at": "2026-09-26T16:18:31.681Z",
   "published_threads_measured": 5,
   "stages": {
     "threads_root_views": 2342,
-    "reply_1_views": 58,
-    "reply_2_views": 52,
+    "reply_1_views": 59,
+    "reply_2_views": 53,
     "link_reply_views": 46,
     "landing_page_views": null,
     "affiliate_clicks": null,
@@ -15,8 +15,8 @@
     "commission_krw": null
   },
   "rates": {
-    "reply_1_reach": 0.024765157984628524,
-    "solution_reach": 0.02220324508966695,
+    "reply_1_reach": 0.02519214346712212,
+    "solution_reach": 0.022630230572160546,
     "link_reach": 0.01964133219470538,
     "landing_from_threads": null,
     "affiliate_click_rate": null,
@@ -78,8 +78,8 @@
       "root_views": 172,
       "likes": 0,
       "organic_replies": 0,
-      "reply_1_views": 6,
-      "reply_2_views": 3,
+      "reply_1_views": 7,
+      "reply_2_views": 4,
       "link_reply_views": 3,
       "link_reach": 0.01744186046511628
     }
