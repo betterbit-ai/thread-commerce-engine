@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "kind": "daily_funnel",
-  "generated_at": "2026-09-28T11:57:09.444Z",
+  "generated_at": "2026-09-28T13:45:39.318Z",
   "published_threads_measured": 5,
   "stages": {
-    "threads_root_views": 2343,
+    "threads_root_views": 2344,
     "reply_1_views": 59,
     "reply_2_views": 53,
     "link_reply_views": 46,
@@ -15,9 +15,9 @@
     "commission_krw": null
   },
   "rates": {
-    "reply_1_reach": 0.025181391378574478,
-    "solution_reach": 0.022620571916346564,
-    "link_reach": 0.019632949210414,
+    "reply_1_reach": 0.025170648464163822,
+    "solution_reach": 0.022610921501706484,
+    "link_reach": 0.01962457337883959,
     "landing_from_threads": null,
     "affiliate_click_rate": null,
     "purchase_rate": null
@@ -63,13 +63,13 @@
       "campaign_id": "warmup:2026-09-07-evening-mouse",
       "hook": "버티컬 마우스는 사고 나서 후회하는 포인트가 따로 있음.",
       "permalink": "https://www.threads.com/@techpick_daily/post/Dc_XugjG0ZV",
-      "root_views": 197,
+      "root_views": 198,
       "likes": 1,
       "organic_replies": 0,
       "reply_1_views": 12,
       "reply_2_views": 10,
       "link_reply_views": 6,
-      "link_reach": 0.030456852791878174
+      "link_reach": 0.030303030303030304
     },
     {
       "campaign_id": "warmup:2026-09-10-evening-keyboard",
