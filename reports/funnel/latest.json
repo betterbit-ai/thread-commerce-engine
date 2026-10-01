@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "kind": "daily_funnel",
-  "generated_at": "2026-10-01T11:46:51.407Z",
+  "generated_at": "2026-10-01T18:23:29.930Z",
   "published_threads_measured": 5,
   "stages": {
-    "threads_root_views": 2345,
+    "threads_root_views": 2346,
     "reply_1_views": 59,
     "reply_2_views": 53,
     "link_reply_views": 46,
@@ -15,9 +15,9 @@
     "commission_krw": null
   },
   "rates": {
-    "reply_1_reach": 0.02515991471215352,
-    "solution_reach": 0.022601279317697228,
-    "link_reach": 0.019616204690831557,
+    "reply_1_reach": 0.02514919011082694,
+    "solution_reach": 0.022591645353793693,
+    "link_reach": 0.0196078431372549,
     "landing_from_threads": null,
     "affiliate_click_rate": null,
     "purchase_rate": null
@@ -39,13 +39,13 @@
       "campaign_id": "warmup:2026-09-08-evening-arm",
       "hook": "책상 좁은 사람은 모니터보다 모니터 밑 공간이 더 비쌈.",
       "permalink": "https://www.threads.com/@techpick_daily/post/DdByN5hFuuj",
-      "root_views": 425,
+      "root_views": 426,
       "likes": 0,
       "organic_replies": 0,
       "reply_1_views": 5,
       "reply_2_views": 4,
       "link_reply_views": 4,
-      "link_reach": 0.009411764705882352
+      "link_reach": 0.009389671361502348
     },
     {
       "campaign_id": "warmup:2026-09-09-evening-stand",
