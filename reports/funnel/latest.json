@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "daily_funnel",
-  "generated_at": "2026-10-22T04:34:54.636Z",
+  "generated_at": "2026-10-22T10:33:55.452Z",
   "published_threads_measured": 5,
   "stages": {
     "threads_root_views": 2350,
