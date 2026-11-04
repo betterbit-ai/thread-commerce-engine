@@ -1,0 +1,2 @@
+{"schema_version":1,"event_id":"opp_e7586fd397c1","product_key":"coupang:7714243386","detected_at":"2026-11-04T01:26:53.597Z","kind":"price_change","evidence":{"previous_krw":85900,"current_krw":79000}}
+{"schema_version":1,"event_id":"opp_d8a6c80df67c","product_key":"coupang:9544385860","detected_at":"2026-11-04T01:26:53.597Z","kind":"price_change","evidence":{"previous_krw":53900,"current_krw":50670}}
