@@ -1,0 +1,3 @@
+{"schema_version":1,"event_id":"opp_01fe990941e6","product_key":"coupang:7295558262","detected_at":"2026-11-17T03:57:45.682Z","kind":"price_change","evidence":{"previous_krw":61020,"current_krw":64050}}
+{"schema_version":1,"event_id":"opp_61b38288189a","product_key":"coupang:9659897551","detected_at":"2026-11-17T03:57:45.682Z","kind":"price_change","evidence":{"previous_krw":44280,"current_krw":44200}}
+{"schema_version":1,"event_id":"opp_fc35b34894ed","product_key":"coupang:230241825","detected_at":"2026-11-17T03:57:45.683Z","kind":"price_change","evidence":{"previous_krw":66000,"current_krw":66900}}
